@@ -8,11 +8,11 @@ metadata:
 spec:
   tls:
   - hosts:
-    - hw1.kflix.tv
+    - hw4.kflix.tv
     - hw2.kflix.tv
     secretName: hello-kubernetes-tls
   rules:
-  - host: "hw1.kflix.tv"
+  - host: "hw4.kflix.tv"
     http:
       paths:
       - pathType: Prefix
