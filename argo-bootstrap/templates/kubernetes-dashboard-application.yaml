@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: k8s-dashboard
+  name: kubernetes-dashboard
   namespace: default
 spec:
   project: default
@@ -9,10 +9,10 @@ spec:
   source:
     repoURL: https://github.com/kFlix-tv/k8s-kflix.git
     targetRevision: HEAD
-    path: helm-charts/k8s-dashboard
+    path: helm-charts/kubernetes-dashboard
   destination: 
     server: {{ .Values.spec.destination.server }}
-    namespace: k8s-dashboard
+    namespace: kubernetes-dashboard
 
   syncPolicy:
     syncOptions:

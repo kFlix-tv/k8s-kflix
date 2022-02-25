@@ -1,5 +1,5 @@
 kubernetes-dashboard:
-  fullnameOverride: k8s-dashboard
+  fullnameOverride: kubernetes-dashboard
   protocolHttp: true
   service:
     externalPort: 8080
