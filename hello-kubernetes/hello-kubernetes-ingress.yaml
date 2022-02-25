@@ -9,7 +9,7 @@ spec:
   tls:
   - hosts:
     - hw1.kflix.tv
-    - k8s-dashboard.kflix.tv
+    - hw2.kflix.tv
     secretName: hello-kubernetes-tls
   rules:
   - host: "hw1.kflix.tv"
@@ -22,13 +22,13 @@ spec:
             name: hello-kubernetes-first
             port:
               number: 80
-  - host: "k8s-dashboard.kflix.tv"
+  - host: "hw2.kflix.tv"
     http:
       paths:
       - pathType: Prefix
         path: "/"
         backend:
           service:
-            name: k8s-dashboard
+            name: hello-kubernetes-second
             port:
-              number: 8080
+              number: 80

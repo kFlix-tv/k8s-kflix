@@ -9,14 +9,26 @@ server:
       nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
     hostname: argocd.kflix.tv
     tls: true
-  config:
-    dex.config: |
-      connectors:
-      - type: google
-        id: google
-        name: Google
-        config:
-          clientID: "1055548818888-o3ifid1v9b2j021405l5klbjlkenh2bg.apps.googleusercontent.com"
-          clientSecret: "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"
-dex:
-  enabled: true
+#   config:
+#     dex.config: |
+#       connectors:
+#       - type: google
+#         id: google
+#         name: Google
+#         config:
+#           clientID: "1055548818888-o3ifid1v9b2j021405l5klbjlkenh2bg.apps.googleusercontent.com"
+#           clientSecret: "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"
+# dex:
+#   enabled: true
+#   service:
+#     type: NodePort
+#     nodePort:
+#       http: 30556
+#   config: |
+#     connectors:
+#     - type: google
+#       id: google
+#       name: Google
+#       config:
+#         clientID: "1055548818888-o3ifid1v9b2j021405l5klbjlkenh2bg.apps.googleusercontent.com"
+#         clientSecret: "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"
