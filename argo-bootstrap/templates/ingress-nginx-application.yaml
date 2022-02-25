@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: ingress-nginx
+  namespace: default
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/kFlix-tv/k8s-kflix.git
+    targetRevision: HEAD
+    path: helm-charts/ingress-nginx
+  destination: 
+    server: {{ .Values.spec.destination.server }}
+    namespace: ingress-nginx
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
