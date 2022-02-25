@@ -12,7 +12,7 @@ kubernetes-dashboard:
       cert-manager.io/cluster-issuer: letsencrypt
     hosts:
       - k8s-dashboard.kflix.tv
-  tls:
-    - secretName: k8s-dashboard
-      hosts:
-        - k8s-dashboard.kflix.tv
+    tls:
+      - secretName: k8s-dashboard
+        hosts:
+          - k8s-dashboard.kflix.tv
