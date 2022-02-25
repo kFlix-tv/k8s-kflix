@@ -1,0 +1,11 @@
+controller:
+  publishService:
+    enabled: true
+  service:
+    type: NodePort
+    nodePorts:
+      http:  30080
+      https: 30443
+      tcp: 
+        8080: 30808
+    externalIPs: ["147.182.234.13"]

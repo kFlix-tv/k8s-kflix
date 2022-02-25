@@ -1,0 +1,8 @@
+provider: cloudflare
+sources: ['ingress']
+cloudflare:
+  apiToken: "vEUP3xL4cx7_AvWZEdAvAbG82XPwqnQCpzRH9ZUy"
+  email: "cloudflare@ktyler.me"
+  proxied: false
+domainFilters: ['kflix.tv']
+policy: sync
