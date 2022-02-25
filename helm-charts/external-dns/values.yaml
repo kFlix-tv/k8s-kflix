@@ -1,8 +1,13 @@
 external-dns:
+  env:
+  - name: cloudflare.apiToken
+    valueFrom:
+      secretKeyRef:
+        name: cloudflare-dns-token
+        key: cloudflare-dns-token
   provider: cloudflare
   sources: ['ingress']
   cloudflare:
-    apiToken: "vEUP3xL4cx7_AvWZEdAvAbG82XPwqnQCpzRH9ZUy"
     email: "cloudflare@ktyler.me"
     proxied: false
   domainFilters: ['kflix.tv']
