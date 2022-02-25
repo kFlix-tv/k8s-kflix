@@ -12,7 +12,7 @@ spec:
     path: helm-charts/k8s-dashboard
   destination: 
     server: {{ .Values.spec.destination.server }}
-    namespace: default
+    namespace: k8s-dashboard
 
   syncPolicy:
     syncOptions:
