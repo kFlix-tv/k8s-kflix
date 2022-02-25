@@ -1,21 +1,3 @@
-kubernetes-dashboard:
-  fullnameOverride: k8s-dashboard
-  protocolHttp: true
-  service:
-    externalPort: 8080
-  extraArgs:
-    - --enable-insecure-login
-  ingress:
-    enabled: true
-    annotations:
-      kubernetes.io/ingress.class: nginx
-      cert-manager.io/cluster-issuer: letsencrypt
-    hosts:
-      - k8s-dashboard.kflix.tv
-    tls:
-      - secretName: k8s-dashboard
-        hosts:
-          - k8s-dashboard.kflix.tv
 fullnameOverride: k8s-dashboard
 protocolHttp: true
 service:
