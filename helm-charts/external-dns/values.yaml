@@ -1,10 +1,4 @@
 external-dns:
-  env:
-  - name: CF_API_TOKEN
-    valueFrom:
-      secretKeyRef:
-        name: cloudflare-dns-token
-        key: cloudflare-dns-token
   provider: cloudflare
   sources: ['ingress']
   cloudflare:
