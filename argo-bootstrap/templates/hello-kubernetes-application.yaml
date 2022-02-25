@@ -11,8 +11,8 @@ spec:
     targetRevision: HEAD
     path: 'hello-kubernetes'
   destination: 
-    server: https://kubernetes.default.svc
-    namespace: myapp
+    server: {{ .Values.spec.destination.server }}
+    namespace: hello-kubernetes
 
   syncPolicy:
     syncOptions:
