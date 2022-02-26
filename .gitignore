@@ -1,2 +1,2 @@
-helm-charts/argo-cd/charts/*
-helm-charts/argo-cd/Chart.lock
+helm-charts/*/charts/*
+helm-charts/*/Chart.lock

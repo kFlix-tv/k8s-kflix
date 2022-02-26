@@ -13,8 +13,8 @@ kube-prometheus-stack:
       - pathType: ImplementationSpecific
         path: "/"
         backend:
-          service: prometheus-stack-alertmanager
-            name: 
+          service:
+            name: prometheus-stack-alertmanager
             port:
               number: 80
       tls:
