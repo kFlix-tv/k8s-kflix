@@ -17,4 +17,4 @@ spec:
           email: cloudflare@ktyler.me
           apiTokenSecretRef:
             name: cloudflare
-            key: dns-token
+            key: cloudflare_api_token
