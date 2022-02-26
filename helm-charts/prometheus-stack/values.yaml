@@ -1,0 +1,23 @@
+kube-prometheus-stack:
+  nameOverride: prometheus-stack
+  namespaceOverride: prometheus-stack
+  alertmanager:
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx
+        cert-manager.io/cluster-issuer: letsencrypt
+      hosts:
+      - alertmanager.kflix.tv
+      paths:
+      - pathType: ImplementationSpecific
+        path: "/"
+        backend:
+          service: prometheus-stack-alertmanager
+            name: 
+            port:
+              number: 80
+      tls:
+      - hosts:
+        - alertmanager.kflix.tv
+        secretName: hello-kubernetes-tls
