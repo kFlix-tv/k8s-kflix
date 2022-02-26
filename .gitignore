@@ -1,0 +1,2 @@
+helm-charts/argo-cd/charts/*
+helm-charts/argo-cd/Chart.lock

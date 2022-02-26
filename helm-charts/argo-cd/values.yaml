@@ -1,0 +1,44 @@
+argo-cd:
+  server:
+    insecure: true
+    url: "https://argocd.kflix.tv"
+    ingress:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx
+        cert-manager.io/cluster-issuer: letsencrypt
+        nginx.ingress.kubernetes.io/force-ssl-redirect: "true"
+      hostname: argocd.kflix.tv
+      tls: true
+    # config:
+    #   dex.config: |
+    #     logger:
+    #       level: debug
+    #     connectors:
+    #       # GitHub example
+    #       - type: github
+    #         id: github
+    #         name: GitHub
+    #         config:
+    #           clientID: b2ecd9d2c8f24b22765b
+    #           clientSecret: 14f23ac06d75862860026a43523bd2fc629bb3b1
+    #           orgs:
+    #           - name: kFlix-tv
+          
+  config:
+    secret:
+      argocdServerAdminPassword: "baf3trj.MWU4bmu6ewp"
+  # dex:
+  #   enabled: true
+  #   service:
+  #     type: NodePort
+  #     nodePort:
+  #       http: 30556
+    # config: |
+    #   connectors:
+    #   - type: google
+    #     id: google
+    #     name: Google
+    #     config:
+    #       clientID: "1055548818888-o3ifid1v9b2j021405l5klbjlkenh2bg.apps.googleusercontent.com"
+    #       clientSecret: "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"
