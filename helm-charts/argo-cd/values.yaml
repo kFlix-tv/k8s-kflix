@@ -24,7 +24,9 @@ argo-cd:
     #           clientSecret: 14f23ac06d75862860026a43523bd2fc629bb3b1
     #           orgs:
     #           - name: kFlix-tv
-          
+  controller:
+    defaultArgs:
+      appResyncPeriod: "60"
   config:
     secret:
       argocdServerAdminPassword: "baf3trj.MWU4bmu6ewp"
