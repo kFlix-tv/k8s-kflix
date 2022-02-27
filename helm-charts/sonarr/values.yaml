@@ -1,0 +1,15 @@
+sonarr:
+  ingress:
+    main:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx
+        cert-manager.io/cluster-issuer: letsencrypt
+      hosts:
+      - host: sonarr.kflix.tv
+        paths:
+        - path: /
+          pathType: Prefix
+      tls:
+      - hosts:
+        - sonarr.kflix.tv 
