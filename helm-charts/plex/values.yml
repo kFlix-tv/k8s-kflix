@@ -1,0 +1,18 @@
+plex:
+  env:
+    TZ: america/los_angeles
+    PLEX_CLAIM: claim-ujNswEvzLy__sF87rxWs
+  ingress:
+    main:
+      enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx
+        cert-manager.io/cluster-issuer: letsencrypt
+      hosts:
+      - host: plex.kflix.tv
+        paths:
+        - path: /
+          pathType: Prefix
+      tls:
+      - hosts:
+        - plex.kflix.tv 
