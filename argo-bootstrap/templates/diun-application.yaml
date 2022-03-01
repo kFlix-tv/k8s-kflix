@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: diun
+  namespace: argo-cd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/kFlix-tv/k8s-kflix.git
+    targetRevision: HEAD
+    path: helm-charts/diun
+  destination: 
+    server: {{ .Values.spec.destination.server }}
+    namespace: diun
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true

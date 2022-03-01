@@ -1,0 +1,14 @@
+db:
+  path: diun.db
+watch:
+  workers: 10
+  schedule: "0 */6 * * *"
+  firstCheckNotif: false
+notif:
+  pushover:
+    templateTitle: "{{ .Entry.Image }} released"
+    templateBody: |-
+      Docker tag {{ .Entry.Image }} which you subscribed to through {{ .Entry.Provider }} provider has been released.
+providers:
+  kubernetes:
+    watchByDefault: true
