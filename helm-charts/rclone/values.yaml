@@ -14,7 +14,7 @@ images:
 
 rclone:
   #  remote to mount from rclone config
-  remote: "gcache:"
+  remote: "encrypt:"
   # mount path for  remote
   path: /mnt/disks/gdrive
   # read only file system for remote (to protect from deletion of files)
