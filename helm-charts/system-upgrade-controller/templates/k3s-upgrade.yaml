@@ -8,6 +8,8 @@ metadata:
   namespace: system-upgrade
   labels:
     k3s-upgrade: server
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
 spec:
   concurrency: 1 # Batch size (roughly maps to maximum number of unschedulable nodes)
   version: v1.22.7+k3s1
@@ -29,6 +31,8 @@ metadata:
   namespace: system-upgrade
   labels:
     k3s-upgrade: agent
+  annotations:
+    argocd.argoproj.io/sync-wave: "5"
 spec:
   concurrency: 2 # Batch size (roughly maps to maximum number of unschedulable nodes)
   version: v1.22.7+k3s1
