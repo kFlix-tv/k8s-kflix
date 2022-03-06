@@ -13,5 +13,6 @@ uptime-kuma:
         - path: /
           pathType: Prefix
       tls:
-      - hosts:
+      - secretName: uptime-kuma-tls
+        hosts:
         - uptime.kflix.tv
