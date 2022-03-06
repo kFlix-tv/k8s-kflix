@@ -5,7 +5,8 @@ metadata:
   namespace: {{ .Values.metadata.namespace }}
 spec:
   project: {{ .Values.spec.project }}
-
+  sourceRepos:
+  - '*'
   source:
     repoURL: {{ .Values.spec.source.repoURL }}
     targetRevision: HEAD
