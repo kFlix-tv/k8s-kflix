@@ -14,4 +14,4 @@ uptime-kuma:
           pathType: Prefix
       tls:
       - hosts:
-        - uptime.{{ .Values.server.urlbase }}
+        - uptime.kflix.tv
