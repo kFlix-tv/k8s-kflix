@@ -2,6 +2,9 @@ kube-prometheus-stack:
   alertmanager:
     ingress:
       enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx
+        cert-manager.io/cluster-issuer: letsencrypt
       hosts:
       - alertmanager.kflix.tv
       paths:
@@ -13,6 +16,9 @@ kube-prometheus-stack:
   grafana:
     ingress:
       enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx
+        cert-manager.io/cluster-issuer: letsencrypt
       hosts:
       - grafana.kflix.tv
       paths:
@@ -24,6 +30,9 @@ kube-prometheus-stack:
   prometheus:
     ingress:
       enabled: true
+      annotations:
+        kubernetes.io/ingress.class: nginx
+        cert-manager.io/cluster-issuer: letsencrypt
       hosts:
       - prometheus.kflix.tv
       paths:
