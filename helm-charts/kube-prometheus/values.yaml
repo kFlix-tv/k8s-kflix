@@ -1,0 +1,34 @@
+kube-prometheus-stack:
+  alertmanager:
+    ingress:
+      enabled: true
+      hosts:
+      - alertmanager.kflix.tv
+      paths:
+      - /
+      tls:
+      - secretName: alertmanager-tls
+        hosts:
+        - alertmanager.kflix.tv
+  grafana:
+    ingress:
+      enabled: true
+      hosts:
+      - grafana.kflix.tv
+      paths:
+      - /
+      tls:
+      - secretName: grafana-tls
+        hosts:
+        - grafana.kflix.tv
+  prometheus:
+    ingress:
+      enabled: true
+      hosts:
+      - prometheus.kflix.tv
+      paths:
+      - /
+      tls:
+      - secretName: prometheus-tls
+        hosts:
+        - prometheus.kflix.tv
