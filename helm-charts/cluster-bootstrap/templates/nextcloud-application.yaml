@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: nextcloud
+  namespace: {{ .Values.metadata.namespace }}
+spec:
+  project: {{ .Values.spec.project }}
+
+  source:
+    repoURL: {{ .Values.spec.source.repoURL }}
+    targetRevision: HEAD
+    path: helm-charts/nextcloud
+  destination: 
+    server: {{ .Values.spec.destination.server }}
+    namespace: nextcloud
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
