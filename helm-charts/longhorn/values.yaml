@@ -1,2 +1,9 @@
 longhorn:
   namepsaceOverride: "longhorn-system"
+  ingress:
+    enabled: true
+    host: longhorn.kflix.tv
+    tls: true
+    annotations:
+      kubernetes.io/ingress.class: nginx
+      cert-manager.io/cluster-issuer: letsencrypt
