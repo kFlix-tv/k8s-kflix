@@ -1,0 +1,9 @@
+oauth2-proxy:
+  ingress:
+    enabled: true
+    hosts:
+      - oauth2.kflix.tv
+    tls:
+      - secretName: oauth2-tls
+        hosts:
+          - oauth2.kflix.tv
