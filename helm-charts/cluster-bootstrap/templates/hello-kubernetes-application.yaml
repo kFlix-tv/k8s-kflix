@@ -1,23 +1,23 @@
-apiVersion: argoproj.io/v1alpha1
-kind: Application
-metadata:
-  name: hello-kubernetes
-  namespace: argo-cd
-spec:
-  project: default
+# apiVersion: argoproj.io/v1alpha1
+# kind: Application
+# metadata:
+#   name: hello-kubernetes
+#   namespace: argo-cd
+# spec:
+#   project: default
 
-  source:
-    repoURL: https://github.com/kFlix-tv/k8s-kflix.git
-    targetRevision: HEAD
-    path: 'hello-kubernetes'
-  destination: 
-    server: {{ .Values.spec.destination.server }}
-    namespace: hello-kubernetes
+#   source:
+#     repoURL: https://github.com/kFlix-tv/k8s-kflix.git
+#     targetRevision: HEAD
+#     path: 'hello-kubernetes'
+#   destination: 
+#     server: {{ .Values.spec.destination.server }}
+#     namespace: hello-kubernetes
 
-  syncPolicy:
-    syncOptions:
-    - CreateNamespace=true
+#   syncPolicy:
+#     syncOptions:
+#     - CreateNamespace=true
 
-    automated:
-      selfHeal: true
-      prune: true
+#     automated:
+#       selfHeal: true
+#       prune: true
