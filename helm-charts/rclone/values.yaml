@@ -7,7 +7,7 @@ images:
     tag: latest
   container:
     repository: docker pull ghcr.io/kflix-tv/rclone
-    tag: v0
+    tag: v1
   pullPolicy: IfNotPresent
 
 # imagePullSecrets:
