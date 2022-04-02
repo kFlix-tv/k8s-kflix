@@ -6,7 +6,7 @@ images:
     repository: busybox
     tag: latest
   container:
-    repository: bitnami/rclone
+    repository: docker pull ghcr.io/kflix-tv/rclone
     tag: latest
   pullPolicy: IfNotPresent
 
