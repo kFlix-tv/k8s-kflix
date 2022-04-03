@@ -32,5 +32,6 @@ plex:
       command:
       - cat
       - /mnt/disks/tv/.test
+      - /mnt/disks/movies/.test
     initialDelaySeconds: 5
     periodSeconds: 5
