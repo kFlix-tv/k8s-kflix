@@ -9,4 +9,5 @@ longhorn:
       cert-manager.io/cluster-issuer: letsencrypt
   defaultSettings:
     defaultLonghornStaticStorageClass: "longhorn-kflix"
-    
+  persistence:
+    defaultClass: false
