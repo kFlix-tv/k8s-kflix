@@ -27,4 +27,10 @@ plex:
     - name: tv
       hostPath:
         path: /mnt/disks/tv
-  
+  livenessProbe:
+    exec:
+      command:
+      - cat
+      - /mnt/disks/tv/.test
+    initialDelaySeconds: 5
+    periodSeconds: 5
