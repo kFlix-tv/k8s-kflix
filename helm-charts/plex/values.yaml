@@ -19,12 +19,12 @@ plex:
   persistence:
     config:
       storageClass: "longhorn-kflix"
-  # extraVolumeMounts:
-  #   - name: tv
-  #     mountPath: /mnt/disks/tv
-  #     mountPropagation: Bidirectional
-  # extraVolumes:
-  #   - name: tv
-  #     hostPath:
-  #       path: /mnt/disks/tv
+  extraVolumeMounts:
+    - name: tv
+      mountPath: /mnt/disks/tv
+      mountPropagation: Bidirectional
+  extraVolumes:
+    - name: tv
+      hostPath:
+        path: /mnt/disks/tv
   
