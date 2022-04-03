@@ -25,4 +25,4 @@ plex:
   extraVolumes:
     - name: tv
       hostPath:
-        path: {{ .Values.rclone.path }}
+        path: /mnt/disks/tv
