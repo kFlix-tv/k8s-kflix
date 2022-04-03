@@ -34,7 +34,7 @@ plex:
       - /mnt/disks/tv/.test
     initialDelaySeconds: 5
     periodSeconds: 5
-rclone:
+kube-rclone:
   images:
     initContainer:
       repository: busybox
