@@ -23,6 +23,9 @@ version: 0.1.0
 appVersion: "1.0"
 
 dependencies:
-- name: plex
-  version: ~2.1.1
-  repository: https://utkuozdemir.org/helm-charts
+  - name: plex
+    version: ~2.1.1
+    repository: https://utkuozdemir.org/helm-charts
+  - name: rclone
+    version: ~0.1.0
+    repository: https://charts.simplyzee.dev/
