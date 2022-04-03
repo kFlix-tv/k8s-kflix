@@ -28,4 +28,4 @@ dependencies:
     repository: https://utkuozdemir.org/helm-charts
   - name: rclone
     version: ~0.1.0
-    repository: https://charts.simplyzee.dev/
+    repository: https://kflix-tv.github.io/helm-repo
