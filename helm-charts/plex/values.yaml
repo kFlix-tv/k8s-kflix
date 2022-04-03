@@ -13,7 +13,8 @@ plex:
       - path: /
         pathType: Prefix
     tls:
-    - hosts:
+    - secretName: plex-tls
+      hosts:
       - plex.kflix.tv
   persistence:
     config:
