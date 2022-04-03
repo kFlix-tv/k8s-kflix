@@ -26,6 +26,6 @@ dependencies:
   - name: plex
     version: ~2.1.1
     repository: https://utkuozdemir.org/helm-charts
-  - name: rclone
+  - name: kube-rclone
     version: ~0.1.0
     repository: https://kflix-tv.github.io/helm-repo
