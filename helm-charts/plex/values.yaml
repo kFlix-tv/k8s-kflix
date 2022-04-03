@@ -1,7 +1,7 @@
 plex:
   env:
     TZ: america/los_angeles
-    PLEX_CLAIM: claim-1zt5vqYF53Y_6S32WL1r
+    PLEX_CLAIM: claim-cAZ2S_xBjAxvyYfRfr56
   ingress:
     enabled: true
     annotations:
