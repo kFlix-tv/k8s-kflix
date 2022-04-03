@@ -15,6 +15,9 @@ plex:
     tls:
     - hosts:
       - plex.kflix.tv
+  persistence:
+    config:
+      storageClass: "longhorn"
   extraVolumeMounts:
     - name: tv
       mountPath: /mnt/disks/tv
