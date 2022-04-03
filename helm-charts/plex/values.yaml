@@ -53,7 +53,7 @@ kube-rclone:
     readOnly: true
     # additional arguments for customising rclone
     # mount options can be found here - https://rclone.org/commands/rclone_mount/#options
-    additionalArgs:
+    additionalArgs: 
       # - --buffer-size=1G
       # - --dir-cache-time=72h
       # - --drive-chunk-size=256M
