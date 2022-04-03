@@ -39,32 +39,25 @@ plex:
     initialDelaySeconds: 5
     periodSeconds: 5
 rclone-config: |
-  [gdrive]
-  type = drive
-  client_id = 447142735064-3avhbvpvqrvftcojq01m6gruds5v728c.apps.googleusercontent.com
-  client_secret = kYGwU8acgJ7DpHJT54jXczp0
-  token = {"access_token":"ya29.A0ARrdaM_Hg-1bj0tGt5lgZGZvXs2_kHavXSADBxubzVpJnJjh6yS4TOhyW1vELLlWMCxhFplKhffMXyg6uOyCA1tRgOMPQXEB8IJ7Gke1Z7KeyW7qTVpRjdaX-YZXWURkotswV30x-xAxQN33EklzPX94pjCr4U4","token_type":"Bearer","refresh_token":"1/32CUwKt-z2N8CKBQAMswhZYomWAQyy5dk9mhY3jWhAE","expiry":"2022-03-01T16:26:51.219908087-08:00"}
+[gdrive]
+type = drive
+client_id = 447142735064-3avhbvpvqrvftcojq01m6gruds5v728c.apps.googleusercontent.com
+client_secret = kYGwU8acgJ7DpHJT54jXczp0
+token = {"access_token":"ya29.A0ARrdaM_Hg-1bj0tGt5lgZGZvXs2_kHavXSADBxubzVpJnJjh6yS4TOhyW1vELLlWMCxhFplKhffMXyg6uOyCA1tRgOMPQXEB8IJ7Gke1Z7KeyW7qTVpRjdaX-YZXWURkotswV30x-xAxQN33EklzPX94pjCr4U4","token_type":"Bearer","refresh_token":"1/32CUwKt-z2N8CKBQAMswhZYomWAQyy5dk9mhY3jWhAE","expiry":"2022-03-01T16:26:51.219908087-08:00"}
 
-  [encrypt]
-  type = crypt
-  remote = gdrive:/etijrp2eg47fm2n1h9taivo8rc
-  filename_encryption = standard
-  password = WxrfeV7cq72ymLVJSFZTxLGwoDRrEJLi-BOSbTk6FrE6Wkqn7826pZGTOl8zJUG_IjXnl1dKYPhBLwg
-  password2 = ZIYdqZFdHC-JfvmhaKCnnUf5RGv3XxgwZ80PP7OhMCKxRWPdoNLHtjtK4QTsgRi5cwPh2aea5b8ILqA
+[tv-crypt]
+type = crypt
+remote = gdrive:/etijrp2eg47fm2n1h9taivo8rc/sekan4rpgsf9t7h1itsmn51vc4
+filename_encryption = standard
+password = WxrfeV7cq72ymLVJSFZTxLGwoDRrEJLi-BOSbTk6FrE6Wkqn7826pZGTOl8zJUG_IjXnl1dKYPhBLwg
+password2 = ZIYdqZFdHC-JfvmhaKCnnUf5RGv3XxgwZ80PP7OhMCKxRWPdoNLHtjtK4QTsgRi5cwPh2aea5b8ILqA
 
-  [tv-crypt]
-  type = crypt
-  remote = gdrive:/etijrp2eg47fm2n1h9taivo8rc/sekan4rpgsf9t7h1itsmn51vc4
-  filename_encryption = standard
-  password = WxrfeV7cq72ymLVJSFZTxLGwoDRrEJLi-BOSbTk6FrE6Wkqn7826pZGTOl8zJUG_IjXnl1dKYPhBLwg
-  password2 = ZIYdqZFdHC-JfvmhaKCnnUf5RGv3XxgwZ80PP7OhMCKxRWPdoNLHtjtK4QTsgRi5cwPh2aea5b8ILqA
-
-  [movies-crypt]
-  type = crypt
-  remote = gdrive:/etijrp2eg47fm2n1h9taivo8rc/hb8acqmosapn02o7qnsq76jmvs
-  filename_encryption = standard
-  password = WxrfeV7cq72ymLVJSFZTxLGwoDRrEJLi-BOSbTk6FrE6Wkqn7826pZGTOl8zJUG_IjXnl1dKYPhBLwg
-  password2 = ZIYdqZFdHC-JfvmhaKCnnUf5RGv3XxgwZ80PP7OhMCKxRWPdoNLHtjtK4QTsgRi5cwPh2aea5b8ILqA
+[movies-crypt]
+type = crypt
+remote = gdrive:/etijrp2eg47fm2n1h9taivo8rc/hb8acqmosapn02o7qnsq76jmvs
+filename_encryption = standard
+password = WxrfeV7cq72ymLVJSFZTxLGwoDRrEJLi-BOSbTk6FrE6Wkqn7826pZGTOl8zJUG_IjXnl1dKYPhBLwg
+password2 = ZIYdqZFdHC-JfvmhaKCnnUf5RGv3XxgwZ80PP7OhMCKxRWPdoNLHtjtK4QTsgRi5cwPh2aea5b8ILqA
 
 rclone-tv:
   config: {{ .Values.rclone-config }}
