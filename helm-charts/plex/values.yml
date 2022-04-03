@@ -1,7 +1,7 @@
 plex:
   env:
     TZ: america/los_angeles
-    PLEX_CLAIM: claim-msqoMV-DjroHM272CwmN
+    PLEX_CLAIM: claim-Xt-7Gq6zVGT6fWWBTsVW
   ingress:
     enabled: true
     annotations:
@@ -18,12 +18,3 @@ plex:
   persistence:
     config:
       storageClass: "longhorn-kflix"
-  # extraVolumeMounts:
-  #   - name: tv
-  #     mountPath: /mnt/disks/tv
-  #     mountPropagation: Bidirectional
-  # extraVolumes:
-  #   - name: tv
-  #     hostPath:
-  #       path: /mnt/disks/tv
-  
