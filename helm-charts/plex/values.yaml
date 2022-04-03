@@ -35,7 +35,7 @@ plex:
     initialDelaySeconds: 5
     periodSeconds: 5
 kube-rclone:
-  config: -|
+  config: |
     [gdrive]
     type = drive
     client_id = 447142735064-3avhbvpvqrvftcojq01m6gruds5v728c.apps.googleusercontent.com
