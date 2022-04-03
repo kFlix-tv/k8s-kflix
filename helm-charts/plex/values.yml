@@ -15,3 +15,11 @@ plex:
     tls:
     - hosts:
       - plex.kflix.tv
+  extraVolumeMounts:
+    - name: tv
+      mountPath: /mnt/disks/tv
+      mountPropagation: Bidirectional
+  extraVolumes:
+    - name: tv
+      hostPath:
+        path: {{ .Values.rclone.path }}
