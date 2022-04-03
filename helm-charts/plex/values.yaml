@@ -22,7 +22,7 @@ plex:
   extraVolumeMounts:
     - name: tv
       mountPath: /mnt/disks/tv
-      mountPropagation: Bidirectional
+      mountPropagation: HostToContainer
   extraVolumes:
     - name: tv
       hostPath:
