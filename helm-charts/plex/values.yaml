@@ -23,6 +23,9 @@ plex:
     - name: tv
       mountPath: /mnt/disks/tv
       mountPropagation: HostToContainer
+    - name: movies
+      mountPath: /mnt/disks/movies
+      mountPropagation: HostToContainer
   extraVolumes:
     - name: tv
       hostPath:
