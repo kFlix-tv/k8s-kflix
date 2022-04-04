@@ -17,8 +17,7 @@ plex:
       hosts:
       - plex.kflix.tv
   persistence:
-    config:
-      storageClass: "longhorn-kflix"
+    existingClaim: plex-longhorn-pvc
   extraVolumeMounts:
     - name: tv
       mountPath: /mnt/disks/tv
