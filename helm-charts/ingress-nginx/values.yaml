@@ -9,4 +9,4 @@ ingress-nginx:
         https: 30443
         tcp: 
           8080: 30808
-      externalIPs: ["147.182.234.13"]
+      externalIPs: ["142.93.157.36"]
