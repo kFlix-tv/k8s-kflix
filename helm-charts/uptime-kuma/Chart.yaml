@@ -9,8 +9,8 @@ appVersion: "1.0"
 
 dependencies:
 - name: uptime-kuma
-  version: ~1.1.0
-  repository: https://k8s-at-home.com/charts/
+  version: ~2.3.10
+  repository: https://dirsigler.github.io/uptime-kuma-helm
 # - name: library-values
 #   version: ~0.1.0
 #   repository: https://kflixtv.jfrog.io/artifactory/api/helm/kflix-helm
