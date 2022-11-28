@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: csi-rclone
+  namespace: {{ .Values.metadata.namespace }}
+spec:
+  project: {{ .Values.spec.project }}
+
+  source:
+    repoURL: {{ .Values.spec.source.repoURL }}
+    targetRevision: HEAD
+    path: helm-charts/csi-rclone
+  destination: 
+    server: {{ .Values.spec.destination.server }}
+    namespace: csi-rclone
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
