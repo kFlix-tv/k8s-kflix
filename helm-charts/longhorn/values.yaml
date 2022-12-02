@@ -9,5 +9,7 @@ longhorn:
       cert-manager.io/cluster-issuer: letsencrypt
   defaultSettings:
     defaultLonghornStaticStorageClass: "longhorn-kflix"
+    backupTarget: "s3://test@bhs/"
+    backupTargetCredentialSecret: "longhorn-ovh"
   persistence:
     defaultClass: false
