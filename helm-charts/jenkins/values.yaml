@@ -6,7 +6,7 @@ jenkins:
   jenkinsPassword: "thisisatest"
   ## @param jenkinsHost Jenkins host to create application URLs
   ##
-  jenkinsHost: ""
+  jenkinsHost: "jenkins.kflix.tv"
   ## @param jenkinsHome Jenkins home directory
   ##
   jenkinsHome: /bitnami/jenkins/home
@@ -38,6 +38,12 @@ jenkins:
 
   ## Jenkins service parameters
   ##
+  startupProbe:
+    enabled: false
+  service:
+  ## @param service.type Jenkins service type
+  ##
+    type: ClusterIP
   ingress:
     ## @param ingress.enabled Enable ingress record generation for Jenkins
     ##
