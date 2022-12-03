@@ -35,7 +35,7 @@ jenkins:
   ## @param extraEnvVarsSecret Name of existing Secret containing extra env vars
   ##
   extraEnvVarsSecret: ""
-
+  serviceAccountName: "jenkins-admin"
   ## Jenkins service parameters
   ##
   startupProbe:
