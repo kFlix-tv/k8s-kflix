@@ -12,7 +12,7 @@ spec:
     path: helm-charts/jenkins
   destination: 
     server: {{ .Values.spec.destination.server }}
-    namespace: jenkis
+    namespace: jenkins
 
   syncPolicy:
     syncOptions:
