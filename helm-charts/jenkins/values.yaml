@@ -212,7 +212,8 @@ jenkins:
 
     # List of plugins to install in addition to those listed in controller.installPlugins
     additionalPlugins:
-      - blueocean-web:latest
+      - pipeline-graph-view:latest
+      - pipeline-stage-view:latest
 
     # Enable to initialize the Jenkins controller only once on initial installation.
     # Without this, whenever the controller gets restarted (Evicted, etc.) it will fetch plugin updates which has the potential to cause breakage.
@@ -393,7 +394,8 @@ jenkins:
 
     # StatefulSet updateStrategy
     # ref: https://kubernetes.io/docs/concepts/workloads/controllers/statefulset/#update-strategies
-    updateStrategy: {}
+    updateStrategy:
+      type: RollingUpdate
 
     ingress:
       enabled: true
