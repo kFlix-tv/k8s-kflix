@@ -1,4 +1,4 @@
-prowlarr:
+# prowlarr:
   # ingress:
   #   enabled: true
   #   annotations:
