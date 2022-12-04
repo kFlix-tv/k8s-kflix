@@ -2,15 +2,15 @@ prowlarr:
   main:
     ingress:
       enabled: true
-    #   annotations:
-    #     kubernetes.io/ingress.class: nginx
-    #     cert-manager.io/cluster-issuer: letsencrypt
-    #     kubernetes.io/tls-acme: "true"
-    #   tls:
-    #     - secretName: prowlarr-tls.local
-    #       hosts:
-    #         - prowlarr.kflix.tv
-  # persistence:
-  #   config:
-  #     enabled: true
-  #     storageClass: "longhorn-kflix"
+      annotations:
+        kubernetes.io/ingress.class: nginx
+        cert-manager.io/cluster-issuer: letsencrypt
+        kubernetes.io/tls-acme: "true"
+      tls:
+        - secretName: prowlarr-tls.local
+          hosts:
+            - prowlarr.kflix.tv
+  persistence:
+    config:
+      enabled: true
+      storageClass: "longhorn-kflix"
