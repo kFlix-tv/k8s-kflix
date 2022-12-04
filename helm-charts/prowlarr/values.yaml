@@ -1,15 +1,12 @@
 prowlarr:
   ingress:
-    prowlarr:
+    main:
       enabled: true
       annotations:
         kubernetes.io/ingress.class: nginx
         cert-manager.io/cluster-issuer: letsencrypt
         kubernetes.io/tls-acme: "true"
-      hosts:
-        - host: prowlarr.kflix.tv
-          path: /
-          pathtype: Prefix
+      hostName: prowlarr.kflix.tv
       tls:
         - secretName: prowlarr-tls.local
           hosts:
