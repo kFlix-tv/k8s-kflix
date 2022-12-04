@@ -250,8 +250,8 @@ jenkins:
     existingSecret:
 
     additionalExistingSecrets:
-     - name: jenkins-admin
-       keyName: jenkins-admin-password
+     - name: jenkins-google-oauth
+       keyName: jenkins-google-oauth
 
     additionalSecrets: []
     #  - name: nameOfSecret
@@ -295,13 +295,10 @@ jenkins:
           usageStatisticsEnabled: true
       # Ignored if securityRealm is defined in controller.JCasC.configScripts
       securityRealm: |-
-        local:
-          allowsSignup: false
-          enableCaptcha: false
-          users:
-          - id: "${chart-admin-username}"
-            name: "Jenkins Admin"
-            password: "${jenkins-admin-jenkins-admin-password}"
+        googleOAuth2:
+          clientId: "${jenkins-google-oauth-client-id}"
+          clientSecret: "${jenkins-google-oauth-client-secret}"
+          domain: "${jenkins-google-oauth-domain}"
       # Ignored if authorizationStrategy is defined in controller.JCasC.configScripts
       authorizationStrategy: |-
         loggedInUsersCanDoAnything:
