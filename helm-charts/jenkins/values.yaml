@@ -7,7 +7,7 @@ jenkins:
     # you should revert controller.adminUser to your preferred admin user:
     adminUser: "admin"
     admin:
-      existingSecret: "jenkins-user"
+      # existingSecret: "jenkins-user"
       userKey: jenkins-admin-user
       passwordKey: jenkins-admin-password
     # This values should not be changed unless you use your custom image of jenkins or any devired from. If you want to use
