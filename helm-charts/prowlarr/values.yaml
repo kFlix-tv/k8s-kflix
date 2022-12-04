@@ -7,8 +7,7 @@ prowlarr:
         cert-manager.io/cluster-issuer: letsencrypt
         kubernetes.io/tls-acme: "true"
       hosts:
-        -
-          host: prowlarr.kflix.tv
+        host: prowlarr.kflix.tv
       tls:
         - secretName: prowlarr-tls.local
           hosts:
