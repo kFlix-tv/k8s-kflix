@@ -251,7 +251,11 @@ jenkins:
 
     additionalExistingSecrets:
      - name: jenkins-google-oauth
-       keyName: jenkins-google-oauth
+       keyName: client-id
+     - name: jenkins-google-oauth
+       keyName: client-secret
+     - name: jenkins-google-oauth
+       keyName: domain
 
     additionalSecrets: []
     #  - name: nameOfSecret
