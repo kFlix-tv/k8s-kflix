@@ -424,9 +424,9 @@ jenkins:
       # configures the hostname e.g. jenkins.example.com
       hostName: "jenkins.kflix.tv"
       tls:
-      # - secretName: jenkins.cluster.local
-      #   hosts:
-      #     - jenkins.cluster.local
+      - secretName: jenkins.local-tls
+        hosts:
+          - jenkins.kflix.tv
 
     # often you want to have your controller all locked down and private
     # but you still want to get webhooks from your SCM
