@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: prowlarr-longhorn
+  labels:
+    name: prowlarr-longhorn
+spec:
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 2Gi
+  storageClassName: longhorn-kflix
+  csi:
+    driver: csi-longhorn
+    volumeHandle: prowlarr-longhorn

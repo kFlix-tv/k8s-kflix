@@ -1,11 +1,14 @@
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: prowlarr
+  name: prowlarr-longhorn
 spec:
   accessModes:
     - ReadWriteOnce
   resources:
     requests:
-      storage: 100Gi
+      storage: 2Gi
   storageClassName: longhorn-kflix
+  selector:
+    matchLabels:
+      name: prowlarr-longhorn
