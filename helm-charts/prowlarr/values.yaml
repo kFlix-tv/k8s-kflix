@@ -19,4 +19,3 @@ prowlarr:
     config:
       enabled: true
       storageClass: "longhorn-kflix"
-      existingClaim: "prowlarr"
