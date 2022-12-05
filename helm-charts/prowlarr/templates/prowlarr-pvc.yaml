@@ -8,7 +8,5 @@ spec:
   resources:
     requests:
       storage: 2Gi
+  volumeName: prowlarr-longhorn
   storageClassName: longhorn-kflix
-  selector:
-    matchLabels:
-      name: prowlarr-longhorn
