@@ -2,14 +2,15 @@ apiVersion: v1
 kind: PersistentVolume
 metadata:
   name: prowlarr-longhorn
-  labels:
-    name: prowlarr-longhorn
 spec:
-  accessModes:
-    - ReadWriteOnce
   capacity:
     storage: 2Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteOnce
+  persistentVolumeReclaimPolicy: Delete
   storageClassName: longhorn-kflix
   csi:
-    driver: csi-longhorn
+    driver: driver.longhorn.io
+    fsType: ext4
     volumeHandle: prowlarr-longhorn
