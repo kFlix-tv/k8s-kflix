@@ -1,4 +1,4 @@
-k3sup install --ip ${K8S_IP} --user root --k3s-extra-args '--no-deploy traefik' --local-path $HOME/.kube/config-files/kflix.yaml --context kflix --ssh-key $HOME/.ssh/id_ecdsa
+k3sup install --ip ${K8S_IP} --user root --k3s-extra-args '--disable traefik' --local-path $HOME/.kube/config-files/kflix.yaml --context kflix --ssh-key $HOME/.ssh/id_ecdsa
 
 export GITHUB_PASSWORD="op://2fa/github/Argo"
 export AKEYLESS_ACCESSID="op://Personal/Akeyless/accessID"
