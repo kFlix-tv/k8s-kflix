@@ -3,6 +3,8 @@
 # metadata:
 #   name: system-upgrade-controller
 #   namespace: {{ .Values.metadata.namespace }}
+#    annotations:
+#      argocd.argoproj.io/sync-wave: "-3"
 # spec:
 #   project: {{ .Values.spec.project }}
 
