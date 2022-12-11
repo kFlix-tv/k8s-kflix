@@ -8,6 +8,7 @@ longhorn:
       kubernetes.io/ingress.class: nginx
       cert-manager.io/cluster-issuer: letsencrypt
   defaultSettings:
+    defaultDataPath: "/mnt/data/longhorn"
     defaultLonghornStaticStorageClass: "longhorn-kflix"
     backupTarget: "s3://test@bhs/"
     backupTargetCredentialSecret: "longhorn-ovh"
