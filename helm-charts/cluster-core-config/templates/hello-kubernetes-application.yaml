@@ -1,18 +1,18 @@
 # apiVersion: argoproj.io/v1alpha1
 # kind: Application
 # metadata:
-#   name: rclone 
-#   namespace: argo-cd
+#   name: hello-kubernetes
+#   namespace: {{ .Values.metadata.namespace }}
 # spec:
 #   project: default
 
 #   source:
-#     repoURL: https://github.com/kFlix-tv/k8s-kflix.git
+#     repoURL: {{ .Values.spec.source.repoURL }}
 #     targetRevision: HEAD
-#     path: helm-charts/rclone
+#     path: 'hello-kubernetes'
 #   destination: 
 #     server: {{ .Values.spec.destination.server }}
-#     namespace: rclone
+#     namespace: hello-kubernetes
 
 #   syncPolicy:
 #     syncOptions:

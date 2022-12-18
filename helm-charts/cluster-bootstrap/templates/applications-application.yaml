@@ -1,18 +1,18 @@
 # apiVersion: argoproj.io/v1alpha1
 # kind: Application
 # metadata:
-#   name: hello-kubernetes
-#   namespace: argo-cd
+#   name: applications-bootstrap
+#   namespace: {{ .Values.metadata.namespace }}
 # spec:
-#   project: default
+#   project: {{ .Values.spec.project }}
 
 #   source:
-#     repoURL: https://github.com/kFlix-tv/k8s-kflix.git
+#     repoURL: {{ .Values.spec.source.repoURL }}
 #     targetRevision: HEAD
-#     path: 'hello-kubernetes'
+#     path: helm-charts/cluster-applications
 #   destination: 
 #     server: {{ .Values.spec.destination.server }}
-#     namespace: hello-kubernetes
+#     namespace: name
 
 #   syncPolicy:
 #     syncOptions:

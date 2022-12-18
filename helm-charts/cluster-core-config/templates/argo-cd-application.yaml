@@ -2,12 +2,12 @@
 # kind: Application
 # metadata:
 #   name: argo-cd
-#   namespace: argo-cd
+#   namespace: {{ .Values.metadata.namespace }}
 # spec:
 #   project: default
 
 #   source:
-#     repoURL: https://github.com/kFlix-tv/k8s-kflix.git
+#     repoURL: {{ .Values.spec.source.repoURL }}
 #     targetRevision: HEAD
 #     path: helm-charts/argo-cd
 #   destination: 

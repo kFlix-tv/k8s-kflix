@@ -1,18 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: external-dns
-  namespace: argo-cd
+  name: diun
+  namespace: {{ .Values.metadata.namespace }}
 spec:
-  project: default
+  project: {{ .Values.spec.project }}
 
   source:
-    repoURL: https://github.com/kFlix-tv/k8s-kflix.git
+    repoURL: {{ .Values.spec.source.repoURL }}
     targetRevision: HEAD
-    path: helm-charts/external-dns
+    path: helm-charts/diun
   destination: 
     server: {{ .Values.spec.destination.server }}
-    namespace: external-dns
+    namespace: diun
 
   syncPolicy:
     syncOptions:

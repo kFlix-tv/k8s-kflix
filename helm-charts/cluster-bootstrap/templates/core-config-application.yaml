@@ -1,20 +1,18 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: external-secrets
-  namespace: argo-cd
-  annotations:
-    argocd.argoproj.io/sync-wave: "-3"
+  name: core-config-bootstrap
+  namespace: {{ .Values.metadata.namespace }}
 spec:
-  project: default
+  project: {{ .Values.spec.project }}
 
   source:
-    repoURL: https://github.com/kFlix-tv/k8s-kflix.git
+    repoURL: {{ .Values.spec.source.repoURL }}
     targetRevision: HEAD
-    path: helm-charts/external-secrets
+    path: helm-charts/cluster-core-config
   destination: 
     server: {{ .Values.spec.destination.server }}
-    namespace: external-secrets
+    namespace: name
 
   syncPolicy:
     syncOptions:

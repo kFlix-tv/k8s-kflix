@@ -3,8 +3,10 @@ kind: Application
 metadata:
   name: cluster-bootstrap
   namespace: argo-cd
+  annotations:
+    helm.sh/hook: post-install
 spec:
-  project: default
+  project: core-config
   source:
     repoURL: 'https://github.com/kFlix-tv/k8s-kflix.git'
     path: helm-charts/cluster-bootstrap
