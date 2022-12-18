@@ -131,10 +131,10 @@ argo-cd:
       admin.enabled: true
 
       # -- Timeout to discover if a new manifests version got published to the repository
-      timeout.reconciliation: 180s
+      timeout.reconciliation: 30s
 
       # -- Timeout to refresh application data as well as target manifests cache
-      timeout.hard.reconciliation: 0
+      timeout.hard.reconciliation: 180s
 
       resource.customizations.health.argoproj.io_Application: |
         hs = {}
