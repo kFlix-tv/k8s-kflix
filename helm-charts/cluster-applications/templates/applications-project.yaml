@@ -1,10 +1,10 @@
 apiVersion: argoproj.io/v1alpha1
 kind: AppProject
 metadata:
-  name: applications
-  namespace: argo-cd
+  name: {{ .Values.metadata.project }}
+  namespace: {{ .Values.metadata.namespace }}
   annotations:
-    helm.sh/hook: post-install
+    argocd.argoproj.io/sync-wave: "-2"
 spec:
   sourceRepos:
     - '*'
