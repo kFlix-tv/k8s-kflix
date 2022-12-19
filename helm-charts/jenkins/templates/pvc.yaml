@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: jenkins-longhorn-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: longhorn-kflix
+  resources:
+    requests:
+      storage: 8Gi
+  volumeName: jenkins-longhorn
