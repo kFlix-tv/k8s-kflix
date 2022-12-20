@@ -11,4 +11,4 @@ spec:
   resources:
     requests:
       storage: 8Gi
-  volumeName: jenkins-longhorn
+  volumeName: jenkins-longhorn-pv
