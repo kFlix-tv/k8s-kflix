@@ -11,7 +11,4 @@ spec:
   resources:
     requests:
       storage: 8Gi
-  dataSource:
-    name: jenkins-longhorn
-    kind: VolumeSnapshot
-    apiGroup: snapshot.storage.k8s.io
+  volumeName: jenkins-longhorn

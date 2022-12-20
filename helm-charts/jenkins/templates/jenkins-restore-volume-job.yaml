@@ -1,0 +1,17 @@
+kind: Job
+metadata:
+  name: jenkins-data-restore
+  namespace: jenkins
+  annotations:
+    argocd.argoproj.io/sync-wave: "-5"
+spec:
+  template:
+    spec:
+      containers:
+      - name: jenkins-restore
+        image: wahooli/longhorn-backup-restore:latest
+        env:
+        - name: VOLUME_HANDLE
+          value: "jenkins-longhorn"
+      restartPolicy: Never
+  backoffLimit: 0
