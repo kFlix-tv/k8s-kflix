@@ -11,8 +11,6 @@ spec:
   resources:
     requests:
       storage: 8Gi
-  volumeName: jenkins-longhorn
-
   dataSource:
     name: jenkins-longhorn
     kind: VolumeSnapshot
