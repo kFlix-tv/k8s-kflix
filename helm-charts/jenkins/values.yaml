@@ -219,6 +219,10 @@ jenkins:
       - pipeline-graph-view:latest
       - pipeline-stage-view:latest
       - github:latest
+      - kubernetes-credentials-provider:latest
+      - credentials-binding:latest
+      - github-branch-source:latest
+      - github-api:latest
 
     # Enable to initialize the Jenkins controller only once on initial installation.
     # Without this, whenever the controller gets restarted (Evicted, etc.) it will fetch plugin updates which has the potential to cause breakage.
