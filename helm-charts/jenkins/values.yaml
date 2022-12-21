@@ -203,6 +203,10 @@ jenkins:
       - git:latest
       - configuration-as-code:latest
       - google-login:latest
+      - command-launcher:latest
+      - javax-mail-api:latest
+      - jdk-tool:latest
+      - sshd:latest
 
     # Set to false to download the minimum required version of all dependencies.
     installLatestPlugins: true
@@ -214,6 +218,7 @@ jenkins:
     additionalPlugins:
       - pipeline-graph-view:latest
       - pipeline-stage-view:latest
+      - github:latest
 
     # Enable to initialize the Jenkins controller only once on initial installation.
     # Without this, whenever the controller gets restarted (Evicted, etc.) it will fetch plugin updates which has the potential to cause breakage.
