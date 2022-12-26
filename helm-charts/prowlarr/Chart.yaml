@@ -9,5 +9,5 @@ appVersion: "1.0"
 
 dependencies:
 - name: prowlarr
-  version: ~1.0.0
+  version: ~1.1.0
   repository: https://kflix-tv.github.io/helm-repo
