@@ -18,4 +18,4 @@ prowlarr:
   persistence:
     config:
       enabled: true
-      existingClaim: prowlarr-longhorn
+      existingClaim: prowlarr-longhorn-pvc
