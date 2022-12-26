@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: jenkins-data-restore
+  name: prowlarr-data-restore
   annotations:
     argocd.argoproj.io/sync-wave: "-5"
 spec:
@@ -9,14 +9,10 @@ spec:
   template:
     spec:
       containers:
-      - name: jenkins-restore
+      - name: prowlarr-restore
         image: wahooli/longhorn-backup-restore:latest
         env:
         - name: VOLUME_HANDLE
-          value: "jenkins-longhorn"
-        - name: CREATE_PV
-          value: "false" # will not create persistent volume and claims
-        - name: CREATE_PVC
-          value: "false"
+          value: "prowlarr-longhorn"
       restartPolicy: Never
   backoffLimit: 0

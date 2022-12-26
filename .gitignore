@@ -1,2 +1,4 @@
 helm-charts/*/charts/*
 helm-charts/*/Chart.lock
+extracted_values.yaml
+test.yaml
