@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: prowlarr-restore
-        image: wahooli/longhorn-backup-restore:latest
+        image: kiliantyler/longhorn-backup-restore:latest
         env:
         - name: VOLUME_HANDLE
           value: "prowlarr-longhorn"

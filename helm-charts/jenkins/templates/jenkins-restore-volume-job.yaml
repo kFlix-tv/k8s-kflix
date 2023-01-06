@@ -1,3 +1,4 @@
+---
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -11,13 +12,9 @@ spec:
     spec:
       containers:
       - name: jenkins-restore
-        image: wahooli/longhorn-backup-restore:latest
+        image: kiliantyler/longhorn-backup-restore:latest
         env:
         - name: VOLUME_HANDLE
           value: "jenkins-longhorn"
-        - name: CREATE_PV
-          value: "false" # will not create persistent volume and claims
-        - name: CREATE_PVC
-          value: "false"
       restartPolicy: Never
   backoffLimit: 0
