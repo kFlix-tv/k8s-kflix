@@ -1,4 +1,20 @@
-helm-charts/*/charts/*
-helm-charts/*/Chart.lock
+# Trash
+.DS_Store
+Thumbs.db
+*-test.yaml
 extracted_values.yaml
-test.yaml
+# k8s
+kubeconfig
+# vscode-sops
+.decrypted~*.yaml
+.config.env
+*.agekey
+*.pub
+*.key
+# Terraform
+.terraform
+.terraform.tfstate*
+terraform.tfstate*
+# Helm
+*.tgz
+Chart.lock

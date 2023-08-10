@@ -1,0 +1,31 @@
+---
+- hosts:
+    - all
+  become: true
+  gather_facts: true
+  any_errors_fatal: true
+  pre_tasks:
+    - name: Pausing for 5 seconds...
+      ansible.builtin.pause:
+        seconds: 5
+  tasks:
+  - name: Add GPG Key
+    ansible.builtin.apt_key:
+      url: "{{ duo_gpg_key_url }}"
+      state: present
+
+  - name: Install Distribution
+    ansible.builtin.template:
+      src: ubuntu.deb.j2
+      dest: /etc/apt/sources.list.d/duo.list
+    register: aptdeb
+
+  - name: Update apt cache
+    when: 'aptdeb.changed'
+    ansible.builtin.apt:
+      update_cache: yes
+
+  - name: Install Duo
+    ansible.builtin.package:
+      name: "{{ duo_package }}"
+      state: present

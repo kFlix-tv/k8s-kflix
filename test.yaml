@@ -1,0 +1,226 @@
+# apiVersion: v1
+# kind: Secret
+# metadata:
+#   name: gdrive
+#   namespace: kube-system
+# type: Opaque
+# stringData:
+#   remote: "gdrive"
+#   remotePath: "Backup"
+#   configData: |
+#     [gdrive]
+#     type = drive
+#     client_id = 447142735064-3avhbvpvqrvftcojq01m6gruds5v728c.apps.googleusercontent.com
+#     client_secret = kYGwU8acgJ7DpHJT54jXczp0
+#     token = {"access_token":"ya29.a0AeTM1icJHgw4SVnWVZuYMzZl_vxcV5mKwxDwd0bTduKEGxoJyf1Hx0Ccl09tvP1oTw24hlKPAA_ZbN9heosVV9pidFttsy_llVhk764G8iR8bp0FY32duHszgaIYWTET57LgZVKm0FS98Ms1v1RKUtfw8Gx7UDEaCgYKAQISARISFQHWtWOmVIErnQghs2AWw0fxyXLvmg0166","token_type":"Bearer","refresh_token":"1/32CUwKt-z2N8CKBQAMswhZYomWAQyy5dk9mhY3jWhAE","expiry":"2022-11-27T18:20:48.835632283-08:00"}
+
+#     [encrypt]
+#     type = crypt
+#     remote = gdrive:/etijrp2eg47fm2n1h9taivo8rc
+#     filename_encryption = standard
+#     password = WxrfeV7cq72ymLVJSFZTxLGwoDRrEJLi-BOSbTk6FrE6Wkqn7826pZGTOl8zJUG_IjXnl1dKYPhBLwg
+#     password2 = ZIYdqZFdHC-JfvmhaKCnnUf5RGv3XxgwZ80PP7OhMCKxRWPdoNLHtjtK4QTsgRi5cwPh2aea5b8ILqA
+# ---
+# apiVersion: v1
+# kind: PersistentVolume
+# metadata:
+#   name: rclone-gdrive
+#   labels:
+#     name: rclone-gdrive
+# spec:
+#   accessModes:
+#     - ReadWriteMany
+#   capacity:
+#     storage: 100Gi
+#   storageClassName: rclone
+#   csi:
+#     driver: csi-rclone
+#     volumeHandle: rclone-gdrive-test
+#     volumeAttributes:
+#       secretName: "gdrive"
+# ---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: rclone-gdrive
+# spec:
+#   accessModes:
+#     - ReadWriteMany
+#   resources:
+#     requests:
+#       storage: 100Gi
+#   storageClassName: rclone
+#   selector:
+#     matchLabels:
+#       name: rclone-gdrive
+# ---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: tautulli-longhorn-pvc-test
+# spec:
+#   accessModes:
+#     - ReadWriteOnce
+#   storageClassName: longhorn-kflix
+#   resources:
+#     requests:
+#       storage: 2Gi
+# ---
+# apiVersion: v1
+# kind: Pod
+# metadata:
+#   name: nvolpod
+# spec:
+#   containers:
+#     - name: test
+#       image: nginx
+#       volumeMounts:
+#       - mountPath: "/var/www/html" # Folder in pod mounting nfsclaim 
+#         name: mypd
+#       - mountPath: "/tautulli"
+#         name: tautulli-longhorn-pvc-test
+#   volumes:
+#     - name: mypd             # volume name the container can mount
+#       persistentVolumeClaim: # Source of storage
+#         claimName: rclone-gdrive  # name of pvc created
+#     - name: tautulli-longhorn-pvc-test
+#       persistentVolumeClaim: 
+#         claimName: tautulli-longhorn-pvc-test
+
+
+
+# apiVersion: batch/v1
+# kind: Job
+# metadata:
+#   name: jenkins-data-restore
+#   namespace: jenkins
+# spec:
+#   template:
+#     spec:
+#       containers:
+#       - name: jenkins-restore
+#         image: wahooli/longhorn-backup-restore:latest
+#         env:
+#         - name: LONGHORN_URL
+#           value: http://longhorn-frontend.longhorn-system/v1 # default, can be omitted
+#         - name: VOLUME_HANDLE
+#           value: "jenkins-longhorn"
+#         - name: CREATE_PV
+#           value: "false" # will not create persistent volume and claims
+#         - name: CREATE_PVC
+#           value: "false"
+#       restartPolicy: Never
+#   backoffLimit: 0
+
+# apiVersion: v1
+# kind: PersistentVolume
+# metadata:
+#   name: jenkins-longhorn-pv
+# spec:
+#   capacity:
+#     storage: 8Gi
+#   volumeMode: Filesystem
+#   accessModes:
+#     - ReadWriteOnce
+#   persistentVolumeReclaimPolicy: Delete
+#   storageClassName: longhorn-kflix
+#   csi:
+#     driver: driver.longhorn.io
+#     fsType: ext4
+#     volumeAttributes:
+#       numberOfReplicas: '1'
+#       staleReplicaTimeout: '2880'
+#     volumeHandle: jenkins-longhorn
+# ---
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: jenkins-longhorn-pvc
+# spec:
+#   accessModes:
+#     - ReadWriteOnce
+#   storageClassName: longhorn-kflix
+#   resources:
+#     requests:
+#       storage: 8Gi
+#   volumeName: jenkins-longhorn-pv
+
+
+# apiVersion: v1
+# kind: PersistentVolumeClaim
+# metadata:
+#   name: test-restore-existing-backup
+#   namespace: jenkins
+# spec:
+#   storageClassName: longhorn-kflix
+#   dataSource:
+#     name: jenkins-longhorn
+#     kind: VolumeSnapshot
+#     apiGroup: snapshot.storage.k8s.io
+#   accessModes:
+#     - ReadWriteOnce
+#   resources:
+#     requests:
+#       storage: 8Gi
+
+
+
+# apiVersion: batch/v1
+# kind: Job
+# metadata:
+#   name: prowlarr-data-restore
+#   namespace: default
+# spec:
+#   template:
+#     spec:
+#       containers:
+#       - name: prowlarr-restore
+#         image: kiliantyler/longhorn-backup-restore:latest
+#         env:
+#         - name: VOLUME_HANDLE
+#           value: "pvc-1f498b15-c173-4d42-a6a2-4410b9a219b7"
+#         - name: NEW_VOLUME_HANDLE
+#           value: "prowlarr-longhorn"
+#         - name: REPLICA_COUNT
+#           value: "2"
+#       restartPolicy: Never
+#   backoffLimit: 0
+
+
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: binfmt
+  # namespace: kube-system
+  labels:
+    app: binfmt-setup
+spec:
+  selector:
+    matchLabels:
+      name: binfmt
+  # https://kubernetes.io/docs/concepts/workloads/pods/#pod-templates
+  template:
+    metadata:
+      labels:
+        name: binfmt
+    spec:
+      initContainers:
+        - name: binfmt
+          image: tonistiigi/binfmt
+          # command: []
+          args: ["--install", "all"]
+          # Run the container with the privileged flag
+          # https://kubernetes.io/docs/tasks/configure-pod-container/security-context/
+          # https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#securitycontext-v1-core
+          securityContext:
+            privileged: true
+      containers:
+        - name: pause
+          image: gcr.io/google_containers/pause
+          resources:
+            limits:
+              cpu: 50m
+              memory: 50Mi
+            requests:
+              cpu: 50m
+              memory: 50Mi
