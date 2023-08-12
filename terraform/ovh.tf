@@ -34,4 +34,7 @@ resource "ovh_dedicated_server_install_task" "server_install" {
   service_name      = local.kflix_server
   template_name     = ovh_me_installation_template.ubuntu.template_name
   bootid_on_destroy = data.ovh_dedicated_server_boots.rescue.result[0]
+  details {
+    disk_group_id = 2
+  }
 }
