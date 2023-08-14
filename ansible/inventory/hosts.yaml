@@ -1,0 +1,14 @@
+---
+kubernetes:
+  vars:
+    ansible_user: ubuntu
+    ansible_ssh_port: 22
+  children:
+    master:
+      hosts:
+        k8s-0:
+          ansible_host: 51.222.43.228
+    workers:
+      hosts:
+        k8s-0:
+          ansible_host: 51.222.43.228

@@ -1,8 +1,0 @@
-external-dns:
-  provider: cloudflare
-  sources: ['ingress']
-  cloudflare:
-    email: "cloudflare@ktyler.me"
-    proxied: false
-  domainFilters: ['kflix.tv']
-  policy: sync

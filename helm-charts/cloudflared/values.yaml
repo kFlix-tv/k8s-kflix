@@ -1,7 +1,0 @@
-cloudflared:
-  replicaCount: 2
-  tunnelID: "de462196-4713-420c-9e1d-41bf72390783"
-  auth:
-    accountTag: "0834f4848c703f1fcf5b524bdf5f1722"
-    tunnelName: "k8stest"
-    tunnelSecret: "dm2uZuK5XkHOjkSKlA/awCy+mPw0sQIWaKJI7zvPaWA="

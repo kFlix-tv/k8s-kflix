@@ -3,6 +3,9 @@
 Thumbs.db
 *-test.yaml
 extracted_values.yaml
+# Ansible
+ansible_old
+ansible/ansible.log
 # k8s
 kubeconfig
 # vscode-sops

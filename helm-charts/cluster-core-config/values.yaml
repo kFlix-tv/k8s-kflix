@@ -1,8 +1,0 @@
-spec:
-  destination:
-    server: https://kubernetes.default.svc
-  project: core-config
-  source:
-    repoURL: https://github.com/kFlix-tv/k8s-kflix.git
-metadata:
-  namespace: argo-cd

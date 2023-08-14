@@ -15,10 +15,10 @@ env:
 
 includes:
   ansible: .taskfiles/AnsibleTasks.yml
-  cluster: .taskfiles/ClusterTasks.yml
+  # cluster: .taskfiles/ClusterTasks.yml
   precommit: .taskfiles/PrecommitTasks.yml
   terraform: .taskfiles/TerraformTasks.yml
-  sops: .taskfiles/SopsTasks.yml
+  # sops: .taskfiles/SopsTasks.yml
 
 tasks:
   
@@ -52,18 +52,13 @@ tasks:
         weaveworks/tap/gitops
         yamllint
         yq
-  
-  rebuild:
-    desc: Rebuild Digital Ocean Droplet for testing
-    cmds:
-      - doctl compute da rebuild 317238638 --image 118857366 --wait
 
-  verify:
-    desc: Verify env settings
-    cmds:
-      - ./configure --verify
+  # verify:
+  #   desc: Verify env settings
+  #   cmds:
+  #     - ./configure --verify
 
-  configure:
-    desc: Configure repository from env settings
-    cmds:
-      - ./configure
+  # configure:
+  #   desc: Configure repository from env settings
+  #   cmds:
+  #     - ./configure
