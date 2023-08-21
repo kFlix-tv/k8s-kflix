@@ -1,0 +1,5 @@
+---
+- name: Cluster Reinstall (1)
+  import_playbook: cluster-nuke.yaml
+- name: Cluster Reinstall (2)
+  import_playbook: cluster-installation.yaml
