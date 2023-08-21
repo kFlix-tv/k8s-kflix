@@ -30,6 +30,9 @@
       vars:
         k3s_state: installed
 
+    - name: Kubeconfig
+      ansible.builtin.include_tasks: tasks/kubeconfig.yaml
+
     - name: Wait for custom manifests to rollout
       when:
         - k3s_primary_control_node
@@ -44,7 +47,10 @@
         wait_sleep: 10
         wait_timeout: 360
       loop:
+        - { name: cilium, kind: HelmChart, namespace: kube-system }
         - { name: coredns, kind: HelmChart, namespace: kube-system }
+        - { name: policy, kind: CiliumL2AnnouncementPolicy }
+        - { name: pool, kind: CiliumLoadBalancerIPPool }
         - { name: podmonitors.monitoring.coreos.com, kind: CustomResourceDefinition }
         - { name: prometheusrules.monitoring.coreos.com, kind: CustomResourceDefinition }
         - { name: scrapeconfigs.monitoring.coreos.com, kind: CustomResourceDefinition }
@@ -54,6 +60,10 @@
       when: k3s_primary_control_node
       ansible.builtin.include_tasks: tasks/coredns.yaml
 
+    - name: Cilium
+      when: k3s_primary_control_node
+      ansible.builtin.include_tasks: tasks/cilium.yaml
+
     - name: Cruft
       when: k3s_primary_control_node
       ansible.builtin.include_tasks: tasks/cruft.yaml
@@ -62,16 +72,3 @@
       ansible.builtin.include_tasks: tasks/stale_containers.yaml
       vars:
         stale_containers_state: enabled
-
-    - name: Retrieve kflix kubeconfig
-      ansible.builtin.fetch:
-        src: /etc/rancher/k3s/k3s.yaml
-        dest: /Users/kilian/.kube/kflix.yaml
-        flat: true
-
-    - name: Edit kubeconfig with correct IP
-      delegate_to: localhost
-      ansible.builtin.replace:
-        path: /Users/kilian/.kube/kflix.yaml
-        regexp: 127.0.0.1
-        replace: "{{ hostvars['k8s-0']['ansible_default_ipv4']['address'] }}"

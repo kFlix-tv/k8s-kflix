@@ -6,9 +6,9 @@ kubernetes:
   children:
     master:
       hosts:
-        k8s-0:
+        kflix:
           ansible_host: 51.222.43.228
     workers:
       hosts:
-        k8s-0:
+        kflix:
           ansible_host: 51.222.43.228

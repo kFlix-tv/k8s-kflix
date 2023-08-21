@@ -4,10 +4,22 @@
   become: true
   gather_facts: true
   any_errors_fatal: true
+  vars_prompt:
+    - name: nuke
+      prompt: |-
+        Are you sure you want to nuke this cluster?
+        Type 'YES' to proceed
+      default: "n"
+      private: false
   pre_tasks:
-    - name: Pausing for 2 seconds...
+    - name: Check for confirmation
+      ansible.builtin.fail:
+        msg: Aborted nuking the cluster
+      when: nuke != 'YES'
+
+    - name: Pausing for 5 seconds...
       ansible.builtin.pause:
-        seconds: 2
+        seconds: 5
   tasks:
     - name: Stop Kubernetes # noqa: ignore-errors
       ignore_errors: true

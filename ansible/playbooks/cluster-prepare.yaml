@@ -20,8 +20,8 @@
         - name: Packages | Install
           ansible.builtin.apt:
             name: apt-transport-https,ca-certificates,curl,
-              gnupg,hdparm,htop,iperf3,iptables,iputils-ping, lm-sensors,net-tools,nfs-common,nvme-cli,open-iscsi,parted,psmisc,python3,
-              python3-kubernetes,python3-yaml,smartmontools,socat,software-properties-common,
+              gnupg,hdparm,htop,iperf3,iptables,iputils-ping,lm-sensors,net-tools,nfs-common,nvme-cli,open-iscsi,parted,psmisc,python3,
+              python3-kubernetes,python3-yaml,python3-apt,smartmontools,socat,software-properties-common,
               unzip,util-linux
             install_recommends: false
 
@@ -52,6 +52,20 @@
     - name: Network Configuration
       notify: Reboot
       block:
+        - name: Network Configuration | Set hostname
+          ansible.builtin.hostname:
+            name: "{{ inventory_hostname }}"
+        - name: Network Configuration | Update hosts
+          ansible.builtin.copy:
+            content: |
+              127.0.0.1 localhost
+              127.0.1.1 {{ inventory_hostname }}
+              # The following lines are desirable for IPv6 capable hosts
+              ::1     localhost ip6-localhost ip6-loopback
+              ff02::1 ip6-allnodes
+              ff02::2 ip6-allrouters
+            dest: /etc/hosts
+            mode: preserve
         # https://github.com/cilium/cilium/issues/18706
         - name: Network Configuration | Cilium (1)
           ansible.builtin.lineinfile:
@@ -63,17 +77,6 @@
             dest: /etc/systemd/networkd.conf
             regexp: ManageForeignRoutes
             line: ManageForeignRoutes=no
-        # - name: Network Configuration | Set NIC
-        #   ansible.builtin.copy:
-        #     dest: /etc/network/interfaces.d/enp7s0
-        #     content: |
-        #       auto enp7s0
-        #       allow-hotplug enp7s0
-        #       iface enp7s0 inet dhcp
-        #           post-up ifconfig enp7s0 mtu 9000
-        #     owner: root
-        #     group: root
-        #     mode: "0644"
 
     - name: System Configuration
       notify: Reboot
@@ -83,6 +86,12 @@
             name: apparmor
             state: stopped
             masked: true
+        - name: System Configuration | Disable swap
+          ansible.posix.mount:
+            name: "{{ item }}"
+            fstype: swap
+            state: absent
+          loop: ["none", "swap"]
         - name: System Configuration | Kernel modules (1)
           community.general.modprobe:
             name: "{{ item }}"
@@ -106,20 +115,20 @@
               fs.inotify.max_queued_events: 65536
               fs.inotify.max_user_watches: 524288
               fs.inotify.max_user_instances: 8192
-        - name: System Configuration | Grub (1)
-          ansible.builtin.replace:
-            path: /etc/default/grub
-            regexp: '^(GRUB_CMDLINE_LINUX=(?:(?![" ]{{ item.key | regex_escape }}=).)*)(?:[" ]{{ item.key | regex_escape }}=\S+)?(.*")$'
-            replace: '\1 {{ item.key }}={{ item.value }}\2'
-          with_dict: "{{ grub_config }}"
-          vars:
-            grub_config:
-              apparmor: "0"
-              mitigations: "off"
-          register: grub_status
-        - name: System Configuration | Grub (2) # noqa: no-changed-when no-handler
-          ansible.builtin.command: update-grub
-          when: grub_status.changed
+        # - name: System Configuration | Grub (1)
+        #   ansible.builtin.replace:
+        #     path: /etc/default/grub
+        #     regexp: '^(GRUB_CMDLINE_LINUX=(?:(?![" ]{{ item.key | regex_escape }}=).)*)(?:[" ]{{ item.key | regex_escape }}=\S+)?(.*")$'
+        #     replace: '\1 {{ item.key }}={{ item.value }}\2'
+        #   with_dict: "{{ grub_config }}"
+        #   vars:
+        #     grub_config:
+        #       apparmor: "0"
+        #       mitigations: "off"
+        #   register: grub_status
+        # - name: System Configuration | Grub (2) # noqa: no-changed-when no-handler
+        #   ansible.builtin.command: update-grub
+        #   when: grub_status.changed
 
   handlers:
     - name: Reboot
