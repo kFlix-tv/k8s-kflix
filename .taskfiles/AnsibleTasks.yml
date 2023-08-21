@@ -1,4 +1,3 @@
----
 version: "3"
 
 env:
@@ -14,14 +13,14 @@ tasks:
     desc: Install / Upgrade Ansible galaxy deps
     dir: "{{.ANSIBLE_DIR}}"
     cmds:
-      - ansible-galaxy install -r requirements.yml --roles-path roles --force
-      - ansible-galaxy collection install -r requirements.yml --collections-path collections --force
+    - ansible-galaxy install -r requirements.yml --roles-path roles --force
+    - ansible-galaxy collection install -r requirements.yml --collections-path collections --force
 
   server:
     desc: Setup the server
     dir: "{{.ANSIBLE_DIR}}"
     cmds:
-      - ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yaml {{.ANSIBLE_PLAYBOOK_DIR}}/server-init.yaml
+    - ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yaml {{.ANSIBLE_PLAYBOOK_DIR}}/server-init.yaml
 
   prepare:
     desc: Prepare all the k8s nodes for running k3s
@@ -68,3 +67,12 @@ tasks:
     desc: Uptime of all the hosts
     dir: "{{.ANSIBLE_DIR}}"
     cmd: ansible all -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yaml --one-line -a 'uptime'
+
+  deploy:
+    desc: Runs all deployment tasks for Ansible
+    dir: "{{.ANSIBLE_DIR}}"
+    cmds:
+    - task: init
+    - task: server
+    - task: prepare
+    - task: install

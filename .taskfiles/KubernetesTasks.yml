@@ -71,3 +71,9 @@ tasks:
     - task: certificates
     - task: ingresses
     - task: pods
+
+  deploy:
+    desc: Deploys Flux and all related components
+    cmds:
+    - task: verify
+    - task: install

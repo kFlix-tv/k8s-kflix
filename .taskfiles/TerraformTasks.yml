@@ -1,4 +1,3 @@
----
 version: "3"
 
 tasks:
@@ -7,16 +6,23 @@ tasks:
     desc: Initialize terraform dependencies
     dir: "{{.TERRAFORM_DIR}}"
     cmds:
-      - op run --env-file=./.env -- terraform init {{.CLI_ARGS}}
+    - op run --env-file=./.env -- terraform init {{.CLI_ARGS}}
 
   plan:
     desc: Show the changes terraform will make
     dir: "{{.TERRAFORM_DIR}}"
     cmds:
-      - op run --env-file=./.env -- terraform plan {{.CLI_ARGS}}
+    - op run --env-file=./.env -- terraform plan {{.CLI_ARGS}}
 
   apply:
     desc: Apply the changes to Cloudflare
     dir: "{{.TERRAFORM_DIR}}"
     cmds:
-      - op run --env-file=./.env -- terraform apply {{.CLI_ARGS}}
+    - op run --env-file=./.env -- terraform apply {{.CLI_ARGS}}
+
+  deploy:
+    desc: Run all Terraform tasks in order
+    dir: "{{.TERRAFORM_DIR}}"
+    cmds:
+    - task: init
+    - task: apply

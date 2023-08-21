@@ -40,5 +40,27 @@ tasks:
         Homebrew is not installed. Using MacOS, Linux or WSL?
         Head over to https://brew.sh to get up and running.
     vars:
-      DEPS: >-
-        age ansible argocd direnv fluxcd/tap/flux helm ipcalc jq kubernetes-cli kustomize pre-commit prettier sops stern terraform tflint weaveworks/tap/gitops yamllint yq #magic___^_^___line
+      DEPS: age ansible argocd direnv fluxcd/tap/flux helm ipcalc jq kubernetes-cli kustomize pre-commit prettier sops stern terraform tflint weaveworks/tap/gitops yamllint yq
+
+  terraform:
+    desc: Alias to `terraform:deploy`
+    cmds:
+    - task: terraform:deploy
+
+  ansible:
+    desc: Alias to `ansible:deploy`
+    cmds:
+    - task: ansible:deploy
+
+  kubernetes:
+    desc: Alias to `kubernetes:deploy`
+    cmds:
+    - task: kubernetes:deploy
+
+  full-install:
+    desc: This will call all tasks in order to fully setup a cluster with "One-Click"
+    cmds:
+    - task: init
+    - task: terraform
+    - task: ansible
+    - task: kubernetes
