@@ -1,0 +1,37 @@
+apiVersion: source.toolkit.fluxcd.io/v1
+kind: GitRepository
+metadata:
+  name: k8s-kflix
+  namespace: flux-system
+spec:
+  interval: 30m
+  ref:
+    branch: main
+  url: "https://github.com/kFlix-tv/k8s-kflix.git"
+  secretRef:
+    name: flux-github-secret
+  ignore: |
+    # exclude all
+    /*
+    # include kubernetes directory
+    !/kubernetes
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: cluster
+  namespace: flux-system
+spec:
+  interval: 30m
+  path: ./kubernetes/flux
+  prune: true
+  wait: false
+  sourceRef:
+    kind: GitRepository
+    name: k8s-kflix
+  postBuild:
+    substituteFrom:
+    - kind: ConfigMap
+      name: cluster-settings
+    - kind: Secret
+      name: cluster-secrets
