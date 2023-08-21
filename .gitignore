@@ -22,3 +22,5 @@ terraform.tfstate*
 # Helm
 *.tgz
 Chart.lock
+# VSCode
+.vscode/
