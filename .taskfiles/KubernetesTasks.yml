@@ -9,12 +9,26 @@ tasks:
   install:
     desc: Install Flux into your cluster
     cmds:
-    - kubectl apply --kustomize {{.KUBERNETES_DIR}}/bootstrap
-    - op inject -i {{.KUBERNETES_DIR}}/flux/secrets/flux-github-secret.yaml | kubectl apply -f -
-    # - kubectl apply -f {{.KUBERNETES_DIR}}/flux/vars/cluster-settings.yaml
-    # - kubectl apply -f {{.KUBERNETES_DIR}}/flux/vars/cluster-settings-user.yaml
-    - kubectl apply --kustomize {{.KUBERNETES_DIR}}/flux/vars
-    # - kubectl apply --kustomize {{.KUBERNETES_DIR}}/flux/config
+    - task: bootstrap
+    - task: secrets
+    - task: vars
+    - task: flux
+
+  bootstrap:
+    desc: Bootstrap Flux CRDS
+    cmd: kubectl apply --kustomize {{.KUBERNETES_DIR}}/bootstrap
+
+  secrets:
+    desc: Bootstrap certain secrets
+    cmd: op inject -i {{.KUBERNETES_DIR}}/flux/secrets/flux-github-secret.yaml | kubectl apply -f -
+
+  vars:
+    desc: Install Flux/Kustomize variables
+    cmd: kubectl apply --kustomize {{.KUBERNETES_DIR}}/flux/vars
+
+  flux:
+    desc: Fully install Flux into cluster
+    cmd: kubectl apply --kustomize {{.KUBERNETES_DIR}}/flux/config
 
   reconcile:
     desc: Force update Flux to pull in changes from your Git repository
