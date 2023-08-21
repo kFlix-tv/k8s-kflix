@@ -11,7 +11,7 @@ vars:
 dotenv: [".config.env"]
 
 env:
-  KUBECONFIG: "~/.kube/kflix.yaml"
+  KUBECONFIG: "~/.kube/config-files/kflix.yaml"
   PATH: "{{.ROOT_DIR}}/.venv/bin:$PATH"
   VIRTUAL_ENV: "{{.ROOT_DIR}}/.venv"
   ANSIBLE_COLLECTIONS_PATH: "{{.ROOT_DIR}}/.venv/galaxy"
