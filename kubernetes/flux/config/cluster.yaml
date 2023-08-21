@@ -15,7 +15,8 @@ spec:
     /*
     # include kubernetes directory
     !/kubernetes
-    ./kubernetes/secrets
+    # Exclude the startup secrets
+    /kubernetes/secrets
 ---
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
