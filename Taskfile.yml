@@ -1,7 +1,7 @@
----
 version: "3"
 
 vars:
+  PYTHON_BIN: python3
   PROJECT_DIR:
     sh: "git rev-parse --show-toplevel"
   KUBERNETES_DIR: "{{.PROJECT_DIR}}/kubernetes"
@@ -11,54 +11,34 @@ vars:
 dotenv: [".config.env"]
 
 env:
-  KUBECONFIG: "{{.PROJECT_DIR}}/kubeconfig"
+  KUBECONFIG: "~/.kube/kflix.yaml"
+  PATH: "{{.ROOT_DIR}}/.venv/bin:$PATH"
+  VIRTUAL_ENV: "{{.ROOT_DIR}}/.venv"
+  ANSIBLE_COLLECTIONS_PATH: "{{.ROOT_DIR}}/.venv/galaxy"
+  ANSIBLE_ROLES_PATH: "{{.ROOT_DIR}}/.venv/galaxy/ansible_roles"
+  ANSIBLE_VARS_ENABLED: "host_group_vars,community.sops.sops"
 
 includes:
   ansible: .taskfiles/AnsibleTasks.yml
-  # cluster: .taskfiles/ClusterTasks.yml
+  cluster: .taskfiles/KubernetesTasks.yml
+  k8s: .taskfiles/KubernetesTasks.yml
+  k3s: .taskfiles/KubernetesTasks.yml
+  kubernetes: .taskfiles/KubernetesTasks.yml
+  flux: .taskfiles/KubernetesTasks.yml
   precommit: .taskfiles/PrecommitTasks.yml
   terraform: .taskfiles/TerraformTasks.yml
-  # sops: .taskfiles/SopsTasks.yml
 
 tasks:
 
   init:
     desc: Initialize workstation dependencies with Brew
     cmds:
-      - brew install {{.DEPS}} {{.CLI_ARGS}}
+    - brew install {{.DEPS}} {{.CLI_ARGS}}
     preconditions:
-      - sh: command -v brew
-        msg: |
-          Homebrew is not installed. Using MacOS, Linux or WSL?
-          Head over to https://brew.sh to get up and running.
+    - sh: command -v brew
+      msg: |
+        Homebrew is not installed. Using MacOS, Linux or WSL?
+        Head over to https://brew.sh to get up and running.
     vars:
       DEPS: >-
-        age
-        ansible
-        argocd
-        direnv
-        fluxcd/tap/flux
-        helm
-        ipcalc
-        jq
-        kubernetes-cli
-        kustomize
-        pre-commit
-        prettier
-        sops
-        stern
-        terraform
-        tflint
-        weaveworks/tap/gitops
-        yamllint
-        yq
-
-  # verify:
-  #   desc: Verify env settings
-  #   cmds:
-  #     - ./configure --verify
-
-  # configure:
-  #   desc: Configure repository from env settings
-  #   cmds:
-  #     - ./configure
+        age ansible argocd direnv fluxcd/tap/flux helm ipcalc jq kubernetes-cli kustomize pre-commit prettier sops stern terraform tflint weaveworks/tap/gitops yamllint yq #magic___^_^___line

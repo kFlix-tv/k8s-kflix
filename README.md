@@ -1,6 +1,6 @@
 ## Info
 1. Go Task Runner being used
-2. All tasks should be done using that
+2. All operations should be done using that
 
 
 ### References:
@@ -11,6 +11,10 @@
 
 
 ## Steps:
+
+### Prereq
+  1. `task init`
+
 ### Terraform
   1. `task terraform:init`
   2. `task terraform:apply`
@@ -21,7 +25,9 @@
   3. `task ansible:prepare`
   4. `task ansible:install`
 
+### Kubernetes/Flux
+  1. `task flux:install`
+
 
 ## Kubernetes Deploy Order
-1. Flux (Previously ArgoCD)
-2. external-secrets
+1. Flux
