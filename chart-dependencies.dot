@@ -1,0 +1,100 @@
+digraph kflix {
+  compound=true
+  // newrank=true;
+  node [fontname = "Handlee", style="rounded", shape="rectangle", ordering=out]
+  edge [fontname = "Handlee"]
+  label="k8s-kflix (In Progress)"
+
+  subgraph cluster_local_commands {
+    label="Local"
+    gotask [shape="square", label="go-task"]
+    gotask -> terraform
+    gotask -> ansible
+    gotask -> kubectl
+    graph[style=dotted];
+  }
+
+  subgraph cluster_cloudflare {
+    label="Cloudflare"
+    graph[style=dotted]
+    kflixdns [label="kflix.tv"]
+    directssh [label="directssh"]
+    kflixdns -> directssh
+  }
+
+  subgraph cluster_ovh {
+    label="OVH"
+    graph[style=dotted]
+    dedi[label="Dedicated Server"]
+  }
+
+  subgraph cluster_flux {
+    label="Flux"
+    graph[style=dotted]
+    helm
+    kustomize
+  }
+  
+  
+  kubectl -> kustomize [lhead=cluster_flux]
+  terraform -> dedi [lhead=cluster_ovh]
+  terraform -> kflixdns [lhead=cluster_cloudflare]
+  ansible -> dedi [lhead=cluster_ovh]
+  
+  subgraph cluster_config {
+    label="core config"
+    graph[style=dotted];
+    op [label="onepassword"]
+    op -> es
+    {rank=same; op; es}
+    // longhorn 
+    es [label="external-secrets"]
+    // cm [label="cert-manager"]
+    // rclone
+    // diun
+    // edns [label="external-dns"]
+    // nginx -> cm
+    // es -> longhorn, rclone, edns, diun, cm
+  }
+
+  helm -> es [lhead=cluster_config]
+  kustomize -> es [lhead=cluster_config]
+
+  // subgraph cluster_applications {
+  //   label="applications"
+  //   jenkins
+  //   nextcloud
+  //   prowlarr
+  //   uk [label="uptime kuma"]
+
+  //   subgraph cluster_plex {
+  //     label="plex"
+  //     plex
+  //     pw1 [label="plex-worker"]
+  //     pw2 [label="plex-worker"]
+  //     pw3 [label="plex-worker"]
+  //     plex -> pw1,pw2,pw3
+  //   }
+    
+  //   {rank=source; uk; jenkins; prowlarr; nextcloud;}
+  // }
+
+  // subgraph cluster_local_volumes {
+  //   label="local volumes"
+  //   downloads
+  //   nzbs
+  //   {rank=same; nzbs; downloads}
+  // }
+  
+  // subgraph cluster_remote_volumes {
+  //   label="remote volumes"
+  //   movies
+  //   tv
+  //   books
+  //   {rank=same; movies; tv; books;}
+  // }
+  // longhorn -> downloads [lhead="cluster_local_volumes"]
+  // rclone -> movies [lhead="cluster_remote_volumes"]
+  // {rank=same; downloads; movies; books; tv; nzbs;}
+
+}
