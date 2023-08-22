@@ -23,4 +23,5 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
-  valuesFile: values.yaml
+  valuesFiles:
+  - values.yaml
