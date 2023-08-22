@@ -8,10 +8,10 @@ spec:
   - name: cluster-core-external-dns
   path: ./kubernetes/deployments/core/networking/cloudflared/app
   prune: true
+  wait: true
   sourceRef:
     kind: GitRepository
     name: k8s-kflix
-  wait: false
   interval: 30m
   retryInterval: 1m
   timeout: 5m
