@@ -25,6 +25,7 @@ includes:
   k3s: .taskfiles/KubernetesTasks.yml
   kubernetes: .taskfiles/KubernetesTasks.yml
   flux: .taskfiles/KubernetesTasks.yml
+  cloudflare: .taskfiles/CloudflareTasks.yml
   precommit: .taskfiles/PrecommitTasks.yml
   terraform: .taskfiles/TerraformTasks.yml
 
