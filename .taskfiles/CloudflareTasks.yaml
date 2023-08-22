@@ -1,0 +1,13 @@
+version: "3"
+
+tasks:
+
+  login:
+    desc: Login to Cloudflare
+    cmds:
+    - cloudflared tunnel login
+
+  create:
+    desc: Create Tunnel
+    cmds:
+    - cloudflared tunnel create k8s
