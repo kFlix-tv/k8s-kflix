@@ -33,21 +33,23 @@ spec:
   interval: 30m
   retryInterval: 1m
   timeout: 5m
----
-apiVersion: kustomize.toolkit.fluxcd.io/v1
-kind: Kustomization
-metadata:
-  name: cluster-core-nginx-internal
-  namespace: flux-system
-spec:
-  dependsOn:
-  - name: cluster-core-nginx-certificates
-  path: ./kubernetes/deployments/core/networking/nginx/internal
-  prune: true
-  sourceRef:
-    kind: GitRepository
-    name: k8s-kflix
-  wait: true
-  interval: 30m
-  retryInterval: 1m
-  timeout: 5m
+# TODO: Enable "Internal only" nginx for with Cloudflare Access
+
+# ---
+# apiVersion: kustomize.toolkit.fluxcd.io/v1
+# kind: Kustomization
+# metadata:
+#   name: cluster-core-nginx-internal
+#   namespace: flux-system
+# spec:
+#   dependsOn:
+#   - name: cluster-core-nginx-certificates
+#   path: ./kubernetes/deployments/core/networking/nginx/internal
+#   prune: true
+#   sourceRef:
+#     kind: GitRepository
+#     name: k8s-kflix
+#   wait: true
+#   interval: 30m
+#   retryInterval: 1m
+#   timeout: 5m
