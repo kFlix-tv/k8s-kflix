@@ -1,4 +1,3 @@
----
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
@@ -44,11 +43,11 @@ spec:
             name: cloudflared-secret
             key: TUNNEL_ID
     args:
-      - tunnel
-      - --config
-      - /etc/cloudflared/config/config.yaml
-      - run
-      - "$(TUNNEL_ID)"
+    - tunnel
+    - --config
+    - /etc/cloudflared/config/config.yaml
+    - run
+    - "$(TUNNEL_ID)"
     service:
       main:
         ports:
@@ -58,11 +57,11 @@ spec:
       main:
         enabled: true
         endpoints:
-          - port: http
-            scheme: http
-            path: /metrics
-            interval: 1m
-            scrapeTimeout: 30s
+        - port: http
+          scheme: http
+          path: /metrics
+          interval: 1m
+          scrapeTimeout: 30s
     probes:
       liveness: &probes
         enabled: true
