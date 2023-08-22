@@ -64,3 +64,9 @@ tasks:
     - task: terraform
     - task: ansible
     - task: kubernetes
+
+  redeploy:
+    desc: Runs an `ansible:reinstall` followed by a `kubernetes:deploy`
+    cmds:
+    - task: ansible:reinstall
+    - task: kubernetes:deploy
