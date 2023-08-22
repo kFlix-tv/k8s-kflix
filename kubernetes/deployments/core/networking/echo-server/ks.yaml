@@ -1,7 +1,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-apps-echo-server
+  name: cluster-core-echo-server
   namespace: flux-system
 spec:
   path: ./kubernetes/deployments/core/networking/echo-server/app
