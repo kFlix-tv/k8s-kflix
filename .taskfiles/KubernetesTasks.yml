@@ -20,7 +20,9 @@ tasks:
 
   secrets:
     desc: Bootstrap certain secrets
-    cmd: op inject -i {{.KUBERNETES_DIR}}/secrets/flux-github-secret.yaml | kubectl apply -f -
+    cmds:
+    - op inject -i {{.KUBERNETES_DIR}}/secrets/flux-github-secret.yaml | kubectl apply -f -
+    - op inject -i {{.KUBERNETES_DIR}}/secrets/onepassword-connect-token.yaml | kubectl apply -f -
 
   vars:
     desc: Install Flux/Kustomize variables
