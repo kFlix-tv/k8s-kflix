@@ -1,0 +1,35 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: cluster-startup-external-secrets
+  namespace: flux-system
+spec:
+  dependsOn:
+  - name: cluster-startup-onepassword-connect
+  path: ./kubernetes/deployments/startup/external-secrets/external-secrets/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: k8s-kflix
+  wait: true
+  interval: 30m
+  retryInterval: 1m
+  timeout: 5m
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: cluster-startup-external-secrets-secret-store
+  namespace: flux-system
+spec:
+  dependsOn:
+  - name: cluster-startup-external-secrets
+  path: ./kubernetes/deployments/startup/external-secrets/external-secrets/secret-store
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: k8s-kflix
+  wait: true
+  interval: 30m
+  retryInterval: 1m
+  timeout: 5m
