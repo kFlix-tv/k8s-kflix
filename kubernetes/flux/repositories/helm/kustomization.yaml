@@ -4,7 +4,7 @@ resources:
 # - ./bitnami.yaml
 - ./bjw-s.yaml
 - ./cilium.yaml
-# - ./coredns.yaml
+- ./coredns.yaml
 # - ./csi-driver-nfs.yaml
 - ./external-dns.yaml
 - ./external-secrets.yaml
