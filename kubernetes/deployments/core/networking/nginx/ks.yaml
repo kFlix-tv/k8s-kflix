@@ -6,7 +6,7 @@ metadata:
 spec:
   dependsOn:
   - name: cluster-core-cert-manager-issuers
-  path: ./kubernetes/core/networking/nginx/certificates
+  path: ./kubernetes/deployments/core/networking/nginx/certificates
   prune: true
   sourceRef:
     kind: GitRepository
@@ -24,7 +24,7 @@ metadata:
 spec:
   dependsOn:
   - name: cluster-core-nginx-certificates
-  path: ./kubernetes/core/networking/nginx/external
+  path: ./kubernetes/deployments/core/networking/nginx/external
   prune: true
   sourceRef:
     kind: GitRepository
@@ -42,7 +42,7 @@ metadata:
 spec:
   dependsOn:
   - name: cluster-core-nginx-certificates
-  path: ./kubernetes/core/networking/nginx/internal
+  path: ./kubernetes/deployments/core/networking/nginx/internal
   prune: true
   sourceRef:
     kind: GitRepository
