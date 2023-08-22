@@ -3,4 +3,4 @@ kind: Kustomization
 namespace: external-secrets
 resources:
 - ./helmrelease.yaml
-# - ./cluster-secret-store.yaml
+- ./cluster-secret-store.yaml
