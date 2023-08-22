@@ -76,6 +76,10 @@ tasks:
     desc: List all the ingresses in your cluster
     cmd: kubectl get ingress {{.CLI_ARGS | default "-A"}}
 
+  webhook:
+    desc: Print out the Webhook URL for github
+    cmd: kubectl -n flux-system get receiver github-receiver -o jsonpath='{.status.webhookPath}'
+
   resources:
     desc: Gather common resources in your cluster, useful when asking for support
     cmds:
