@@ -22,7 +22,7 @@ metadata:
 spec:
   dependsOn:
   - name: cluster-core-cert-manager
-  path: ./kubernetes/core/cert-manager/cert-manager/issuers
+  path: ./kubernetes/deployments/core/cert-manager/cert-manager/issuers
   prune: true
   sourceRef:
     kind: GitRepository
