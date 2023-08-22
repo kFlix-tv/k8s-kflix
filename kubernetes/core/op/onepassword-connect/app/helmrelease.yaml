@@ -13,8 +13,6 @@ spec:
         kind: HelmRepository
         name: onepassword
         namespace: flux-system
-      valuesFiles:
-      - values.yaml
   maxHistory: 2
   install:
     remediation:
