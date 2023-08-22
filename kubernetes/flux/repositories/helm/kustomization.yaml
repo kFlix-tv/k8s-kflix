@@ -10,7 +10,7 @@ resources:
 - ./external-secrets.yaml
 # - ./grafana.yaml
 # - ./hajimari.yaml
-# - ./ingress-nginx.yaml
+- ./ingress-nginx.yaml
 - ./jetstack.yaml
 # - ./k8s-gateway.yaml
 # - ./kubernetes-dashboard.yaml
