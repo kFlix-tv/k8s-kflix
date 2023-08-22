@@ -1,7 +1,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-apps-metrics-server
+  name: cluster-core-metrics-server
   namespace: flux-system
 spec:
   path: ./kubernetes/deployments/core/kube-system/metrics-server/app
