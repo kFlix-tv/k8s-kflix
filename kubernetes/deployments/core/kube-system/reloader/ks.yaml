@@ -1,7 +1,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-apps-reloader
+  name: cluster-core-reloader
   namespace: flux-system
 spec:
   path: ./kubernetes/deployments/core/kube-system/reloader/app
