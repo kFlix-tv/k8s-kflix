@@ -1,0 +1,15 @@
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: cluster-core-longhorn
+  namespace: flux-system
+spec:
+  path: ./kubernetes/deployments/core/longhorn-system/longhorn/app
+  prune: false # never should be deleted
+  sourceRef:
+    kind: GitRepository
+    name: k8s-kflix
+  wait: false
+  interval: 30m
+  retryInterval: 1m
+  timeout: 5m
