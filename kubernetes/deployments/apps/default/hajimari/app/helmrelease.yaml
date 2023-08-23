@@ -36,6 +36,11 @@ spec:
       showGlobalBookmarks: false
       showAppUrls: false
       defaultEnable: true
+      namespaceSelector:
+        matchNames:
+        - default
+        - monitoring
+        - flux-system
     ingress:
       main:
         enabled: true
