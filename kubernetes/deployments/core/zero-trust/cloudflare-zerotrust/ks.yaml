@@ -13,3 +13,21 @@ spec:
   interval: 30m
   retryInterval: 1m
   timeout: 5m
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: cluster-core-cloudflare-zerotrust-access-group
+  namespace: flux-system
+spec:
+  dependsOn:
+  - name: cluster-core-cloudflare-zerotrust
+  path: ./kubernetes/deployments/core/zero-trust/cloudflare-zerotrust/access-group
+  prune: true
+  wait: true
+  sourceRef:
+    kind: GitRepository
+    name: k8s-kflix
+  interval: 30m
+  retryInterval: 1m
+  timeout: 5m

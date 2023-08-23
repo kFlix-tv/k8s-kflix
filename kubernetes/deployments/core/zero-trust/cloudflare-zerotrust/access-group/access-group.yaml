@@ -1,0 +1,11 @@
+apiVersion: cloudflare.zelic.io/v1alpha1
+kind: CloudflareAccessGroup
+metadata:
+  name: adminonly
+  namespace: zero-trust
+spec:
+  name: adminonly
+  include:
+  - emails:
+    - kilian@ktyler.me
+    - apple@ktyler.me
