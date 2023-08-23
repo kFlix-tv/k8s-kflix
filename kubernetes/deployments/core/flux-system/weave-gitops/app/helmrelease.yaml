@@ -27,7 +27,6 @@ spec:
     adminUser:
       create: true
       createSecret: false
-      username: admin
     ingress:
       enabled: true
       className: external
