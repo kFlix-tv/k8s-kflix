@@ -24,6 +24,7 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    # https://artifacthub.io/packages/helm/k8s-dashboard/kubernetes-dashboard?modal=values
     api:
       containers:
         args:
@@ -33,7 +34,7 @@ spec:
     app:
       ingress:
         enabled: true
-        className: external
+        ingressClassName: external
         annotations:
           external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
           hajimari.io/icon: mdi:kubernetes
