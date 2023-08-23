@@ -1,0 +1,17 @@
+apiVersion: cloudflare.zelic.io/v1alpha1
+kind: CloudflareAccessApplication
+metadata:
+  name: prometheus
+  namespace: monitoring
+spec:
+  name: Prometheus
+  domain: "prometheus.${SECRET_DOMAIN}"
+  autoRedirectToIdentity: true
+  policies:
+  - name: Allow admin
+    decision: allow
+    include:
+    - accessGroups:
+      - valueFrom:
+          name: adminonly
+          namespace: zero-trust
