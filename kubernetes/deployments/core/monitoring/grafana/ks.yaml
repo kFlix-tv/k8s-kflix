@@ -4,6 +4,8 @@ metadata:
   name: cluster-core-grafana
   namespace: flux-system
 spec:
+  dependsOn:
+  - name: cluster-core-cloudflare-zerotrust-access-group
   path: ./kubernetes/deployments/core/monitoring/grafana/app
   prune: true
   sourceRef:
