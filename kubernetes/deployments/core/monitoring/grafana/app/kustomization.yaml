@@ -3,4 +3,5 @@ kind: Kustomization
 namespace: monitoring
 resources:
 - ./grafana-admin-external-secret.yaml
+- ./cloudflare-application.yaml
 - ./helmrelease.yaml
