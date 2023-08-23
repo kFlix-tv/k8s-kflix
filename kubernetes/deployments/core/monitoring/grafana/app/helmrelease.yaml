@@ -168,6 +168,7 @@ spec:
       tls:
       - hosts:
         - *host
+    # TODO: Change storage to longhorn
     persistence:
       enabled: true
       storageClassName: local-path
