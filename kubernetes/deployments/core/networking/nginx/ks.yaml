@@ -33,6 +33,7 @@ spec:
   interval: 30m
   retryInterval: 1m
   timeout: 5m
+
 # TODO: Enable "Internal only" nginx for with Cloudflare Access
 
 # ---

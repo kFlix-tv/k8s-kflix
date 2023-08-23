@@ -4,8 +4,7 @@ metadata:
   name: k8s-kflix
   namespace: flux-system
 spec:
-  # TODO: Change this to a resonable time when not testing
-  interval: 30s
+  interval: 5m
   ref:
     branch: main
   url: "https://github.com/kFlix-tv/k8s-kflix.git"

@@ -3,4 +3,3 @@ kind: Kustomization
 resources:
 # - ./staging.yaml
 - ./production.yaml
-# TODO: Switch this to Production when cluster is done

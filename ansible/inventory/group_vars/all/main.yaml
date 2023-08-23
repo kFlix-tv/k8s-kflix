@@ -20,7 +20,7 @@ k3s_server_manifests_urls:
   filename: custom-prometheus-servicemonitors.yaml
 # /var/lib/rancher/k3s/server/manifests
 k3s_server_manifests_templates:
-# TODO: Move this to flux?
+# TODO: This can move to `task kubernetes:install` with the other secrets
 - op-credentials.yaml.j2
 - custom-cilium-helmchart.yaml.j2
 - custom-cilium-l2.yaml.j2
