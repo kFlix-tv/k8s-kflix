@@ -37,6 +37,7 @@ spec:
         annotations:
           external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
           hajimari.io/icon: mdi:kubernetes
+          hajimari.io/group: "Admin Only"
         hosts:
         - &host "kubernetes.${SECRET_DOMAIN}"
         tls:
