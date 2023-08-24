@@ -13,3 +13,21 @@ spec:
   interval: 30m
   retryInterval: 1m
   timeout: 5m
+---
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: cluster-core-longhorn-settings
+  namespace: flux-system
+spec:
+  dependsOn:
+  - name: cluster-core-longhorn
+  path: ./kubernetes/deployments/core/longhorn-system/longhorn/settings
+  prune: false # never should be deleted
+  sourceRef:
+    kind: GitRepository
+    name: k8s-kflix
+  wait: true
+  interval: 30m
+  retryInterval: 1m
+  timeout: 5m
