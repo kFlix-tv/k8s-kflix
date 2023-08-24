@@ -41,6 +41,7 @@ spec:
         - default
         - monitoring
         - flux-system
+        - longhorn-system
     ingress:
       main:
         enabled: true
