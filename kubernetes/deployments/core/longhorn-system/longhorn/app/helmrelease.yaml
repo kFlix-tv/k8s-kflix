@@ -36,3 +36,5 @@ spec:
         hajimari.io/appName: "Longhorn"
       tls: true
       host: "longhorn.${SECRET_DOMAIN}"
+    defaultSettings:
+      defaultDataPath: "/mnt/data/longhorn"
