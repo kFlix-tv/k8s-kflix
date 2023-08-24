@@ -4,6 +4,8 @@ metadata:
   name: cluster-core-weave-gitops
   namespace: flux-system
 spec:
+  dependsOn:
+  - name: cluster-core-cloudflare-zerotrust-access-group
   path: ./kubernetes/deployments/core/flux-system/weave-gitops/app
   prune: true
   sourceRef:

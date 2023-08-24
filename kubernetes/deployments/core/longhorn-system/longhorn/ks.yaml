@@ -4,6 +4,8 @@ metadata:
   name: cluster-core-longhorn
   namespace: flux-system
 spec:
+  dependsOn:
+  - name: cluster-core-cloudflare-zerotrust-access-group
   path: ./kubernetes/deployments/core/longhorn-system/longhorn/app
   prune: false # never should be deleted
   sourceRef:

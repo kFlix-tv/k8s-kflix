@@ -4,6 +4,8 @@ metadata:
   name: cluster-core-kube-prometheus-stack
   namespace: flux-system
 spec:
+  dependsOn:
+  - name: cluster-core-cloudflare-zerotrust-access-group
   path: ./kubernetes/deployments/core/monitoring/kube-prometheus-stack/app
   prune: true
   sourceRef:

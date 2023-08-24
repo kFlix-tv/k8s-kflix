@@ -7,6 +7,7 @@ spec:
   dependsOn:
   - name: cluster-core-cert-manager
   - name: cluster-core-metrics-server
+  - name: cluster-core-cloudflare-zerotrust-access-group
   path: ./kubernetes/deployments/core/monitoring/kubernetes-dashboard/app
   prune: true
   sourceRef:
