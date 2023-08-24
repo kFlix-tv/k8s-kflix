@@ -24,6 +24,7 @@ spec:
   uninstall:
     keepHistory: false
   values:
+    # https://artifacthub.io/packages/helm/longhorn/longhorn?modal=values
     namespaceOverride: "longhorn-system"
     ingress:
       enabled: true
@@ -31,8 +32,4 @@ spec:
       annotations:
         external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
         hajimari.io/group: "Admin Only"
-      hosts:
-      - &host "longhorn.${SECRET_DOMAIN}"
-      tls:
-      - hosts:
-        - *host
+      hosts: &host "longhorn.${SECRET_DOMAIN}"
