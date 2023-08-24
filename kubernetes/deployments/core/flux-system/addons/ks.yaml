@@ -4,6 +4,8 @@ metadata:
   name: cluster-core-flux-webhooks
   namespace: flux-system
 spec:
+  dependsOn:
+  - name: cluster-core-cilium
   path: ./kubernetes/deployments/core/flux-system/addons/webhooks
   prune: true
   sourceRef:

@@ -4,6 +4,8 @@ metadata:
   name: cluster-core-cloudflare-zerotrust
   namespace: flux-system
 spec:
+  dependsOn:
+  - name: cluster-core-cloudflared
   path: ./kubernetes/deployments/core/zero-trust/cloudflare-zerotrust/app
   prune: true
   wait: true

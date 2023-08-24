@@ -4,6 +4,8 @@ metadata:
   name: cluster-core-k8s-gateway
   namespace: flux-system
 spec:
+  dependsOn:
+  - name: cluster-core-nginx-external
   path: ./kubernetes/deployments/core/networking/k8s-gateway/app
   prune: true
   sourceRef:

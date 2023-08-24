@@ -5,9 +5,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-  - name: cluster-core-cert-manager
-  - name: cluster-core-metrics-server
-  - name: cluster-core-cloudflare-zerotrust-access-group
+  - name: cluster-core-nginx-external
   path: ./kubernetes/deployments/core/monitoring/kubernetes-dashboard/app
   prune: true
   sourceRef:

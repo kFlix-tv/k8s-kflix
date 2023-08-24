@@ -4,6 +4,8 @@ metadata:
   name: cluster-core-echo-server
   namespace: flux-system
 spec:
+  dependsOn:
+  - name: cluster-core-nginx-external
   path: ./kubernetes/deployments/core/networking/echo-server/app
   prune: true
   sourceRef:

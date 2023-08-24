@@ -6,6 +6,7 @@ metadata:
 spec:
   dependsOn:
   - name: cluster-core-cert-manager-issuers
+  - name: cluster-core-cloudflare-zerotrust
   path: ./kubernetes/deployments/core/networking/nginx/certificates
   prune: true
   sourceRef:

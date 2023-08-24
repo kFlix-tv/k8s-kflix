@@ -4,6 +4,8 @@ metadata:
   name: cluster-core-external-dns
   namespace: flux-system
 spec:
+  dependsOn:
+  - name: cluster-core-coredns
   path: ./kubernetes/deployments/core/networking/external-dns/app
   prune: true
   sourceRef:

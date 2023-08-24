@@ -39,3 +39,4 @@ spec:
     defaultSettings:
       defaultDataPath: "/mnt/data/longhorn"
       defaultLonghornStaticStorageClass: "longhorn-kflix"
+      # TODO: Add OVH backup

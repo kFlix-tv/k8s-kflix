@@ -4,6 +4,8 @@ metadata:
   name: cluster-core-metrics-server
   namespace: flux-system
 spec:
+  dependsOn:
+  - name: cluster-core-external-dns
   path: ./kubernetes/deployments/core/kube-system/metrics-server/app
   prune: true
   sourceRef:

@@ -4,6 +4,8 @@ metadata:
   name: cluster-core-system-upgrade-controller
   namespace: flux-system
 spec:
+  dependsOn:
+  - name: cluster-core-external-dns
   path: ./kubernetes/deployments/core/system-upgrade/system-upgrade-controller/app
   prune: true
   sourceRef:

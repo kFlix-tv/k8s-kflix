@@ -6,6 +6,8 @@ metadata:
   labels:
     substitution.flux.home.arpa/disabled: "true"
 spec:
+  dependsOn:
+  - name: cluster-core-external-dns
   path: ./kubernetes/deployments/core/kube-system/local-path-provisioner/app
   prune: true
   sourceRef:
