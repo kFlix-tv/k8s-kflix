@@ -80,6 +80,24 @@ tasks:
     desc: Print out the Webhook URL for github
     cmd: kubectl -n flux-system get receiver github-receiver -o jsonpath='{.status.webhookPath}'
 
+  staging:
+    desc: Switch cluster to Staging LE Certs
+    cmds:
+    - sed -i 's/production/staging/g' kubernetes/deployments/core/networking/nginx/certificates/kustomization.yaml
+    - git add kubernetes/deployments/core/networking/nginx/certificates/kustomization.yaml
+    - sed -i 's/production/staging/g' kubernetes/deployments/core/networking/nginx/external/helmrelease.yaml
+    - git add kubernetes/deployments/core/networking/nginx/external/helmrelease.yaml
+    - git commit -m "Staging TLS"
+
+  production:
+    desc: Switch cluster to Staging LE Certs
+    cmds:
+    - sed -i 's/staging/production/g' kubernetes/deployments/core/networking/nginx/certificates/kustomization.yaml
+    - git add kubernetes/deployments/core/networking/nginx/certificates/kustomization.yaml
+    - sed -i 's/staging/production/g' kubernetes/deployments/core/networking/nginx/external/helmrelease.yaml
+    - git add kubernetes/deployments/core/networking/nginx/external/helmrelease.yaml
+    - git commit -m "Production TLS"
+
   resources:
     desc: Gather common resources in your cluster, useful when asking for support
     cmds:
