@@ -38,3 +38,4 @@ spec:
       host: "longhorn.${SECRET_DOMAIN}"
     defaultSettings:
       defaultDataPath: "/mnt/data/longhorn"
+      defaultLonghornStaticStorageClass: "longhorn-kflix"
