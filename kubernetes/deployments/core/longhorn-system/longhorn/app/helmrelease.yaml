@@ -32,5 +32,7 @@ spec:
       annotations:
         external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
         hajimari.io/group: "Admin Only"
+        hajimari.io/icon: "harddrive"
+        hajimari.io/appName: "Longhorn"
       tls: true
       host: "longhorn.${SECRET_DOMAIN}"
