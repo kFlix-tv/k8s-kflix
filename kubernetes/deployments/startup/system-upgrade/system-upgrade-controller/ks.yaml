@@ -1,12 +1,12 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-core-system-upgrade-controller
+  name: cluster-startup-system-upgrade-controller
   namespace: flux-system
 spec:
   dependsOn:
-  - name: cluster-core-external-dns
-  path: ./kubernetes/deployments/core/system-upgrade/system-upgrade-controller/app
+  - name: cluster-startup-flux-cluster-settings
+  path: ./kubernetes/deployments/startup/system-upgrade/system-upgrade-controller/app
   prune: true
   sourceRef:
     kind: GitRepository
@@ -19,12 +19,12 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-core-system-upgrade-controller-plans
+  name: cluster-startup-system-upgrade-controller-plans
   namespace: flux-system
 spec:
   dependsOn:
-  - name: cluster-core-system-upgrade-controller
-  path: ./kubernetes/deployments/core/system-upgrade/system-upgrade-controller/plans
+  - name: cluster-startup-system-upgrade-controller
+  path: ./kubernetes/deployments/startup/system-upgrade/system-upgrade-controller/plans
   prune: true
   sourceRef:
     kind: GitRepository
