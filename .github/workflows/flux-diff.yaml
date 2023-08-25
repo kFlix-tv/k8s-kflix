@@ -24,6 +24,7 @@ jobs:
         path: "${{ matrix.path }}"
         resource: "${{ matrix.resource }}"
         token: ${{ secrets.KFLIX_PAT }}
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
 
     - if: ${{ steps.diff.outputs.diff != '' }}
       name: Add comment
