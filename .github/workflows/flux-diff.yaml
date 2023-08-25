@@ -1,4 +1,3 @@
----
 name: "Flux Diff"
 
 on:
@@ -17,22 +16,23 @@ jobs:
         path: ["kubernetes"]
         resource: ["helmrelease", "kustomization"]
     steps:
-      - name: Diff Resources
-        uses: allenporter/flux-local/action/diff@efbe055c6dc2a63d1102db582632d2aa03696664 # 3.1.1
-        id: diff
-        with:
-          sources: home-kubernetes
-          path: "${{ matrix.path }}"
-          resource: "${{ matrix.resource }}"
+    - name: Diff Resources
+      uses: allenporter/flux-local/action/diff@efbe055c6dc2a63d1102db582632d2aa03696664 # 3.1.1
+      id: diff
+      with:
+        sources: home-kubernetes
+        path: "${{ matrix.path }}"
+        resource: "${{ matrix.resource }}"
+        token: ${{ secrets.KFLIX_PAT }}
 
-      - if: ${{ steps.diff.outputs.diff != '' }}
-        name: Add comment
-        uses: mshick/add-pr-comment@7c0890544fb33b0bdd2e59467fbacb62e028a096 # v2.8.1
-        with:
-          repo-token: "${{ secrets.GITHUB_TOKEN }}"
-          message-id: "${{ github.event.pull_request.number }}/${{ matrix.path }}/${{ matrix.resource }}"
-          message-failure: Diff was not successful
-          message: |
-            ```diff
-            ${{ steps.diff.outputs.diff }}
-            ```
+    - if: ${{ steps.diff.outputs.diff != '' }}
+      name: Add comment
+      uses: mshick/add-pr-comment@7c0890544fb33b0bdd2e59467fbacb62e028a096 # v2.8.1
+      with:
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        message-id: "${{ github.event.pull_request.number }}/${{ matrix.path }}/${{ matrix.resource }}"
+        message-failure: Diff was not successful
+        message: |
+          ```diff
+          ${{ steps.diff.outputs.diff }}
+          ```
