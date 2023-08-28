@@ -5,6 +5,7 @@ resources:
 - ./bjw-s.yaml
 - ./cilium.yaml
 - ./coredns.yaml
+- ./csi-rclone.yaml
 - ./external-dns.yaml
 - ./external-secrets.yaml
 - ./grafana.yaml
