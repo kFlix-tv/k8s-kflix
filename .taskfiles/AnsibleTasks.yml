@@ -73,6 +73,11 @@ tasks:
     dir: "{{.ANSIBLE_DIR}}"
     cmd: ansible all -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yaml --one-line -a 'uptime'
 
+  kubeconfig:
+    desc: Install kubectl into a known directory
+    dir: "{{.ANSIBLE_DIR}}"
+    cmd: ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yaml {{.ANSIBLE_PLAYBOOK_DIR}}/cluster-kubeconfig.yaml
+
   deploy:
     desc: Runs all deployment tasks for Ansible
     dir: "{{.ANSIBLE_DIR}}"
