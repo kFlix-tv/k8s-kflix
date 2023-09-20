@@ -3,3 +3,4 @@ kind: Kustomization
 namespace: csi-rclone
 resources:
 - ./helmrelease.yaml
+- ./externalsecret.yaml
