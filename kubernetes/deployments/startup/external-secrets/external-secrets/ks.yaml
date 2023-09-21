@@ -26,7 +26,7 @@ metadata:
 spec:
   dependsOn:
   - name: cluster-startup-external-secrets
-  path: ./kubernetes/deployments/startup/external-secrets/external-secrets/secret-store
+  path: ./kubernetes/deployments/startup/external-secrets/external-secrets/secretstore
   prune: true
   sourceRef:
     kind: GitRepository

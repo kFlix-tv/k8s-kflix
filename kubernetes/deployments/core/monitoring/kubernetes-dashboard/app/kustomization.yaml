@@ -5,4 +5,4 @@ namespace: monitoring
 resources:
 - ./rbac.yaml
 - ./helmrelease.yaml
-- ./cloudflare-application.yaml
+- ./cloudflareaccessapplication.yaml
