@@ -2,16 +2,16 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-apps-gatus
+  name: cluster-core-gatus
   namespace: flux-system
 spec:
-  # dependsOn:
-  # - name: cluster-apps-cloudnative-pg-cluster
-  path: ./kubernetes/apps/monitoring/gatus/app
+  dependsOn:
+  - name: cluster-core-database-cloudnative-pg-cluster
+  path: ./kubernetes/deployments/core/monitoring/gatus/app
   prune: true
   sourceRef:
     kind: GitRepository
-    name: home-kubernetes
+    name: k8s-kflix
   wait: false
   interval: 30m
   retryInterval: 1m
