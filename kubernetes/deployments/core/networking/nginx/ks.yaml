@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://kubernetes-schemas.devbu.io/kustomize.toolkit.fluxcd.io/kustomization_v1.json
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
@@ -17,6 +18,7 @@ spec:
   retryInterval: 1m
   timeout: 5m
 ---
+# yaml-language-server: $schema=https://kubernetes-schemas.devbu.io/kustomize.toolkit.fluxcd.io/kustomization_v1.json
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
@@ -35,9 +37,10 @@ spec:
   retryInterval: 1m
   timeout: 5m
 
-# TODO: Enable "Internal only" nginx for with Cloudflare Access
+# TODO: Enable "Internal only" nginx for Cloudflare Access
 
 # ---
+# # yaml-language-server: $schema=https://kubernetes-schemas.devbu.io/kustomize.toolkit.fluxcd.io/kustomization_v1.json
 # apiVersion: kustomize.toolkit.fluxcd.io/v1
 # kind: Kustomization
 # metadata:

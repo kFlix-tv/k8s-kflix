@@ -1,3 +1,4 @@
+# TODO: Create yaml-language-server schema for this file
 apiVersion: cloudflare.zelic.io/v1alpha1
 kind: CloudflareAccessApplication
 metadata:

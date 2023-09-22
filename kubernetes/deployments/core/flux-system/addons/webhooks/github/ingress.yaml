@@ -1,4 +1,3 @@
----
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
@@ -10,16 +9,16 @@ metadata:
 spec:
   ingressClassName: external
   rules:
-    - host: &host "flux-webhook.${SECRET_DOMAIN}"
-      http:
-        paths:
-          - path: /hook/
-            pathType: Prefix
-            backend:
-              service:
-                name: webhook-receiver
-                port:
-                  number: 80
+  - host: &host "flux-webhook.${SECRET_DOMAIN}"
+    http:
+      paths:
+      - path: /hook/
+        pathType: Prefix
+        backend:
+          service:
+            name: webhook-receiver
+            port:
+              number: 80
   tls:
-    - hosts:
-        - *host
+  - hosts:
+    - *host
