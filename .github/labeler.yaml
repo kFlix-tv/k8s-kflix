@@ -4,3 +4,7 @@ area/github:
 - ".github/**/*"
 area/kubernetes:
 - "kubernetes/**/*"
+area/go-task:
+- ".taskfiles/**/*"
+area/terraform:
+- "terraform/**/*"

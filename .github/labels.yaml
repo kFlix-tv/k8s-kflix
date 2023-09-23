@@ -15,6 +15,10 @@
   color: "72ccf3"
   description: >-
     Changes made in the kubernetes directory
+- name: area/go-task
+  color: "72ccf3"
+  description: >-
+    Changes made in the taskfiles directory
 # Renovate
 - name: renovate/ansible
   color: "ffc300"
