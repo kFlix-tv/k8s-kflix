@@ -103,11 +103,16 @@ jobs:
           username: "${{ github.actor }}"
           password: "${{ secrets.GITHUB_TOKEN }}"
 
+      - name: Repo owner to lowercase
+        id: repo_owner
+        shell: bash
+        run: echo "repo-owner=$(echo ${GITHUB_REPOSITORY_OWNER} | tr '[:upper:]' '[:lower:]')" >> "${GITHUB_OUTPUT}"
+
       - name: Pull manifests
         shell: bash
         run: |
           mkdir -p /home/runner/crdSchemas
-          flux pull artifact oci://ghcr.io/${{ github.repository_owner }}/manifests/kubernetes-schemas:$(git rev-parse --short HEAD) --output /home/runner/crdSchemas
+          flux pull artifact oci://ghcr.io/${{ steps.repo_owner.outputs.repo-owner }}/manifests/kubernetes-schemas:$(git rev-parse --short HEAD) --output /home/runner/crdSchemas
 
       - name: Write nginx-unprivileged Dockerfile
         shell: bash
@@ -126,7 +131,7 @@ jobs:
           file: /home/runner/crdSchemas/Dockerfile
           push: true
           tags: |
-            ghcr.io/${{ github.repository_owner }}/kubernetes-schemas:latest
+            ghcr.io/${{ steps.repo_owner.outputs.repo-owner }}/kubernetes-schemas:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
           labels: |
