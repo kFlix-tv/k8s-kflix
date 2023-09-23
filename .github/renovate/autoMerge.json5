@@ -13,7 +13,7 @@
       "description": "Auto merge container digests",
       "matchDatasources": ["docker"],
       "automerge": true,
-      "automergeType": "branch",
+      "automergeType": "pr",
       "ignoreTests": true,
       "matchUpdateTypes": ["digest"]
     }
