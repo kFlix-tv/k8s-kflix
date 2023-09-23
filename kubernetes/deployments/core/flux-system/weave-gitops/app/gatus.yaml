@@ -1,8 +1,8 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: grafana-gatus-ep
-  namespace: monitoring
+  name: weave-gitops-gatus-ep
+  namespace: flux-system
   labels:
     gatus.io/enabled: "true"
 data:
