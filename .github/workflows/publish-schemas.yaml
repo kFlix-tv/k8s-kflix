@@ -67,6 +67,7 @@ jobs:
       - name: Publish manifests
         shell: bash
         run: |
+          echo $(PWD) && \
           flux push artifact oci://${{ steps.generate-tag.outputs.tag }} \
               --path="/home/runner/.datree/crdSchemas" \
               --source="${{ github.repositoryUrl }}" \
