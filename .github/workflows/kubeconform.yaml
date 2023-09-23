@@ -1,0 +1,47 @@
+---
+name: "Kubeconform"
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: ["main"]
+    paths: ["kubernetes/**"]
+
+env:
+  KUBERNETES_DIR: ./kubernetes
+  SCHEMA_DIR: /home/runner/.datree/crdSchemas
+
+jobs:
+  kubeconform:
+    name: Kubeconform
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3df4ab11eba7bda6032a0b82a6bb43b11571feac # v4.0.0
+        with:
+          token: "${{ secrets.GITHUB_TOKEN }}"
+
+      - name: Setup Homebrew
+        uses: Homebrew/actions/setup-homebrew@master
+
+      - name: Setup Tools
+        shell: bash
+        run: brew install fluxcd/tap/flux kubeconform kustomize
+
+      - name: Repo owner to lowercase
+        id: repo_owner
+        shell: bash
+        run: echo "repo-owner=$(echo ${GITHUB_REPOSITORY_OWNER} | tr '[:upper:]' '[:lower:]')" >> "${GITHUB_OUTPUT}"
+
+      - name: Download CRDs
+        shell: bash
+        run: |
+          mkdir -p ${{ env.SCHEMA_DIR }}
+          flux pull artifact oci://ghcr.io/${{ steps.repo_owner.outputs.repo-owner }}/manifests/kubernetes-schemas:latest \
+              --output=${{ env.SCHEMA_DIR }}
+
+      - name: Run kubeconform
+        shell: bash
+        run: bash ./.github/scripts/kubeconform.sh ${{ env.KUBERNETES_DIR }} ${{ env.SCHEMA_DIR }}
