@@ -1,3 +1,4 @@
+# yaml-language-server none
 originRequest:
   http2Origin: true
 

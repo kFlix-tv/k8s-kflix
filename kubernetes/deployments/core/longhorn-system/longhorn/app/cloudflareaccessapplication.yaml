@@ -2,11 +2,11 @@
 apiVersion: cloudflare.zelic.io/v1alpha1
 kind: CloudflareAccessApplication
 metadata:
-  name: weave-gitops
-  namespace: monitoring
+  name: longhorn
+  namespace: longhorn-system
 spec:
-  name: weave-gitops
-  domain: "gitops.${SECRET_DOMAIN}"
+  name: longhorn
+  domain: "longhorn.${SECRET_DOMAIN}"
   autoRedirectToIdentity: true
   policies:
   - name: Allow admin

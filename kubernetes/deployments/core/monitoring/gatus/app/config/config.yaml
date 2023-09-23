@@ -1,3 +1,4 @@
+# yaml-language-server none
 web:
   port: ${CUSTOM_WEB_PORT}
 storage:

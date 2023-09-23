@@ -1,4 +1,4 @@
----
+# yaml-language-server builtin
 apiVersion: v1
 kind: Namespace
 metadata:

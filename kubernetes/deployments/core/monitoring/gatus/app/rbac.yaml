@@ -1,3 +1,4 @@
+# yaml-language-server builtin
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -11,6 +12,7 @@ metadata:
 secrets:
 - name: gatus
 ---
+# yaml-language-server builtin
 apiVersion: v1
 kind: Secret
 type: kubernetes.io/service-account-token
@@ -24,6 +26,7 @@ metadata:
     meta.helm.sh/release-namespace: monitoring
     kubernetes.io/service-account.name: gatus
 ---
+# yaml-language-server builtin
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
@@ -34,6 +37,7 @@ rules:
   resources: ["configmaps", "secrets"]
   verbs: ["get", "watch", "list"]
 ---
+# yaml-language-server builtin
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
 metadata:

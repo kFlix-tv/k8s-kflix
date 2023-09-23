@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://kubernetes-schemas.kflix.tv/cloudflare.zelic.io/cloudflareaccessgroup_v1alpha1.json
 apiVersion: cloudflare.zelic.io/v1alpha1
 kind: CloudflareAccessGroup
 metadata:
