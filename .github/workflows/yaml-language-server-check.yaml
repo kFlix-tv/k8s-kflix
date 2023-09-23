@@ -1,0 +1,51 @@
+---
+  name: "Yaml-language-server Check"
+
+  on:
+    push:
+      branches: ["main"]
+      paths: ["kubernetes/**/*.yaml"]
+    pull_request:
+      branches: ["main"]
+      paths: ["kubernetes/**/*.yaml"]
+
+  jobs:
+    sync:
+      name: Flux HelmRepository Sync
+      runs-on: ubuntu-latest
+      permissions:
+        contents: read
+        issues: write
+      steps:
+        - name: Checkout
+          uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
+          with:
+            fetch-depth: 0
+
+        - name: Get changed files
+          id: changed-files
+          uses: tj-actions/changed-files@8238a4103220c636f2dad328ead8a7c8dbe316a3 # v39.2.0
+          with:
+            files: kubernetes/**/*.yaml
+
+        - name: Check first line
+          shell: bash
+          run: |
+            for file in ${{ steps.changed-files.outputs.all_changed_and_modified_files }}; do
+              line=$(head -n 1 "${file}")
+              if [[ "${line:0:22}" != "# yaml-language-server" ]]; then
+                echo "Please add the following line to the top of the file:"
+                echo "# yaml-language-server"
+                exit 1
+              fi
+            done
+
+        - name: Post issue if on main
+          if: failure() && github.ref == 'refs/heads/main'
+          uses: peter-evans/create-issue-from-file@0559b6aba226fcdafa76fb0f4270b6ebdfa673f6
+          with:
+            title: "(error) Yaml-language-server Check Failed"
+            content-filepath: ./.github//ISSUE_TEMPLATE/yls-check-failed.md
+            labels: "yls-check-failed"
+            assignees: "kiliantyler"
+            token: ${{ secrets.GITHUB_TOKEN }}
