@@ -6,3 +6,4 @@ resources:
 - ./externalsecret.yaml
 - ./cloudflareaccessapplication.yaml
 - ./helmrelease.yaml
+- ./gatus.yaml
