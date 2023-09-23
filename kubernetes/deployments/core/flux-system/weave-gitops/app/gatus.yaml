@@ -8,7 +8,7 @@ metadata:
 data:
   config.yaml: |
     endpoints:
-      - name: grafana
+      - name: Weave GitOps
         group: Admin
         url: https://gitops.kflix.tv/health/
         interval: 1m
