@@ -10,7 +10,7 @@ data:
     endpoints:
       - name: grafana
         group: Admin
-        url: https://grafana.kflix.tv/api/health
+        url: https://gitops.kflix.tv/health/
         interval: 1m
         client:
           dns-resolver: tcp://1.1.1.1:53
