@@ -41,7 +41,8 @@ jobs:
         run: |
           mkdir -p ${{ env.SCHEMA_DIR }}
           flux pull artifact oci://ghcr.io/${{ steps.repo_owner.outputs.repo-owner }}/manifests/kubernetes-schemas:latest \
-              --output=${{ env.SCHEMA_DIR }}
+              --output=${{ env.SCHEMA_DIR }} \
+              --creds ${{ github.actor }}:${{ secrets.GITHUB_TOKEN }}
 
       - name: Run kubeconform
         shell: bash
