@@ -7,7 +7,7 @@ metadata:
 spec:
   dependsOn:
   - name: cluster-core-cilium
-  path: ./kubernetes/deployments/core/flux-system/addons/webhooks
+  path: ./kubernetes/deployments/core/flux-system/addons/app
   prune: true
   sourceRef:
     kind: GitRepository
