@@ -31,6 +31,9 @@ spec:
     image:
       repository: ghcr.io/kflix-tv/kubernetes-schemas
       tag: latest@sha256:34f80ab5ae4a54b38d33a18df295f9cb462ae03fa0144a94dfdefa4c90d85991
+    imagePullSecret:
+      enabled: true
+      name: ghcr-kubernetes-schemas
     service:
       main:
         ports:
