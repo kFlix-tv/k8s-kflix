@@ -1,16 +1,16 @@
 apiVersion: v1
 kind: ConfigMap
 metadata:
-  name: grafana-gatus-ep
-  namespace: monitoring
+  name: longhorn-gatus-ep
+  namespace: longhorn-system
   labels:
     gatus.io/enabled: "true"
 data:
   config.yaml: |
     endpoints:
-      - name: Grafana
+      - name: Longhorn
         group: Admin
-        url: https://grafana.kflix.tv/api/health
+        url: https://longhorn.kflix.tv
         interval: 1m
         client:
           dns-resolver: tcp://1.1.1.1:53
