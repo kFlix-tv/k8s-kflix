@@ -90,5 +90,8 @@
       "matchPackagePatterns": ["minio"],
       "assignees": ["kiliantyler"]
     }
-  ]
+  ],
+  "pre-commit": {
+    "enabled": true
+  }
 }
