@@ -69,6 +69,11 @@ jobs:
         shell: bash
         run: echo "tag=ghcr.io/${{ steps.repo_owner.outputs.repo-owner }}/manifests/kubernetes-schemas:$(git rev-parse --short HEAD)" >> "${GITHUB_OUTPUT}"
 
+      - name: Generate tag 2
+        id: generate-tag2
+        shell: bash
+        run: echo "tag=ghcr.io/${{ steps.repo_owner.outputs.repo-owner }}/manifests/kubernetes-schemas:${{ secrets.SCHEMAS_MAJOR_VERSION }}.${{ secrets.SCHEMAS_MINOR_VERSION }}.${{ secrets.SCHEMAS_PATCH_VERSION }}" >> "${GITHUB_OUTPUT}"
+
       - name: Publish manifests
         shell: bash
         run: |
@@ -80,6 +85,10 @@ jobs:
       - name: Tag manifests
         shell: bash
         run: flux tag artifact oci://${{ steps.generate-tag.outputs.tag }} --tag main
+
+      - name: Tag manifests
+        shell: bash
+        run: flux tag artifact oci://${{ steps.generate-tag2.outputs.tag }} --tag main
 
   publish-web:
     name: Publish Web
@@ -132,7 +141,6 @@ jobs:
           push: true
           tags: |
             ghcr.io/${{ steps.repo_owner.outputs.repo-owner }}/kubernetes-schemas:latest
-            ghcr.io/${{ steps.repo_owner.outputs.repo-owner }}/kubernetes-schemas:$(git rev-parse --short HEAD)
             ghcr.io/${{ steps.repo_owner.outputs.repo-owner }}/kubernetes-schemas:${{ secrets.SCHEMAS_MAJOR_VERSION }}.${{ secrets.SCHEMAS_MINOR_VERSION }}.${{ secrets.SCHEMAS_PATCH_VERSION }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
