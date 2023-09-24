@@ -2,10 +2,10 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-core-kyverno
+  name: cluster-startup-kyverno
   namespace: flux-system
 spec:
-  path: ./kubernetes/deployments/core/kyverno/kyverno/app
+  path: ./kubernetes/deployments/startup/kyverno/kyverno/app
   prune: true
   sourceRef:
     kind: GitRepository
@@ -19,17 +19,17 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-core-cluster-policies
+  name: cluster-startup-kyverno-policies
   namespace: flux-system
 spec:
   dependsOn:
-  - name: cluster-core-kyverno
-  path: ./kubernetes/deployments/core/kyverno/kyverno/policies
+  - name: cluster-startup-kyverno
+  path: ./kubernetes/deployments/startup/kyverno/kyverno/policies
   prune: true
   sourceRef:
     kind: GitRepository
     name: k8s-kflix
-  wait: false
+  wait: true
   interval: 30m
   retryInterval: 1m
   timeout: 5m
