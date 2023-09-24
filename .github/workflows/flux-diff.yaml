@@ -24,7 +24,6 @@ jobs:
         sources: k8s-kflix
         path: "${{ matrix.path }}"
         resource: "${{ matrix.resource }}"
-        repo-token: "${{ secrets.GITHUB_TOKEN }}"
 
     - if: ${{ steps.diff.outputs.diff != '' }}
       name: Add comment
