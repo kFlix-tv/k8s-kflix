@@ -10,6 +10,7 @@ spec:
   - name: cluster-startup
   path: ./kubernetes/deployments/core
   prune: true
+  wait: true
   sourceRef:
     kind: GitRepository
     name: k8s-kflix
