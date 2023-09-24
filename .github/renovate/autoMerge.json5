@@ -16,6 +16,14 @@
       "automergeType": "pr",
       "ignoreTests": true,
       "matchUpdateTypes": ["digest"]
+    },
+    {
+      "description": "Auto merge kubernetes schemas",
+      "matchDatasources": ["docker"],
+      "automerge": true,
+      "automergeType": "pr",
+      "ignoreTests": true,
+      "matchPackagePatterns": ["kubernetes-schemas"]
     }
   ]
 }
