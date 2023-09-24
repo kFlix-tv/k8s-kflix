@@ -40,4 +40,3 @@ spec:
         patchesJson6902: |-
           - path: /spec/initContainers/{{elementIndex}}/resources/limits/cpu
             op: remove
-
