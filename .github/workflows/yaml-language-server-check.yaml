@@ -34,6 +34,9 @@
           run: |
             declare -a files=()
             for file in ${{ steps.changed-files.outputs.all_changed_and_modified_files }}; do
+              if [ ! -f "${file}" ]; then
+                continue
+              fi
               line=$(head -n 1 "${file}")
               if [[ "${line:0:22}" != "# yaml-language-server" ]]; then
                 files+=("${file}")
