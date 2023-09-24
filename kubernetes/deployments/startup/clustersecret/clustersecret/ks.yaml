@@ -2,10 +2,12 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-core-clustersecret
+  name: cluster-startup-clustersecret
   namespace: flux-system
 spec:
-  path: ./kubernetes/deployments/core/clustersecret/clustersecret/app
+  dependsOn:
+  - name: cluster-startup-external-secrets-cluster-secrets
+  path: ./kubernetes/deployments/startup/clustersecret/clustersecret/app
   prune: true
   sourceRef:
     kind: GitRepository
@@ -19,10 +21,12 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-core-clustersecret-secrets-replication
+  name: cluster-startup-clustersecret-secrets-replication
   namespace: flux-system
 spec:
-  path: ./kubernetes/deployments/core/clustersecret/clustersecret/secrets-replication
+  dependsOn:
+  - name: cluster-startup-clustersecret
+  path: ./kubernetes/deployments/startup/clustersecret/clustersecret/secrets-replication
   prune: true
   sourceRef:
     kind: GitRepository

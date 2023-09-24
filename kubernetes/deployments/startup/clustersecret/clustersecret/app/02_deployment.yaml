@@ -1,0 +1,40 @@
+# yaml-language-server builtin
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: clustersecret
+  namespace: clustersecret
+  labels:
+    app: clustersecret
+spec:
+  selector:
+    matchLabels:
+      app: clustersecret
+  template:
+    metadata:
+      labels:
+        app: clustersecret
+    spec:
+      serviceAccountName: clustersecret-account
+      # imagePullSecrets:
+      # - name: regcred
+      containers:
+      - name: clustersecret
+        image: quay.io/clustersecret/clustersecret:0.0.10
+        livenessProbe:
+          httpGet:
+            path: /healthz
+            port: 8080
+          periodSeconds: 120
+        env:
+        - name: CLUSTER_SECRET_VERSION
+          value: "v0.0.10"
+        - name: REPLACE_EXISTING
+          value: "false"
+        resources:
+          limits:
+            cpu: "1"
+            memory: "512Mi"
+          requests:
+            cpu: "100m"
+            memory: "256Mi"
