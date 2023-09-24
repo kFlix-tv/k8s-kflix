@@ -29,23 +29,31 @@
             files: kubernetes/**/*.yaml
 
         - name: Check first line
+          id: broken-files
           shell: bash
           run: |
+            declare -a files=()
             for file in ${{ steps.changed-files.outputs.all_changed_and_modified_files }}; do
               line=$(head -n 1 "${file}")
               if [[ "${line:0:22}" != "# yaml-language-server" ]]; then
-                echo "Please add the following line to the top of the file:"
-                echo "# yaml-language-server: $schema=https://kubernetes-schema.kflix.tv/<api>/<kind>"
-                exit 1
+                files+=("${file}")
               fi
             done
+            # check if file array has any elements
+            if [ ${#files[@]} -gt 0 ]; then
+              echo "files=${files[@]}" >> "${GITHUB_OUTPUT}"
+              echo "The following files are missing the yaml-language-server comment:"
+              for file in "${files[@]}"; do
+                echo "${file}"
+              done
+              exit 1
+            fi
 
         - name: Post issue if on main
           if: failure() && github.ref == 'refs/heads/main'
-          uses: peter-evans/create-issue-from-file@0559b6aba226fcdafa76fb0f4270b6ebdfa673f6
+          uses: JasonEtco/create-an-issue@v2
           with:
-            title: "(error) Yaml-language-server Check Failed"
-            content-filepath: ./.github//ISSUE_TEMPLATE/yls-check-failed.md
-            labels: "yls-check-failed"
-            assignees: "kiliantyler"
-            token: ${{ secrets.GITHUB_TOKEN }}
+            filename: .github/ISSUE_TEMPLATE/yls-check-failed.md
+          env:
+            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+            FILE_LIST: ${{ steps.broken-files.outputs.files }}
