@@ -132,8 +132,18 @@ jobs:
           push: true
           tags: |
             ghcr.io/${{ steps.repo_owner.outputs.repo-owner }}/kubernetes-schemas:latest
+            ghcr.io/${{ steps.repo_owner.outputs.repo-owner }}/kubernetes-schemas:$(git rev-parse --short HEAD)
+            ghcr.io/${{ steps.repo_owner.outputs.repo-owner }}/kubernetes-schemas:${{ secrets.SCHEMAS_MAJOR_VERSION }}.${{ secrets.SCHEMAS_MINOR_VERSION }}.${{ secrets.SCHEMAS_PATCH_VERSION }}
           cache-from: type=gha
           cache-to: type=gha,mode=max
           labels: |
             org.opencontainers.image.source="${{ github.repositoryUrl }}"
             org.opencontainers.image.authors="Kilian Tyler <kiliantyler@users.noreply.github.com>"
+
+      - name: Update Minor version
+        uses: hmanzur/actions-set-secret@v2.0.0
+        with:
+          name: 'SCHEMAS_PATCH_VERSION'
+          value: $((${{ secrets.SCHEMAS_PATCH_VERSION }}+1))
+          repository: kFlix-tv/k8s-kflix
+          token: ${{ secrets.GITHUB_TOKEN }}
