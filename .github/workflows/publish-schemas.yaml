@@ -159,7 +159,7 @@ jobs:
           echo "New Patch Version |$((${{ secrets.SCHEMAS_PATCH_VERSION }}+1))|"
 
       - name: Update Minor version
-        uses: hmanzur/actions-set-secret@v2.0.0
+        uses: hmanzur/actions-set-secret@377391a32b6d43a053d7847dde34ac6179ac9f55 # v2.0.0
         with:
           name: 'SCHEMAS_PATCH_VERSION'
           value: ${{ steps.NEW_PATCH_VERSION.outputs.NEW_PATCH_VERSION }}
