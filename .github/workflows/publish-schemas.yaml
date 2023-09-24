@@ -69,10 +69,10 @@ jobs:
         shell: bash
         run: echo "tag=ghcr.io/${{ steps.repo_owner.outputs.repo-owner }}/manifests/kubernetes-schemas:$(git rev-parse --short HEAD)" >> "${GITHUB_OUTPUT}"
 
-      - name: Generate tag 2
-        id: generate-tag2
-        shell: bash
-        run: echo "tag=ghcr.io/${{ steps.repo_owner.outputs.repo-owner }}/manifests/kubernetes-schemas:${{ secrets.SCHEMAS_MAJOR_VERSION }}.${{ secrets.SCHEMAS_MINOR_VERSION }}.${{ secrets.SCHEMAS_PATCH_VERSION }}" >> "${GITHUB_OUTPUT}"
+      # - name: Generate tag 2
+      #   id: generate-tag2
+      #   shell: bash
+      #   run: echo "tag2=ghcr.io/${{ steps.repo_owner.outputs.repo-owner }}/manifests/kubernetes-schemas:${{ secrets.SCHEMAS_MAJOR_VERSION }}.${{ secrets.SCHEMAS_MINOR_VERSION }}.${{ secrets.SCHEMAS_PATCH_VERSION }}" >> "${GITHUB_OUTPUT}"
 
       - name: Publish manifests
         shell: bash
@@ -86,9 +86,9 @@ jobs:
         shell: bash
         run: flux tag artifact oci://${{ steps.generate-tag.outputs.tag }} --tag main
 
-      - name: Tag manifests
-        shell: bash
-        run: flux tag artifact oci://${{ steps.generate-tag2.outputs.tag }} --tag main
+      # - name: Tag manifests
+      #   shell: bash
+      #   run: flux tag artifact oci://${{ steps.generate-tag2.outputs.tag2 }} --tag main
 
   publish-web:
     name: Publish Web
