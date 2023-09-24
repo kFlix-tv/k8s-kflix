@@ -1,0 +1,11 @@
+version: "3"
+
+tasks:
+
+  login:
+    desc: Login to Github
+    cmd: gh auth login
+
+  publish-schemas:
+    desc: Run the Publish Schemas Github Action
+    cmd: gh workflow run "Publish Schemas"
