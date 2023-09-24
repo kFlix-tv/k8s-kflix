@@ -24,3 +24,8 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
+  values:
+    clustersecret:
+      clustersecret:
+        image:
+          tag: 0.0.10
