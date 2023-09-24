@@ -151,10 +151,17 @@ jobs:
             org.opencontainers.image.source="${{ github.repositoryUrl }}"
             org.opencontainers.image.authors="Kilian Tyler <kiliantyler@users.noreply.github.com>"
 
+      - name: Update Patch Version
+        id: NEW_PATCH_VERSION
+        shell: bash
+        run: |
+          echo "NEW_PATCH_VERSION=$((${{ secrets.SCHEMAS_PATCH_VERSION }}+1))" >> "${GITHUB_OUTPUT}"
+          echo "New Patch Version |$((${{ secrets.SCHEMAS_PATCH_VERSION }}+1))|"
+
       - name: Update Minor version
         uses: hmanzur/actions-set-secret@v2.0.0
         with:
           name: 'SCHEMAS_PATCH_VERSION'
-          value: $((${{ secrets.SCHEMAS_PATCH_VERSION }}+1))
+          value: ${{ steps.NEW_PATCH_VERSION.outputs.NEW_PATCH_VERSION }}
           repository: kFlix-tv/k8s-kflix
           token: ${{ secrets.SECRET_PAT }}
