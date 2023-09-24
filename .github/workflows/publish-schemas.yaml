@@ -152,7 +152,7 @@ jobs:
             org.opencontainers.image.authors="Kilian Tyler <kiliantyler@users.noreply.github.com>"
 
       - name: Update Minor version
-        uses: hmanzur/actions-set-secret@v2.0.0
+        uses: hmanzur/actions-set-secret@377391a32b6d43a053d7847dde34ac6179ac9f55 # v2.0.0
         with:
           name: 'SCHEMAS_PATCH_VERSION'
           value: $((${{ secrets.SCHEMAS_PATCH_VERSION }}+1))
