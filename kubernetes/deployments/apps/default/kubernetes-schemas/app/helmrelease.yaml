@@ -30,7 +30,7 @@ spec:
       strategy: RollingUpdate
     image:
       repository: ghcr.io/kflix-tv/kubernetes-schemas
-      tag: latest@sha256:34f80ab5ae4a54b38d33a18df295f9cb462ae03fa0144a94dfdefa4c90d85991
+      tag: latest@sha256:0d277a63695b32d8e30d8e42c14032a75c01bc1f0b3a36d9ab75d4771cfc1824
     imagePullSecrets:
     - ghcr-kubernetes-schemas
     service:
