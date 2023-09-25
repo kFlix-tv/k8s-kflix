@@ -106,6 +106,7 @@
             mode: "0644"
             content: "{{ item }}"
           loop: ["br_netfilter", "ceph", "ip_vs", "ip_vs_rr", "nbd", "overlay", "rbd"]
+          # TODO: Add "tcp_bbr" when it's available in the kernel
         - name: System Configuration | Sysctl
           ansible.posix.sysctl:
             name: "{{ item.key }}"
