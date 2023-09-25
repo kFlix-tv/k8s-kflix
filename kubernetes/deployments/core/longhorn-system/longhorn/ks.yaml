@@ -2,11 +2,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-core-longhorn
+  name: core-longhorn
   namespace: flux-system
 spec:
   dependsOn:
-  - name: cluster-core-nginx-external
+  - name: core-nginx-external
   path: ./kubernetes/deployments/core/longhorn-system/longhorn/app
   prune: false # never should be deleted
   sourceRef:
@@ -21,11 +21,11 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-core-longhorn-settings
+  name: core-longhorn-settings
   namespace: flux-system
 spec:
   dependsOn:
-  - name: cluster-core-longhorn
+  - name: core-longhorn
   path: ./kubernetes/deployments/core/longhorn-system/longhorn/settings
   prune: false # never should be deleted
   sourceRef:

@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-startup-kyverno
+  name: startup-kyverno
   namespace: flux-system
 spec:
   path: ./kubernetes/deployments/startup/kyverno/kyverno/app
@@ -19,11 +19,11 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-startup-kyverno-policies
+  name: startup-kyverno-policies
   namespace: flux-system
 spec:
   dependsOn:
-  - name: cluster-startup-kyverno
+  - name: startup-kyverno
   path: ./kubernetes/deployments/startup/kyverno/kyverno/policies
   prune: true
   sourceRef:

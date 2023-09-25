@@ -2,11 +2,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-startup-flux-cluster-settings
+  name: startup-flux-cluster-settings
   namespace: flux-system
 spec:
   dependsOn:
-  - name: cluster-startup-external-secrets-secret-store
+  - name: startup-external-secrets-secret-store
   path: ./kubernetes/deployments/startup/flux-system/vars/cluster_settings
   prune: true
   sourceRef:

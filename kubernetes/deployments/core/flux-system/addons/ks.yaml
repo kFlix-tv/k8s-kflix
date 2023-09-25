@@ -2,11 +2,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-core-flux-webhooks
+  name: core-flux-webhooks
   namespace: flux-system
 spec:
   dependsOn:
-  - name: cluster-core-cilium
+  - name: core-cilium
   path: ./kubernetes/deployments/core/flux-system/addons/app
   prune: true
   sourceRef:
