@@ -43,14 +43,15 @@ spec:
         - monitoring
         - flux-system
         - longhorn-system
+        - kube-system
     ingress:
       main:
         enabled: true
         ingressClassName: external
         annotations:
-          external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
-          hajimari.io/enable: "false"
+          external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}" # TODO: Get these annotations into a patch when ingress class is external
           nginx.ingress.kubernetes.io/ssl-redirect: "true"
+          hajimari.io/enable: "false"
         hosts:
         - host: &host "hajimari.${SECRET_DOMAIN}"
           paths:

@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: cluster-apps-hajimari
+  name: apps-default-hajimari # TODO: Change this to live in the "frontend" namespace
   namespace: flux-system
 spec:
   path: ./kubernetes/deployments/apps/default/hajimari/app
@@ -16,4 +16,4 @@ spec:
   timeout: 5m
   postBuild:
     substitute:
-      NAMESPACE: "arrs"
+      NAMESPACE: "default"

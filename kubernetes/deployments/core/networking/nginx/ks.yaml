@@ -38,6 +38,8 @@ spec:
   timeout: 5m
 
 # TODO: Enable "Internal only" nginx for Cloudflare Access
+# This can probably use Kustomize's "patches" feature to add the annotations
+# as well as the cloudflare application piece
 
 # ---
 # # yaml-language-server: $schema=https://kubernetes-schemas.kflix.tv/kustomize.toolkit.fluxcd.io/kustomization_v1.json
