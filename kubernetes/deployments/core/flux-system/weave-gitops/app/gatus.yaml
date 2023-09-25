@@ -10,7 +10,7 @@ data:
   config.yaml: |
     endpoints:
       - name: Weave GitOps
-        group: Admin
+        group: Guarded
         url: https://gitops.kflix.tv/health/
         interval: 1m
         client:

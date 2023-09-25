@@ -10,7 +10,7 @@ data:
   config.yaml: |
     endpoints:
       - name: Grafana
-        group: Admin
+        group: Guarded
         url: https://grafana.kflix.tv/api/health
         interval: 1m
         client:

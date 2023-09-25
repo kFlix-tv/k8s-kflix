@@ -10,7 +10,7 @@ data:
   config.yaml: |
     endpoints:
       - name: Prometheus
-        group: Admin
+        group: Guarded
         url: https://prometheus.kflix.tv/-/healthy
         interval: 1m
         client:

@@ -10,7 +10,7 @@ data:
   config.yaml: |
     endpoints:
       - name: Longhorn
-        group: Admin
+        group: Guarded
         url: https://longhorn.kflix.tv
         interval: 1m
         client:

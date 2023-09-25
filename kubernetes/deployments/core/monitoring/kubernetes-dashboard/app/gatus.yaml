@@ -10,7 +10,7 @@ data:
   config.yaml: |
     endpoints:
       - name: Kubernetes Dashboard
-        group: Admin
+        group: Internal
         url: https://kubernetes.kflix.tv/
         interval: 1m
         client:

@@ -10,7 +10,7 @@ data:
   config.yaml: |
     endpoints:
       - name: kubernetes-schemas
-        group: Admin
+        group: Guarded
         url: https://kubernetes-schemas.${SECRET_DOMAIN}
         interval: 1m
         client:
