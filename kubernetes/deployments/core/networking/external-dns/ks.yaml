@@ -2,11 +2,11 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: core-external-dns
+  name: core-networking-external-dns
   namespace: flux-system
 spec:
   dependsOn:
-  - name: core-coredns
+  - name: core-kube-system-coredns
   path: ./kubernetes/deployments/core/networking/external-dns/app
   prune: true
   sourceRef:

@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: startup-onepassword-connect
+  name: startup-op-onepassword-connect
   namespace: flux-system
 spec:
   path: ./kubernetes/deployments/startup/op/onepassword-connect/app

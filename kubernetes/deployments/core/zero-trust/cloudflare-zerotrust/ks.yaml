@@ -2,7 +2,7 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: core-cloudflare-zerotrust
+  name: core-zero-trust-cloudflare-zerotrust
   namespace: flux-system
 spec:
   dependsOn:
@@ -21,11 +21,11 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: core-cloudflare-zerotrust-access-group
+  name: core-zero-trust-access-group
   namespace: flux-system
 spec:
   dependsOn:
-  - name: core-cloudflare-zerotrust
+  - name: core-zero-trust-cloudflare-zerotrust
   path: ./kubernetes/deployments/core/zero-trust/cloudflare-zerotrust/access-group
   prune: true
   wait: true
