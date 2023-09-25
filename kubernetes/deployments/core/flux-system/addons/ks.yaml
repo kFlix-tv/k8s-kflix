@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-  - name: core-cilium
+  - name: core-kube-system-cilium
   path: ./kubernetes/deployments/core/flux-system/addons/app
   prune: true
   sourceRef:

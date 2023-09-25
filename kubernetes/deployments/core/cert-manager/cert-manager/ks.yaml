@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-  - name: core-external-dns
+  - name: core-networking-external-dns
   path: ./kubernetes/deployments/core/cert-manager/cert-manager/app
   prune: true
   sourceRef:

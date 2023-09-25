@@ -3,6 +3,7 @@ apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   name: clustersecrets.clustersecret.io
+  finalizers: [] # allow delete
 spec:
   scope: Namespaced
   group: clustersecret.io
