@@ -26,6 +26,9 @@ spec:
     keepHistory: false
   values:
     autoDirectNodeRoutes: true
+    bandwidthManager:
+      enabled: true
+      # bbr: true # TODO: Requires Kernel >=5.18
     bpf:
       masquerade: true
     bgp:
