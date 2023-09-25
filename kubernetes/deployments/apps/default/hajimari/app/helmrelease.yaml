@@ -3,7 +3,7 @@ apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
   name: hajimari
-  namespace: default
+  namespace: ${NAMESPACE}
 spec:
   interval: 30m
   chart:
@@ -26,7 +26,7 @@ spec:
     keepHistory: false
   values:
     hajimari:
-      title: ${test_var}
+      title: kFlix
       lightTheme: paper
       darkTheme: horizon
       alwaysTargetBlank: true
