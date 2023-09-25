@@ -9,3 +9,7 @@ tasks:
   publish-schemas:
     desc: Run the Publish Schemas Github Action
     cmd: gh workflow run "Publish Schemas"
+
+  update-kubeconfig:
+    desc: Update the kubeconfig file
+    cmd: gh secret set KUBECONFIG --body "$(\cat ~/.kube/config-files/kflix.yaml | base64 | tr -d '\n')"
