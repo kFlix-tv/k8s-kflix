@@ -10,7 +10,7 @@ data:
   config.yaml: |
     endpoints:
       - name: echo-server
-        group: External
+        group: Frontend
         url: https://echo-server.kflix.tv
         interval: 1m
         client:
