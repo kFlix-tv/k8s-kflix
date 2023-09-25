@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-  - name: startup-onepassword-connect
+  - name: startup-op-onepassword-connect
   path: ./kubernetes/deployments/startup/external-secrets/external-secrets/app
   prune: true
   sourceRef:
