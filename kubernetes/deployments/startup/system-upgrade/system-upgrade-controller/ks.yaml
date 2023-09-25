@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-  - name: startup-flux-cluster-settings
+  - name: startup-flux-system-cluster-settings
   path: ./kubernetes/deployments/startup/system-upgrade/system-upgrade-controller/app
   prune: true
   sourceRef:
