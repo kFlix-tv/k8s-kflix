@@ -26,7 +26,7 @@ spec:
     keepHistory: false
   values:
     hajimari:
-      title: kFlix
+      title: ${test_var}
       lightTheme: paper
       darkTheme: horizon
       alwaysTargetBlank: true
