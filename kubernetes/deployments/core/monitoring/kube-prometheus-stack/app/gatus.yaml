@@ -13,6 +13,9 @@ data:
         group: Guarded
         url: https://prometheus.kflix.tv/-/healthy
         interval: 1m
+        ui:
+          hide-hostname: true
+          hide-url: true
         client:
           dns-resolver: tcp://1.1.1.1:53
         conditions:

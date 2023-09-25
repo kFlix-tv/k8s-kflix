@@ -25,7 +25,7 @@ connectivity:
     interval: 1m
 endpoints:
 - name: status
-  group: Guarded
+  group: Frontend
   url: https://status.kflix.tv
   interval: 1m
   client:
