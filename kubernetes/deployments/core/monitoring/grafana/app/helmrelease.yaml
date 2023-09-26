@@ -118,6 +118,7 @@ spec:
           revision: 32
           datasource: Prometheus
         # TODO: Move this to the data folder whenever that works
+        # TODO: Fix this value template
         minio:
           gnetId: 13502
           revision: 24
