@@ -5,6 +5,8 @@ metadata:
   name: core-datastore-minio
   namespace: flux-system
 spec:
+  dependsOn:
+  - name: core-networking-nginx-external
   path: ./kubernetes/deployments/core/datastore/minio/app
   prune: true
   sourceRef:
