@@ -40,7 +40,7 @@ tasks:
         Homebrew is not installed. Using MacOS, Linux or WSL?
         Head over to https://brew.sh to get up and running.
     vars:
-      DEPS: age ansible argocd direnv fluxcd/tap/flux gh helm ipcalc jq kubernetes-cli kustomize pre-commit prettier sops stern terraform tflint weaveworks/tap/gitops yamllint yq
+      DEPS: age ansible argocd direnv fluxcd/tap/flux gh helm ipcalc jq kubernetes-cli kustomize minio/stable/mc pre-commit prettier sops stern terraform tflint weaveworks/tap/gitops yamllint yq
 
   terraform:
     desc: Alias to `terraform:deploy`
