@@ -1,4 +1,4 @@
-# yaml-langugage-server builtin
+# yaml-language-server builtin
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
