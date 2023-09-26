@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://kubernetes-schemas.kflix.tv/monitoring.coreos.com/scrapeconfig_v1alpha1.json
+apiVersion: monitoring.coreos.com/v1alpha1
+kind: ScrapeConfig
+metadata:
+  name: minio
+  namespace: monitoring
+spec:
+  staticConfigs:
+  - targets: ["minio.datastore.svc.cluster.local:9000"]
+  metricsPath: /minio/v2/metrics/cluster
