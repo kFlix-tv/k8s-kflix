@@ -1,4 +1,5 @@
 # yaml-language-server: $schema=https://kubernetes-schemas.kflix.tv/helm.toolkit.fluxcd.io/helmrelease_v2beta1.json
+# TODO: Update this to use the new minio operator
 apiVersion: helm.toolkit.fluxcd.io/v2beta1
 kind: HelmRelease
 metadata:
