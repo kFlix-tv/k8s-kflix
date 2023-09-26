@@ -184,9 +184,8 @@ spec:
       tls:
       - hosts:
         - *host
-    # TODO: Change storage to longhorn
     persistence:
+      existingClaim: grafana-pvc
       enabled: true
-      storageClassName: local-path
     testFramework:
       enabled: false
