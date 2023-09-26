@@ -135,10 +135,7 @@ spec:
         storageSpec:
           volumeClaimTemplate:
             spec:
-              storageClassName: local-path
-              resources:
-                requests:
-                  storage: 10Gi
+              existingClaim: prometheus-pvc
     grafana:
       enabled: false
       forceDeployDashboards: true
