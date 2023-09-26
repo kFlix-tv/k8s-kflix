@@ -14,8 +14,8 @@ spec:
       kube-image-keeper.enix.io/image-caching-policy: ignore
   primaryUpdateStrategy: unsupervised
   storage:
+    storageClass: longhorn-kflix
     size: 20Gi
-    storageClass: local-path
   superuserSecret:
     name: cloudnative-pg-secret
   # bootstrap:
