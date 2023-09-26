@@ -121,7 +121,8 @@ spec:
         minio:
           gnetId: 13502
           revision: 24
-          datasource: Prometheus
+          datasource:
+          - {name: DS_PROMETHEUS, value: Prometheus}
       flux:
         flux-cluster:
           url: https://raw.githubusercontent.com/fluxcd/flux2/main/manifests/monitoring/monitoring-config/dashboards/cluster.json
