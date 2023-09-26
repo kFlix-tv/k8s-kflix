@@ -116,7 +116,7 @@ spec:
           gnetId: 1860 # https://grafana.com/grafana/dashboards/1860?tab=revisions
           revision: 31
           datasource: Prometheus
-      data:
+        # TODO: Move this to the data folder whenever that works
         minio:
           url: https://raw.githubusercontent.com/minio/minio/master/docs/metrics/prometheus/grafana/minio-dashboard.json
           datasource: Prometheus
