@@ -17,7 +17,6 @@ kubeconfig
 *.key
 # Terraform
 .terraform
-.terraform.lock.hcl
 .terraform.tfstate*
 terraform.tfstate*
 # Helm
