@@ -2,7 +2,7 @@
 apiVersion: infra.contrib.fluxcd.io/v1alpha2
 kind: Terraform
 metadata:
-  name: kubernetes-cloudflare
+  name: tfcloud
   namespace: flux-system
 spec:
   suspend: false
