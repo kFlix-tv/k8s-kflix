@@ -1,0 +1,13 @@
+# yaml-language-server: $schema=https://kubernetes-schemas.kflix.tv/source.toolkit.fluxcd.io/ocirepository_v1beta2.json
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
+metadata:
+  name: terraform
+  namespace: flux-system
+spec:
+  interval: 1m
+  url: oci://ghcr.io/kflix-tv/manifests/terraform
+  ref:
+    tag: main
+  secretRef:
+    name: ghcr-credentials
