@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
 - ./ocirepository.yaml
 - ./tf-tfcloud.yaml
+- ./tf-cloudflare.yaml
