@@ -17,6 +17,7 @@ spec:
     disable: true
   cliConfigSecretRef:
     name: terraform-tfrc
+    namespace: flux-system
   varsFrom:
   - kind: Secret
     name: terraform-cloud
