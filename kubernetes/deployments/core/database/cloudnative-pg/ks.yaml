@@ -5,6 +5,8 @@ metadata:
   name: core-database-cloudnative-pg
   namespace: flux-system
 spec:
+  dependsOn:
+  - name: core-longhorn-system-settings
   path: ./kubernetes/deployments/core/database/cloudnative-pg/app
   prune: true
   sourceRef:
