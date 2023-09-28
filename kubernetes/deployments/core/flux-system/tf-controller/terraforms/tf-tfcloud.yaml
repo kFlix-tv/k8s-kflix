@@ -16,3 +16,7 @@ spec:
   varsFrom:
   - kind: Secret
     name: terraform-cloud
+    varsKeys:
+    - tfe_token
+    - tfe_organization
+    - tfe_project
