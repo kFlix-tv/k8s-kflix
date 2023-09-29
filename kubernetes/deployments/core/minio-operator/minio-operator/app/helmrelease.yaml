@@ -31,10 +31,7 @@ spec:
         ingressClassName: external
         annotations:
           external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
-        hosts:
-        - host: &host "minio-operator.${SECRET_DOMAIN}"
-          paths:
-          - /
+        host: &host "minio-operator.${SECRET_DOMAIN}"
         tls:
         - hosts:
           - *host
