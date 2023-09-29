@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://kubernetes-schemas.kflix.tv/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: core-minio-tenant-minio-tenant
+  namespace: flux-system
+spec:
+  dependsOn:
+  - name: core-minio-operator-minio-operator
+  path: ./kubernetes/deployments/core/minio-tenant/minio-tenant/tenant
+  prune: true
+  wait: true
+  sourceRef:
+    kind: GitRepository
+    name: k8s-kflix
+  interval: 30m
+  retryInterval: 1m
+  timeout: 5m
