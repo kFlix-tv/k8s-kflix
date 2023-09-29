@@ -17,9 +17,9 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: rook-ceph
+            name: rook-ceph-mgr-dashboard
             port:
-              number: 80
+              number: 7000
   tls:
   - hosts:
     - *host
