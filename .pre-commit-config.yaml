@@ -17,6 +17,7 @@ repos:
   - id: conventional-pre-commit
     stages: [commit-msg]
     args: []
+# TODO: Make sure ansible lint gets re-enabled with local settings eventually
 # - repo: https://github.com/ansible-community/ansible-lint
 #   rev: v6.17.2
 #   hooks:
