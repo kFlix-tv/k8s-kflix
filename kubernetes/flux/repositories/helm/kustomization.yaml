@@ -20,6 +20,7 @@ resources:
 - ./kyverno.yaml
 - ./longhorn.yaml
 - ./metrics-server.yaml
+- ./minio.yaml
 - ./onepassword.yaml
 - ./prometheus-community.yaml
 - ./stakater.yaml
