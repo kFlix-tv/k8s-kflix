@@ -15,7 +15,6 @@ spec:
   crashCollector:
     disable: false
   network:
-    provider: host
     connections:
       compression:
         enabled: true
