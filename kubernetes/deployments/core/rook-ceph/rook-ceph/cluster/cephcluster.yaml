@@ -22,7 +22,7 @@ spec:
       requireMsgr2: true
   mon:
     count: 3
-    allowMultiplePerNode: false
+    allowMultiplePerNode: true
   storage:
     useAllNodes: true
     useAllDevices: true
