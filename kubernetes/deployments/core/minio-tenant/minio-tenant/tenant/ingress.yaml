@@ -10,7 +10,7 @@ metadata:
 spec:
   ingressClassName: external
   rules:
-  - host: minio.${SECRET_DOMAIN}
+  - host: s3.${SECRET_DOMAIN}
     http:
       paths:
       - pathType: Prefix
@@ -20,7 +20,7 @@ spec:
             name: minio
             port:
               number: 80
-  - host: console.${SECRET_DOMAIN}
+  - host: minio.${SECRET_DOMAIN}
     http:
       paths:
       - pathType: Prefix
@@ -32,5 +32,5 @@ spec:
               number: 9090
   tls:
   - hosts:
+    - s3.${SECRET_DOMAIN}
     - minio.${SECRET_DOMAIN}
-    - console.${SECRET_DOMAIN}
