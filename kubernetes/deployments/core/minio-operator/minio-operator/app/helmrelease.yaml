@@ -1,0 +1,38 @@
+# yaml-language-server: $schema=https://kubernetes-schemas.kflix.tv/helm.toolkit.fluxcd.io/helmrelease_v2beta1.json
+apiVersion: helm.toolkit.fluxcd.io/v2beta1
+kind: HelmRelease
+metadata:
+  name: minio-operator
+  namespace: minio-operator
+spec:
+  interval: 30m
+  chart:
+    spec:
+      chart: operator
+      version: 5.0.9
+      sourceRef:
+        kind: HelmRepository
+        name: minio
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    console:
+      ingress:
+        enabled: true
+        ingressClassName: external
+        hosts:
+        - host: &host "minio-operator.${SECRET_DOMAIN}"
+          paths:
+          - /
+        tls:
+        - hosts:
+          - *host
