@@ -10,7 +10,7 @@ data:
   config.yaml: |
     endpoints:
       - name: rook
-        group: guarded
+        group: Guarded
         url: 1.1.1.1
         interval: 1m
         ui:
