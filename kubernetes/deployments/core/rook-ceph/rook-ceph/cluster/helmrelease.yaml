@@ -52,6 +52,9 @@ spec:
             enabled: true
           requireMsgr2: true
       dataDirHostPath: /var/lib/rook
+      mon:
+        count: 3
+        allowMultiplePerNode: true
       crashCollector:
         disable: false
       dashboard:
