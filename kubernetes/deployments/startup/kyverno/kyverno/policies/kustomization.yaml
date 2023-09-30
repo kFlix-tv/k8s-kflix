@@ -8,4 +8,4 @@ resources:
 - ./disallow-latest-tag.yaml
 - ./ingress-host-match-tls.yaml
 - ./remove-cpu-limits.yaml
-- ./unique-ingress-host.yaml
+# - ./unique-ingress-host.yaml # TODO: This is ruining redeployments
