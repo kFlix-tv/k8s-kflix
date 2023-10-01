@@ -33,6 +33,12 @@
     - name: Kubeconfig
       ansible.builtin.include_tasks: tasks/kubeconfig.yaml
 
+    - name: Edit killall script
+      ansible.builtin.replace:
+        path: /usr/local/bin/k3s-killall.sh
+        regexp: 'umount "\$0"'
+        replace: 'fusermount -uz "$0"'
+
     - name: Wait for custom manifests to rollout
       when:
         - k3s_primary_control_node
