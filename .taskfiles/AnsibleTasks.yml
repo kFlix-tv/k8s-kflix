@@ -48,6 +48,12 @@ tasks:
     interactive: true
     cmd: ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yaml {{.ANSIBLE_PLAYBOOK_DIR}}/cluster-nuke.yaml
 
+  ceph-reset:
+    desc: Delete/Reset the Ceph cluster
+    dir: "{{.ANSIBLE_DIR}}"
+    interactive: true
+    cmd: ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yaml {{.ANSIBLE_PLAYBOOK_DIR}}/cluster-ceph-reset.yaml
+
   reboot:
     desc: Reboot all the k8s nodes
     dir: "{{.ANSIBLE_DIR}}"
