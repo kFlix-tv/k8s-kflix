@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-  - name: core-longhorn-system-settings
+  - name: core-rook-ceph-cluster
   - name: core-flux-system-webhooks
   - name: core-monitoring-kubernetes-dashboard
   - name: core-flux-system-weave-gitops

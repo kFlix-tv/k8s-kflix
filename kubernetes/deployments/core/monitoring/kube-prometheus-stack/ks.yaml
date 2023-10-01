@@ -7,7 +7,7 @@ metadata:
 spec:
   dependsOn:
   - name: core-networking-nginx-external
-  - name: core-longhorn-system-settings
+  - name: core-rook-ceph-cluster
   path: ./kubernetes/deployments/core/monitoring/kube-prometheus-stack/app
   prune: true
   sourceRef:

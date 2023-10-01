@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-  - name: core-longhorn-system-settings
+  - name: core-rook-ceph-cluster
   path: ./kubernetes/deployments/core/database/cloudnative-pg/app
   prune: true
   sourceRef:
