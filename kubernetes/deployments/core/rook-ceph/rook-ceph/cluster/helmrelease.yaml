@@ -45,25 +45,25 @@ spec:
       bdev_enable_discard = true
       bdev_async_discard = true
       osd_class_update_on_start = false
-    # cephClusterSpec:
-    #   network:
-    #     connections:
-    #       compression:
-    #         enabled: true
-    #       requireMsgr2: true
-    #   dataDirHostPath: /var/lib/rook
-    #   mon:
-    #     count: 3
-    #     allowMultiplePerNode: true
-    #   crashCollector:
-    #     disable: false
-    #   dashboard:
-    #     enabled: true
-    #     urlPrefix: /
-    #     ssl: false
-    #   storage:
-    #     useAllNodes: true
-    #     useAllDevices: true
+    cephClusterSpec:
+      network:
+        connections:
+          compression:
+            enabled: true
+          requireMsgr2: true
+      dataDirHostPath: /var/lib/rook
+      mon:
+        count: 3
+        allowMultiplePerNode: true
+      crashCollector:
+        disable: false
+      dashboard:
+        enabled: true
+        urlPrefix: /
+        ssl: false
+      storage:
+        useAllNodes: true
+        useAllDevices: true
     # cephBlockPools:
     # - name: ceph-blockpool
     #   spec:
