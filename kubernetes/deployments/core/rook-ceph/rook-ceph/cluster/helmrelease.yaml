@@ -71,8 +71,8 @@ spec:
         nodes:
         - name: "*"
           devices:
-          - name: "/dev/sda"
-          - name: "/dev/sdb"
+          - name: "sda"
+          - name: "sdb"
     cephBlockPools:
     - name: ceph-blockpool
       spec:
