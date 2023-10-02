@@ -71,7 +71,8 @@ spec:
         nodes:
         - name: "*"
           devices:
-          - name: "/dev/md3"
+          - name: "/dev/sda"
+          - name: "/dev/sdb"
     cephBlockPools:
     - name: ceph-blockpool
       spec:
