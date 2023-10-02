@@ -54,11 +54,9 @@
     #     state: mounted
     #     boot: true
     #     fstype: ext4
-    - name: Blank filesystem signature on /dev/sda
-      command: wipefs -a /dev/sda
 
-    - name: Blank filesystem signature on /dev/sdb
-      command: wipefs -a /dev/sdb
+    - name: Kubeconfig
+      ansible.builtin.include_tasks: tasks/wipe-disks.yaml
 
     - name: DevSec OS Hardening
       ansible.builtin.include_role:

@@ -67,6 +67,9 @@
       vars:
         stale_containers_state: disabled
 
+    - name: Kubeconfig
+      ansible.builtin.include_tasks: tasks/wipe-disks.yaml
+
     - name: Reboot
       ansible.builtin.reboot:
         msg: Rebooting nodes
