@@ -67,7 +67,7 @@ spec:
       storage:
         useAllNodes: true
         useAllDevices: true
-        osdsPerDevice: 2
+        osdsPerDevice: 3
     cephBlockPools:
     - name: ceph-blockpool
       spec:
