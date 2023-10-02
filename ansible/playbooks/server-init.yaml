@@ -9,51 +9,57 @@
       ansible.builtin.pause:
         seconds: 3
   tasks:
-    - name: Setup Partitions on first disk
-      community.general.parted:
-        device: /dev/sda
-        number: 1
-        flags: [lvm]
-        label: gpt
-        state: present
-    - name: Setup Partitions on second disk
-      community.general.parted:
-        device: /dev/sdb
-        number: 1
-        flags: [lvm]
-        label: gpt
-        state: present
-    - name: Install lvm2 dependency
-      ansible.builtin.package:
-        name: lvm2
-        state: present
-    - name: Create a volume group
-      community.general.lvg:
-        vg: data
-        pvs: /dev/sda1,/dev/sdb1
-        pvresize: true
-    - name: Task for creating logical volume
-      community.general.lvol:
-        vg: data
-        lv: data-lv
-        size: 100%PVS
-    - name: Create directory data if does not exist
-      ansible.builtin.file:
-        path: /data
-        state: directory
-        mode: '0755'
-    - name: Create filesystem on data-lv
-      community.general.filesystem:
-        dev: /dev/data/data-lv
-        fstype: ext4
-        resizefs: true
-    - name: Mount LVM on /data
-      ansible.posix.mount:
-        path: /data
-        src: /dev/data/data-lv
-        state: mounted
-        boot: true
-        fstype: ext4
+    # - name: Setup Partitions on first disk
+    #   community.general.parted:
+    #     device: /dev/sda
+    #     number: 1
+    #     flags: [lvm]
+    #     label: gpt
+    #     state: present
+    # - name: Setup Partitions on second disk
+    #   community.general.parted:
+    #     device: /dev/sdb
+    #     number: 1
+    #     flags: [lvm]
+    #     label: gpt
+    #     state: present
+    # - name: Install lvm2 dependency
+    #   ansible.builtin.package:
+    #     name: lvm2
+    #     state: present
+    # - name: Create a volume group
+    #   community.general.lvg:
+    #     vg: data
+    #     pvs: /dev/sda1,/dev/sdb1
+    #     pvresize: true
+    # - name: Task for creating logical volume
+    #   community.general.lvol:
+    #     vg: data
+    #     lv: data-lv
+    #     size: 100%PVS
+    # - name: Create directory data if does not exist
+    #   ansible.builtin.file:
+    #     path: /data
+    #     state: directory
+    #     mode: '0755'
+    # - name: Create filesystem on data-lv
+    #   community.general.filesystem:
+    #     dev: /dev/data/data-lv
+    #     fstype: ext4
+    #     resizefs: true
+    # - name: Mount LVM on /data
+    #   ansible.posix.mount:
+    #     path: /data
+    #     src: /dev/data/data-lv
+    #     state: mounted
+    #     boot: true
+    #     fstype: ext4
+    - name: Blank filesystem signature on /dev/sda
+      command: wipefs -a /dev/sda
+
+    - name: Blank filesystem signature on /dev/sdb
+      command: wipefs -a /dev/sdb
+
     - name: DevSec OS Hardening
       ansible.builtin.include_role:
         name: devsec.hardening.os_hardening
