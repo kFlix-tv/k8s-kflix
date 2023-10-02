@@ -66,13 +66,8 @@ spec:
         ssl: false
       storage:
         useAllNodes: true
-        useAllDevices: false
+        useAllDevices: true
         osdsPerDevice: 2
-        nodes:
-        - name: "*"
-          devices:
-          - name: "sda"
-          - name: "sdb"
     cephBlockPools:
     - name: ceph-blockpool
       spec:
