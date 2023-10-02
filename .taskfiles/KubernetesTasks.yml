@@ -87,7 +87,7 @@ tasks:
     - git add kubernetes/deployments/core/networking/nginx/certificates/kustomization.yaml
     - sed -i 's/production/staging/g' kubernetes/deployments/core/networking/nginx/external/helmrelease.yaml
     - git add kubernetes/deployments/core/networking/nginx/external/helmrelease.yaml
-    - git commit -m "Staging TLS"
+    - 'git commit -m "fix(kubernetes): Staging TLS"'
 
   production:
     desc: Switch cluster to Staging LE Certs
@@ -96,7 +96,7 @@ tasks:
     - git add kubernetes/deployments/core/networking/nginx/certificates/kustomization.yaml
     - sed -i 's/staging/production/g' kubernetes/deployments/core/networking/nginx/external/helmrelease.yaml
     - git add kubernetes/deployments/core/networking/nginx/external/helmrelease.yaml
-    - git commit -m "Production TLS"
+    - 'git commit -m "fix(kubernetes): Production TLS"'
 
   resources:
     desc: Gather common resources in your cluster, useful when asking for support
