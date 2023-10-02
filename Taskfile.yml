@@ -70,3 +70,9 @@ tasks:
     cmds:
     - task: ansible:reinstall
     - task: kubernetes:deploy
+
+  full-redeploy:
+    desc: Completely deletes the server via terraform then runs redeploy
+    cmds:
+    - task: terraform:redeploy
+    - task: redeploy

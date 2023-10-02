@@ -18,11 +18,24 @@ tasks:
     desc: Apply the changes to Cloudflare
     dir: "{{.TERRAFORM_DIR}}"
     cmds:
-    - op run --env-file=./.env -- terraform apply {{.CLI_ARGS}}
+    - op run --env-file=./.env -- terraform apply {{.CLI_ARGS}} -auto-approve
 
   deploy:
     desc: Run all Terraform tasks in order
     dir: "{{.TERRAFORM_DIR}}"
     cmds:
     - task: init
+    - task: apply
+
+  taint:
+    desc: Taint the server install to force a re-install
+    dir: "{{.TERRAFORM_DIR}}"
+    cmd: op run --env-file=./.env -- terraform taint ovh_dedicated_server_install_task.server_install
+
+  redeploy:
+    desc: Redeploy the server
+    dir: "{{.TERRAFORM_DIR}}"
+    cmds:
+    - task: init
+    - task: taint
     - task: apply

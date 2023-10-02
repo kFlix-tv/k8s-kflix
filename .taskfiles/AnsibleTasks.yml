@@ -13,8 +13,8 @@ tasks:
     desc: Install / Upgrade Ansible galaxy deps
     dir: "{{.ANSIBLE_DIR}}"
     cmds:
-    - ansible-galaxy install -r requirements.yml --roles-path roles --force
-    - ansible-galaxy collection install -r requirements.yml --collections-path collections --force
+    - ansible-galaxy install -r requirements.yml --force
+    # - ansible-galaxy collection install -r requirements.yml --collections-path collections --force
 
   server:
     desc: Setup the server
