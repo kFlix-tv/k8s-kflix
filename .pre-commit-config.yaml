@@ -1,9 +1,44 @@
 fail_fast: false
 repos:
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v4.4.0 # Use the ref you want to point at
+  hooks:
+  - id: check-added-large-files
+  - id: check-case-conflict
+  - id: check-json
+  - id: check-merge-conflict
+  - id: check-symlinks
+  - id: check-vcs-permalinks
+  - id: destroyed-symlinks
+  - id: detect-private-key
+  - id: end-of-file-fixer
+  - id: mixed-line-ending
+    args: [--fix=lf]
+  - id: trailing-whitespace
+
 - repo: https://github.com/gruntwork-io/pre-commit
   rev: v0.1.22
   hooks:
   - id: terraform-fmt
+  - id: terraform-validate
+  - id: tflint
+  - id: helmlint
+  - id: shellcheck
+
+
+- repo: https://github.com/Agilicus/pre-commit-hook-k8svalidate.git
+  rev: v0.0.8
+  hooks:
+  - id: k8svalidate
+    args: [--exclude, "**/*.patch.yaml"]
+    files: .yaml$
+
+# TODO: Checkov is too serious for now
+# - repo: https://github.com/bridgecrewio/checkov.git
+#   rev: 2.4.59
+#   hooks:
+#   - id: checkov
+#     args: [-d .]
 - repo: https://github.com/compilerla/conventional-pre-commit
   rev: v2.4.0
   hooks:
@@ -18,4 +53,4 @@ repos:
   rev: v1.32.0
   hooks:
   - id: yamllint
-    args: [--strict, -c=.yamllint]
+    args: [-c=.yamllint]

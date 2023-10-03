@@ -1,6 +1,6 @@
 name: HelmRepository Sync
 
-true:
+on:
   workflow_dispatch:
     inputs:
       repoName:

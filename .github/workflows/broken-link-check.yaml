@@ -1,6 +1,6 @@
 name: Broken Link Check
 
-true:
+on:
   repository_dispatch:
   workflow_dispatch:
   schedule:

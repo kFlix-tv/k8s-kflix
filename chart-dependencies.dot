@@ -34,20 +34,20 @@ digraph kflix {
     helm
     kustomize
   }
-  
-  
+
+
   kubectl -> kustomize [lhead=cluster_flux]
   terraform -> dedi [lhead=cluster_ovh]
   terraform -> kflixdns [lhead=cluster_cloudflare]
   ansible -> dedi [lhead=cluster_ovh]
-  
+
   subgraph cluster_config {
     label="core config"
     graph[style=dotted];
     op [label="onepassword"]
     op -> es
     {rank=same; op; es}
-    // longhorn 
+    // longhorn
     es [label="external-secrets"]
     // cm [label="cert-manager"]
     // rclone
@@ -75,7 +75,7 @@ digraph kflix {
   //     pw3 [label="plex-worker"]
   //     plex -> pw1,pw2,pw3
   //   }
-    
+
   //   {rank=source; uk; jenkins; prowlarr; nextcloud;}
   // }
 
@@ -85,7 +85,7 @@ digraph kflix {
   //   nzbs
   //   {rank=same; nzbs; downloads}
   // }
-  
+
   // subgraph cluster_remote_volumes {
   //   label="remote volumes"
   //   movies

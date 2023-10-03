@@ -1,6 +1,6 @@
 name: Flux Diff
 
-true:
+on:
   pull_request:
     branches: [main]
     paths: [kubernetes/**.yaml]
