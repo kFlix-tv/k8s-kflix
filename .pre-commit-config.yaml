@@ -19,6 +19,6 @@ repos:
     args: []
 # TODO: Make sure ansible lint gets re-enabled with local settings eventually
 - repo: https://github.com/ansible-community/ansible-lint
-  rev: v6.17.2
+  rev: v6.20.3
   hooks:
   - id: ansible-lint
