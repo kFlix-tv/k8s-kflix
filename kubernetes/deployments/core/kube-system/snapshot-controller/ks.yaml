@@ -5,7 +5,8 @@ metadata:
   name: core-kube-system-snapshot-controller
   namespace: flux-system
 spec:
-  # TODO: This might need to depend on Rook-Ceph, or vice versa
+  dependsOn:
+  - name: core-rook-ceph-rook-ceph
   path: ./kubernetes/deployments/core/kube-system/snapshot-controller/app
   prune: true
   sourceRef:
