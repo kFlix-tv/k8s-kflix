@@ -1,8 +1,10 @@
 exclude_paths:
 - kubernetes
 - archive
+- .github
+- .taskfiles
+- .
 skip_list:
-- yaml[line-length]
 - var-naming
 warn_list:
 - command-instead-of-shell

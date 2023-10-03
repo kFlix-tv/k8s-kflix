@@ -1,12 +1,5 @@
 fail_fast: false
 repos:
-- repo: https://github.com/adrienverge/yamllint
-  rev: v1.32.0
-  hooks:
-  - args:
-    - --config-file
-    - .yamllint
-    id: yamllint
 - repo: https://github.com/gruntwork-io/pre-commit
   rev: v0.1.22
   hooks:
@@ -17,8 +10,12 @@ repos:
   - id: conventional-pre-commit
     stages: [commit-msg]
     args: []
-# TODO: Make sure ansible lint gets re-enabled with local settings eventually
-- repo: https://github.com/ansible-community/ansible-lint
-  rev: v6.17.2
+# - repo: https://github.com/ansible-community/ansible-lint
+#   rev: v6.20.3
+#   hooks:
+#   - id: ansible-lint
+- repo: https://github.com/adrienverge/yamllint.git
+  rev: v1.32.0
   hooks:
-  - id: ansible-lint
+  - id: yamllint
+    args: [--strict, -c=.yamllint]

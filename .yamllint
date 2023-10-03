@@ -4,6 +4,7 @@ rules:
     allowed-values: ["true", "false", "on"]
   document-start:
     present: false
+    level: warning
   comments:
     min-spaces-from-content: 1
   line-length: disable
