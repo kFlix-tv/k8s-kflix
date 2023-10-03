@@ -1,4 +1,3 @@
----
 kubernetes:
   vars:
     ansible_user: ubuntu

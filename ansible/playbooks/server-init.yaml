@@ -1,79 +1,33 @@
 - name: Server installation
   hosts:
-    - master
+  - master
   become: true
   gather_facts: true
   any_errors_fatal: true
   pre_tasks:
-    - name: Pausing for 5 seconds...
-      ansible.builtin.pause:
-        seconds: 3
+  - name: Pausing for 5 seconds...
+    ansible.builtin.pause:
+      seconds: 3
   tasks:
-    # - name: Setup Partitions on first disk
-    #   community.general.parted:
-    #     device: /dev/sda
-    #     number: 1
-    #     flags: [lvm]
-    #     label: gpt
-    #     state: present
-    # - name: Setup Partitions on second disk
-    #   community.general.parted:
-    #     device: /dev/sdb
-    #     number: 1
-    #     flags: [lvm]
-    #     label: gpt
-    #     state: present
-    # - name: Install lvm2 dependency
-    #   ansible.builtin.package:
-    #     name: lvm2
-    #     state: present
-    # - name: Create a volume group
-    #   community.general.lvg:
-    #     vg: data
-    #     pvs: /dev/sda1,/dev/sdb1
-    #     pvresize: true
-    # - name: Task for creating logical volume
-    #   community.general.lvol:
-    #     vg: data
-    #     lv: data-lv
-    #     size: 100%PVS
-    # - name: Create directory data if does not exist
-    #   ansible.builtin.file:
-    #     path: /data
-    #     state: directory
-    #     mode: '0755'
-    # - name: Create filesystem on data-lv
-    #   community.general.filesystem:
-    #     dev: /dev/data/data-lv
-    #     fstype: ext4
-    #     resizefs: true
-    # - name: Mount LVM on /data
-    #   ansible.posix.mount:
-    #     path: /data
-    #     src: /dev/data/data-lv
-    #     state: mounted
-    #     boot: true
-    #     fstype: ext4
+  - name: Kubeconfig
+    ansible.builtin.include_tasks: tasks/wipe-disks.yaml
 
-    - name: Kubeconfig
-      ansible.builtin.include_tasks: tasks/wipe-disks.yaml
-
-    - name: DevSec OS Hardening
-      ansible.builtin.include_role:
-        name: devsec.hardening.os_hardening
-      vars:
-        sysctl_overwrite:
-          # Enable IPv4 traffic forwarding for k8s
-          net.ipv4.ip_forward: 1
-    - name: DevSec SSH Hardening
-      ansible.builtin.include_role:
-        name: devsec.hardening.ssh_hardening
-      vars:
-        network_ipv6_enable: false
-        ssh_allow_groups: ubuntu
-    - name: ZSH Install
-      ansible.builtin.include_role:
-        name: manala.roles.zsh
-    # - name: Oh My ZSH Install
-    #   ansible.builtin.include_role:
-    #     name: manala.roles.
+  - name: DevSec OS Hardening
+    ansible.builtin.include_role:
+      name: devsec.hardening.os_hardening
+    vars:
+      sysctl_overwrite:
+        # Enable IPv4 traffic forwarding for k8s
+        net.ipv4.ip_forward: 1
+  - name: DevSec SSH Hardening
+    ansible.builtin.include_role:
+      name: devsec.hardening.ssh_hardening
+    vars:
+      network_ipv6_enable: false
+      ssh_allow_groups: ubuntu
+  - name: ZSH Install
+    ansible.builtin.include_role:
+      name: manala.roles.zsh
+# - name: Oh My ZSH Install
+#   ansible.builtin.include_role:
+#     name: manala.roles.

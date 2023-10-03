@@ -5,7 +5,7 @@ repos:
   hooks:
   - args:
     - --config-file
-    - .yamllint.yaml
+    - .yamllint
     id: yamllint
 - repo: https://github.com/gruntwork-io/pre-commit
   rev: v0.1.22
@@ -18,7 +18,7 @@ repos:
     stages: [commit-msg]
     args: []
 # TODO: Make sure ansible lint gets re-enabled with local settings eventually
-# - repo: https://github.com/ansible-community/ansible-lint
-#   rev: v6.17.2
-#   hooks:
-#     - id: ansible-lint
+- repo: https://github.com/ansible-community/ansible-lint
+  rev: v6.17.2
+  hooks:
+  - id: ansible-lint

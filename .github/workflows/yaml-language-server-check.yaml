@@ -1,62 +1,61 @@
----
-  name: "Yaml-language-server Check"
+name: "Yaml-language-server Check"
 
-  on:
-    push:
-      branches: ["main"]
-      paths: ["kubernetes/**/*.yaml"]
-    pull_request:
-      branches: ["main"]
-      paths: ["kubernetes/**/*.yaml"]
+on:
+  push:
+    branches: ["main"]
+    paths: ["kubernetes/**/*.yaml"]
+  pull_request:
+    branches: ["main"]
+    paths: ["kubernetes/**/*.yaml"]
 
-  jobs:
-    sync:
-      name: Yaml-language-server Check
-      runs-on: ubuntu-latest
-      permissions:
-        contents: read
-        issues: write
-      steps:
-        - name: Checkout
-          uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
-          with:
-            fetch-depth: 0
+jobs:
+  sync:
+    name: Yaml-language-server Check
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      issues: write
+    steps:
+    - name: Checkout
+      uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4.1.0
+      with:
+        fetch-depth: 0
 
-        - name: Get changed files
-          id: changed-files
-          uses: tj-actions/changed-files@8238a4103220c636f2dad328ead8a7c8dbe316a3 # v39.2.0
-          with:
-            files: kubernetes/**/*.yaml
+    - name: Get changed files
+      id: changed-files
+      uses: tj-actions/changed-files@8238a4103220c636f2dad328ead8a7c8dbe316a3 # v39.2.0
+      with:
+        files: kubernetes/**/*.yaml
 
-        - name: Check first line
-          id: broken-files
-          shell: bash
-          run: |
-            declare -a files=()
-            for file in ${{ steps.changed-files.outputs.all_changed_and_modified_files }}; do
-              if [ ! -f "${file}" ]; then
-                continue
-              fi
-              line=$(head -n 1 "${file}")
-              if [[ "${line:0:22}" != "# yaml-language-server" ]]; then
-                files+=("${file}")
-              fi
-            done
-            # check if file array has any elements
-            if [ ${#files[@]} -gt 0 ]; then
-              echo "files=${files[@]}" >> "${GITHUB_OUTPUT}"
-              echo "The following files are missing the yaml-language-server comment:"
-              for file in "${files[@]}"; do
-                echo "${file}"
-              done
-              exit 1
-            fi
+    - name: Check first line
+      id: broken-files
+      shell: bash
+      run: |
+        declare -a files=()
+        for file in ${{ steps.changed-files.outputs.all_changed_and_modified_files }}; do
+          if [ ! -f "${file}" ]; then
+            continue
+          fi
+          line=$(head -n 1 "${file}")
+          if [[ "${line:0:22}" != "# yaml-language-server" ]]; then
+            files+=("${file}")
+          fi
+        done
+        # check if file array has any elements
+        if [ ${#files[@]} -gt 0 ]; then
+          echo "files=${files[@]}" >> "${GITHUB_OUTPUT}"
+          echo "The following files are missing the yaml-language-server comment:"
+          for file in "${files[@]}"; do
+            echo "${file}"
+          done
+          exit 1
+        fi
 
-        - name: Post issue if on main
-          if: failure() && github.ref == 'refs/heads/main'
-          uses: JasonEtco/create-an-issue@e27dddc79c92bc6e4562f268fffa5ed752639abd # v2
-          with:
-            filename: .github/ISSUE_TEMPLATE/yls-check-failed.md
-          env:
-            GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-            FILE_LIST: ${{ steps.broken-files.outputs.files }}
+    - name: Post issue if on main
+      if: failure() && github.ref == 'refs/heads/main'
+      uses: JasonEtco/create-an-issue@e27dddc79c92bc6e4562f268fffa5ed752639abd # v2
+      with:
+        filename: .github/ISSUE_TEMPLATE/yls-check-failed.md
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        FILE_LIST: ${{ steps.broken-files.outputs.files }}

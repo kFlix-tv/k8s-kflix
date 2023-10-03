@@ -1,10 +1,10 @@
 area/ansible:
-- "ansible/**/*"
+- ansible/**/*
 area/github:
-- ".github/**/*"
+- .github/**/*
 area/kubernetes:
-- "kubernetes/**/*"
+- kubernetes/**/*
 area/go-task:
-- ".taskfiles/**/*"
+- .taskfiles/**/*
 area/terraform:
-- "terraform/**/*"
+- terraform/**/*

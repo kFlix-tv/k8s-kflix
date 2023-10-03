@@ -1,4 +1,3 @@
----
 - name: Cluster Reinstall (1)
   import_playbook: cluster-nuke.yaml
 - name: Ceph Reset

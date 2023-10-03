@@ -3,20 +3,19 @@ version: "3"
 vars:
   PYTHON_BIN: python3
   PROJECT_DIR:
-    sh: "git rev-parse --show-toplevel"
+    sh: git rev-parse --show-toplevel
   KUBERNETES_DIR: "{{.PROJECT_DIR}}/kubernetes"
   ANSIBLE_DIR: "{{.PROJECT_DIR}}/ansible"
   TERRAFORM_DIR: "{{.PROJECT_DIR}}/terraform"
 
-dotenv: [".config.env"]
-
+dotenv: [.config.env]
 env:
   KUBECONFIG: "{{.HOME}}/.kube/config-files/kflix.yaml"
   PATH: "{{.ROOT_DIR}}/.venv/bin:$PATH"
   VIRTUAL_ENV: "{{.ROOT_DIR}}/.venv"
   ANSIBLE_COLLECTIONS_PATH: "{{.ROOT_DIR}}/.venv/galaxy"
   ANSIBLE_ROLES_PATH: "{{.ROOT_DIR}}/.venv/galaxy/ansible_roles"
-  ANSIBLE_VARS_ENABLED: "host_group_vars,community.sops.sops"
+  ANSIBLE_VARS_ENABLED: host_group_vars,community.sops.sops
 
 includes:
   ansible: .taskfiles/AnsibleTasks.yml
@@ -29,7 +28,6 @@ includes:
   terraform: .taskfiles/TerraformTasks.yml
 
 tasks:
-
   init:
     desc: Initialize workstation dependencies with Brew
     cmds:

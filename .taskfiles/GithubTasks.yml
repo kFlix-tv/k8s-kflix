@@ -1,7 +1,6 @@
 version: "3"
 
 tasks:
-
   login:
     desc: Login to Github
     cmd: gh auth login

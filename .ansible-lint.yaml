@@ -1,7 +1,0 @@
-profile: min
-
-exclude_paths:
-  - ./ansible/inventory
-
-skip_list:
-  - var-naming
