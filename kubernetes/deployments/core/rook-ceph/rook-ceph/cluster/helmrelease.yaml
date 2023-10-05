@@ -65,9 +65,18 @@ spec:
         urlPrefix: /
         ssl: false
       storage:
-        useAllNodes: true
-        useAllDevices: true
-        osdsPerDevice: 3
+        useAllNodes: false
+        useAllDevices: false
+        osdsPerDevice: "3"
+        nodes:
+        - name: "kflix"
+          devices: # specific devices to use for storage can be specified for each node
+          - name: "sda"
+            config:
+              osdsPerDevice: "3"
+          - name: "sdb" # multiple osds can be created on high performance devices
+            config:
+              osdsPerDevice: "3"
     cephBlockPools:
     - name: ceph-blockpool
       spec:
