@@ -135,7 +135,11 @@ spec:
         storageSpec:
           volumeClaimTemplate:
             spec:
-              existingClaim: prometheus-pvc
+              storageClassName: ceph-block
+              accessModes: ["ReadWriteOnce"]
+              resources:
+                requests:
+                  storage: 20Gi
     grafana:
       enabled: false
       forceDeployDashboards: true
