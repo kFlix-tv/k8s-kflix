@@ -121,7 +121,7 @@ spec:
     read:
       replicas: 2
       persistence:
-        storageClass: ceph-filesystem
+        storageClass: ceph-block
       extraVolumeMounts:
       - name: rules
         mountPath: /rules
