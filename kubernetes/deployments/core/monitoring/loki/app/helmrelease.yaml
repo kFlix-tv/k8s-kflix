@@ -105,6 +105,7 @@ spec:
           reporting_enabled: false
     gateway:
       replicas: 2
+      affinity: ""
       image:
         registry: ghcr.io
       ingress:
