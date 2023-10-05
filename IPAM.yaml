@@ -4,7 +4,7 @@ Additional IPs:
   144.217.187.17: k8s-gateway
   144.217.187.18: nginx-external
   144.217.187.19: nginx-internal
-  192.99.104.32:
+  192.99.104.32: vector-aggregator
   192.99.104.33: postgres-lb
   192.99.104.34:
   192.99.104.35:
