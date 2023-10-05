@@ -21,3 +21,4 @@ metadata:
 spec:
   cidrs:
   - cidr: "${NODE_CIDR}"
+  - cidr: "${NODE_CIDR2}"
