@@ -121,6 +121,7 @@ spec:
           - *host
     read:
       replicas: 2
+      affinity: ""
       persistence:
         storageClass: ceph-block
       extraVolumeMounts:
@@ -131,10 +132,12 @@ spec:
         emptyDir: {}
     write:
       replicas: 2
+      affinity: ""
       persistence:
         storageClass: ceph-filesystem
     backend:
       replicas: 2
+      affinity: ""
       persistence:
         storageClass: ceph-block
       extraVolumeMounts:
