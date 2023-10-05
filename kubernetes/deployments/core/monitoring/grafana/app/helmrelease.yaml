@@ -90,6 +90,7 @@ spec:
         apiVersion: 1
         deleteDatasources:
         - {name: Prometheus, orgId: 1}
+        - {name: Loki, orgId: 1}
         datasources:
         - name: Prometheus
           type: prometheus
@@ -99,6 +100,13 @@ spec:
           jsonData:
             prometheusType: Prometheus
           isDefault: true
+        - name: Loki
+          type: loki
+          uid: loki
+          access: proxy
+          url: http://loki-gateway.monitoring.svc.cluster.local
+          jsonData:
+            maxLines: 250
     dashboards:
       default:
         cloudflared:
@@ -171,6 +179,13 @@ spec:
         enabled: true
         searchNamespace: ALL
         labelValue: ""
+    plugins:
+    - grafana-clock-panel
+    - grafana-piechart-panel
+    - grafana-worldmap-panel
+    - natel-discrete-panel
+    - pr0ps-trackmap-panel
+    - vonage-status-panel
     serviceMonitor:
       enabled: true
     ingress:
