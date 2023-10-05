@@ -20,3 +20,13 @@ spec:
     - tfe_token
     - tfe_organization
     - tfe_project
+  - kind: ConfigMap
+    name: tf-controller-bucket
+    varsKeys:
+    - BUCKET_NAME
+    - BUCKET_HOST
+  - kind: Secret
+    name: tf-controller-bucket
+    varsKeys:
+    - AWS_ACCESS_KEY_ID
+    - AWS_SECRET_ACCESS_KEY
