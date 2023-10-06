@@ -8,13 +8,15 @@ data "tfe_project" "project" {
 }
 
 resource "tfe_workspace" "cloudflare" {
-  name         = "cloudflare"
-  organization = data.tfe_organization.organization.name
-  project_id   = data.tfe_project.project.id
+  name           = "cloudflare"
+  organization   = data.tfe_organization.organization.name
+  project_id     = data.tfe_project.project.id
+  execution_mode = "local"
 }
 
 resource "tfe_workspace" "ovh-s3" {
-  name         = "ovh-s3"
-  organization = data.tfe_organization.organization.name
-  project_id   = data.tfe_project.project.id
+  name           = "ovh-s3"
+  organization   = data.tfe_organization.organization.name
+  project_id     = data.tfe_project.project.id
+  execution_mode = "local"
 }

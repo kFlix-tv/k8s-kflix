@@ -3,6 +3,7 @@ terraform {
     organization = "kilianty"
     workspaces {
       name = "cloudflare"
+
     }
   }
   required_providers {
