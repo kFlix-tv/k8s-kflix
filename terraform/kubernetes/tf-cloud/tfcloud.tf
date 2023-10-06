@@ -18,9 +18,3 @@ resource "tfe_workspace" "ovh-s3" {
   organization = data.tfe_organization.organization.name
   project_id   = data.tfe_project.project.id
 }
-
-resource "tfe_workspace" "test" {
-  name         = "test"
-  organization = data.tfe_organization.organization.name
-  project_id   = data.tfe_project.project.id
-}
