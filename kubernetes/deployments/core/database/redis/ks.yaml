@@ -1,0 +1,16 @@
+# yaml-language-server: $schema=https://kubernetes-schemas.kflix.tv/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: core-database-redis
+  namespace: flux-system
+spec:
+  path: ./kubernetes/deployments/core/database/redis/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: k8s-kflix
+  wait: false
+  interval: 30m
+  retryInterval: 1m
+  timeout: 15m
