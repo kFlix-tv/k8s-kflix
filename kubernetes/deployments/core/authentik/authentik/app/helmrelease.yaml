@@ -35,16 +35,8 @@ spec:
             # TODO: GeoIP container
     replicas: 2
     authentik:
-      secret_key: null
       error_reporting:
         enabled: false
-      postgresql:
-        host: null
-        name: null
-        user: null
-        password: null
-      redis:
-        host: null
     ingress:
       enabled: true
       hosts:
