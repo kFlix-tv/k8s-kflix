@@ -39,6 +39,9 @@ spec:
         enabled: false
     ingress:
       enabled: true
+      annotations:
+        external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
+        nginx.ingress.kubernetes.io/ssl-redirect: "true"
       hosts:
       - host: &host authentik.${SECRET_DOMAIN}
         paths:
