@@ -1,5 +1,5 @@
 - name: Blank filesystem signature on /dev/sda
-  ansible.builtin.command: wipefs -a /dev/sda
+  ansible.builtin.command: wipefs -fa /dev/sda
 
 - name: Blank filesystem signature on /dev/sdb
-  ansible.builtin.command: wipefs -a /dev/sdb
+  ansible.builtin.command: wipefs -fa /dev/sdb
