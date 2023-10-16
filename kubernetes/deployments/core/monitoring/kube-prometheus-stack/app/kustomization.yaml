@@ -6,7 +6,6 @@ resources:
 - ./externalsecret.yaml
 - ./helmrelease.yaml
 - ./cloudflareaccessapplication.yaml
-- ./scrapeconfigs
 - ./prometheusrules
 - ./gatus.yaml
 configMapGenerator:
