@@ -5,6 +5,7 @@ tasks:
     desc: Initialize pre-commit hooks
     cmds:
     - pre-commit install --install-hooks
+    - pre-commit install --hook-type commit-msg
 
   run:
     desc: Run pre-commit
