@@ -29,7 +29,7 @@ spec:
     keepHistory: false
   dependsOn:
   - name: rook-ceph-cluster
-    namespace: kube-system
+    namespace: rook-ceph
   values:
     crds:
       enabled: true
