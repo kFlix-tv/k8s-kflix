@@ -45,13 +45,14 @@ repos:
   - id: conventional-pre-commit
     stages: [commit-msg]
     args: []
-- repo: https://github.com/ansible/ansible-lint.git
-  rev: v6.20.3
-  hooks:
-  - id: ansible-lint
-    always_run: false
-    files: ^ansible/
-    exclude_types: [markdown, shell]
+# TODO: Still broken
+# - repo: https://github.com/ansible/ansible-lint.git
+#   rev: v6.20.3
+#   hooks:
+#   - id: ansible-lint
+#     always_run: false
+#     files: ^ansible/
+#     exclude_types: [markdown, shell]
 - repo: https://github.com/adrienverge/yamllint.git
   rev: v1.32.0
   hooks:
