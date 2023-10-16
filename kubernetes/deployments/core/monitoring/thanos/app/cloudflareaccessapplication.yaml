@@ -1,0 +1,18 @@
+# yaml-language-server: $schema=https://kubernetes-schemas.kflix.tv/cloudflare.zelic.io/cloudflareaccessapplication_v1alpha1.json
+apiVersion: cloudflare.zelic.io/v1alpha1
+kind: CloudflareAccessApplication
+metadata:
+  name: thanos
+  namespace: monitoring
+spec:
+  name: Thanos
+  domain: "thanos-query-frontend.${SECRET_DOMAIN}"
+  autoRedirectToIdentity: true
+  policies:
+  - name: Allow admin
+    decision: allow
+    include:
+    - accessGroups:
+      - valueFrom:
+          name: adminonly
+          namespace: zero-trust
