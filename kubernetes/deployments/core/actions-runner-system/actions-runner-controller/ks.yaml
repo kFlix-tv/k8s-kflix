@@ -5,8 +5,6 @@ metadata:
   name: core-actions-runner-system-controller
   namespace: flux-system
 spec:
-  dependsOn:
-  - name: cluster-apps-external-secrets-stores
   path: ./kubernetes/deployments/core/actions-runner-system/actions-runner-controller/app
   prune: true
   sourceRef:
