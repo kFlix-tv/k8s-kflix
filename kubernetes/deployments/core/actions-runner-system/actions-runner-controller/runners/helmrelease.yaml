@@ -26,6 +26,7 @@ spec:
     keepHistory: false
   values:
     runnerScaleSetName: arc-runner-set-kflix
+    githubConfigSecret: actions-runner-controller-auth-secret
     githubConfigUrl: https://github.com/kflix-tv/k8s-kflix
     minRunners: 1
     maxRunners: 3
@@ -40,16 +41,3 @@ spec:
     controllerServiceAccount:
       name: actions-runner-controller-gha-rs-controller
       namespace: actions-runner-system
-  valuesFrom:
-  - kind: Secret
-    name: actions-runner-controller-auth-secret
-    valuesKey: github_app_id
-    targetPath: githubConfigSecret.github_app_id
-  - kind: Secret
-    name: actions-runner-controller-auth-secret
-    valuesKey: github_app_installation_id
-    targetPath: githubConfigSecret.github_app_installation_id
-  - kind: Secret
-    name: actions-runner-controller-auth-secret
-    valuesKey: github_app_private_key
-    targetPath: githubConfigSecret.github_app_private_key
