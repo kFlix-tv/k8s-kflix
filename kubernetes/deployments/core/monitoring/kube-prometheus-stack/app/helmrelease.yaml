@@ -10,7 +10,7 @@ spec:
   chart:
     spec:
       chart: kube-prometheus-stack
-      version: 51.9.0
+      version: 51.10.0
       sourceRef:
         kind: HelmRepository
         name: prometheus-community
@@ -164,7 +164,7 @@ spec:
         - memory-snapshot-on-shutdown
         - new-service-discovery-manager
         thanos:
-          image: quay.io/thanos/thanos:v0.32.4
+          image: quay.io/thanos/thanos:v0.32.5
           objectStorageConfig:
             name: thanos-objstore-secret
             key: objstore.yml
