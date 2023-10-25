@@ -93,7 +93,7 @@
         "password": "wcFMA/xDdHCJBTolAQ//Qt9k/gWM8PcaRIYt8KFDGsN47fTI/AN6MS9LPVhmhkmgeut01QxELl4vCgXlLpQqH3bDuhF3DLl4hNQyyMchyWJqghVvgfrMngVMWft3VUHZmTmyb+tYYgAR7t/6kPLMgFH4RyrjdXBHLGO0Ilg/RVQocCfSurq0xhYgfX0F8r53Wr7G7u+2PK497uLvLIJOPjBwe1wbJK2SGVs+aoaFBZ7SLFvyeIwxJgDhI37c6lGL2ZkeoAsTmmrAXRAkpSRPz7ry4ViX9aI8hk+rz8Sj2N8EIaCMHTXzeD8MhGOvRAsJmQzuBF0pbGnDEeYIyLGDbgQmhsi70WnNfXOw9mDeDkgz7tOBc1Quo7D/ZzO7mKpl8wQ6MFMGSHNya5mWyZw3UKbz8R1EyxfL6gyafi7haVi4SpMXt8yFvr4zzdRj4TUOQhjGVs+YcRmMI9L8qw/v8l5Td+NxNqblMP3IWDnXPPfpS8fl31myJ3V7i0tbYB0i1ydAp9OzDUzuqcCHGccbclF7xHJm3R61kmyVwErIMUyzDPOeRez7AIS5SoInGheF7nIL1IbI29imMnGpzIxROChapKkPPBEIR56mUPWgzi8IT7qFoglrjcpjlgqTUFfHprlHGkSo3QOGKIU4ManV1p9Vl+1jkLeDF0MHQO2N/ajKq0FY3m369Znyvu/9/hzSdwGPiNn+qy+ngfNS5aiBsyWx37cQ1Byeg9Jk6OvcRe+TaxQZeqYyfYQnyeaOliFKr4pZZ3PzrF4wsxaERbaUFDUTit1y2w+RyPOuj/lN3ZGjt81Eis+8w4B5rU3Nn/8SKqId1uyKyxh568iHre4DTCY3K7q6wzI2"
       }
     }
-  ]
+  ],
   "packageRules": [
     {
       "description": "Loose versioning for non-semver packages",
