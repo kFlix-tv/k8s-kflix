@@ -86,7 +86,7 @@
   ],
   "hostRules": [
     {
-      "matchHost": "ghcr.io/",
+      "matchHost": "ghcr.io",
       "username": "kiliantyler",
       "encrypted": {
         "password": "wcFMA/xDdHCJBTolAQ/6A0TDCF80YIsEd6h7nT3K7EIrvkKQGaMWYGJJNLjNLwQ5sEcETKugNbYNXBJH9qrDeXr+wsXNVd6RN41NRl0aOKlU+l68WkxkDXYNKJsg7Y3lnB2S+qIYe8aUL0MZ3SgmQJmVmEXDzmIuyGYMS7VtqqVcU85XqiVnrrwXKzIP3b1jQUUj8nQvPEhXVTSTzMxkwSYrMXwhv6sAtt8x3z4PCD8GapHNxZgdXystC9xR5hjZY7iJmLOecJC8B1obgqDT0aNxsSuRN4w/QNuseHZHhl5WvpVUw6yZgdrLZcHyLK472cOSi4HJv/oJdY3aUCLK2hzimdYtQ1KjVVAC4CVFvJEt26ed2dJ68r+69sTkH00mg5Q7AbxOU3ms6SynMQohUtrq8uc1kOIFr1tCM78QuU9ZET/mrjaeaAlV4X1d6WaFLPMQGxNrmVSI5wkd3XtQwkF/UVsEI3m5DxANATySMszc4XOj8ksppSL2WiIZn/qWf1wdaFlHgXrNfD4miZF4Uzuaj4mzAVs1gxDN0KV9s223nNP3lSz6sGFDD7N+UqQvHxjzsHYh9dtDnlm47xbCDtJ/JzVa9wckYn0HlPdtY9TsB8+tdT/5ya3ImEpR7kHJ7NnFKoa9e6q1o9hEJ87RCollw3jOGa4DHuk2hk2ibjLuVmkwDs1BvpQz9fgYQpTSdwHKqETSDSi5RLG5DLPdUr6b7Ar/85FQ56sKQcLSg2cxTAN61ax2jiqP/m8Qy7yrrPdGT1F9l4d8eNou6F/VD541Lg9gFBT2UpzntnZT26iTgEqN8T05NH/j7SRl1t/5IC507WxXOhk1IApfbHpbGjYKh4qI+Mgg"
