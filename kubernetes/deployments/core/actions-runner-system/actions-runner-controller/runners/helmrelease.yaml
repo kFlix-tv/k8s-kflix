@@ -36,7 +36,7 @@ spec:
       spec:
         containers:
         - name: runner
-          image: ghcr.io/kflix-tv/github-actions-runner:2.311.0
+          image: ghcr.io/kflix-tv/github-actions-runner:rolling@sha256:c437edb325df431511482d4c462f3a53a42a6bce33fb2bfe4c712b279f9528df
           imagePullPolicy: IfNotPresent
         imagePullSecrets:
         - name: ghcr-credentials
