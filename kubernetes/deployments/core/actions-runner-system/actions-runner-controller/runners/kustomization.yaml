@@ -4,4 +4,5 @@ kind: Kustomization
 namespace: actions-runner-system
 resources:
 - ./ghcr-credentials.yaml
-- ./helmrelease.yaml
+- ./arc-kflix.yaml
+- ./arc-ubuntu-latest.yaml
