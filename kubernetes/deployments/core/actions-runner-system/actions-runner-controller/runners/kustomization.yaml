@@ -5,4 +5,4 @@ namespace: actions-runner-system
 resources:
 - ./ghcr-credentials.yaml
 - ./arc-kflix.yaml
-- ./arc-ubuntu-latest.yaml
+# - ./arc-ubuntu-latest.yaml
