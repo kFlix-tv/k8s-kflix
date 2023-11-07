@@ -28,8 +28,8 @@ spec:
     runnerScaleSetName: arc-ubuntu-latest
     githubConfigSecret: actions-runner-controller-auth-secret
     githubConfigUrl: https://github.com/kflix-tv/k8s-kflix
-    minRunners: 2
-    maxRunners: 12
+    minRunners: 1
+    maxRunners: 6
     containerMode:
       type: dind
     template:
