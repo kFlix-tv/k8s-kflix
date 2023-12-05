@@ -28,6 +28,11 @@ includes:
   terraform: .taskfiles/TerraformTasks.yml
 
 tasks:
+  default:
+    silent: true
+    cmds:
+    - task -l
+
   init:
     desc: Initialize workstation dependencies with Brew
     cmds:

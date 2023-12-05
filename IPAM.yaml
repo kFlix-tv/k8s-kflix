@@ -1,10 +1,10 @@
 Main Server: 51.222.43.228
 Additional IPs:
-  144.217.187.16: kube-vip-addr
-  144.217.187.17: k8s-gateway
-  144.217.187.18: nginx-external
-  144.217.187.19: nginx-internal
-  192.99.104.32: vector-aggregator
-  192.99.104.33: postgres-lb
-  192.99.104.34:
-  192.99.104.35:
+  167.114.212.248: kube-vip-addr
+  167.114.212.249: k8s-gateway
+  167.114.212.250: nginx-external
+  167.114.212.251: nginx-internal
+  167.114.212.252: vector-aggregator
+  167.114.212.253: postgres-lb
+  167.114.212.254:
+  167.114.212.255:
