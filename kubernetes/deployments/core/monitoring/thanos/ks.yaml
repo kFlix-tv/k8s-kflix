@@ -6,6 +6,8 @@ metadata:
   namespace: flux-system
 spec:
   path: ./kubernetes/deployments/core/monitoring/thanos/app
+  dependsOn:
+  - name: core-networking-nginx-external
   prune: true
   sourceRef:
     kind: GitRepository
