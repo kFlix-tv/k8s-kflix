@@ -7,8 +7,8 @@ metadata:
   annotations:
     kyverno.io/ignore: "true"
 spec:
-  instances: 2
-  imageName: ghcr.io/cloudnative-pg/postgresql:16.0-10
+  instances: 3
+  imageName: ghcr.io/cloudnative-pg/postgresql:16.1-4
   inheritedMetadata:
     labels:
       kube-image-keeper.enix.io/image-caching-policy: ignore
@@ -24,7 +24,14 @@ spec:
   postgresql:
     parameters:
       max_connections: "600"
+      max_slot_wal_keep_size: 10GB
       shared_buffers: 512MB
+  resources:
+    requests:
+      memory: "2Gi"
+      cpu: "500m"
+    limits:
+      memory: "4Gi"
   monitoring:
     enablePodMonitor: true
     # TODO: Enable backup
