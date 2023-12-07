@@ -47,7 +47,7 @@ spec:
             - --config
             - /etc/cloudflared/config/config.yaml
             - run
-            - "${CLUSTER_CLOUDFLARE_TUNNEL_ID}"
+            - "${TUNNEL_ID}"
             probes:
               liveness: &probes
                 enabled: true
@@ -63,28 +63,21 @@ spec:
               readiness: *probes
               startup:
                 enabled: false
-              securityContext:
-                allowPrivilegeEscalation: false
-                readOnlyRootFilesystem: true
-                capabilities: {drop: [ALL]}
-              resources:
-                requests:
-                  cpu: 5m
-                  memory: 128M
-                limits:
-                  memory: 256M
+            securityContext:
+              allowPrivilegeEscalation: false
+              readOnlyRootFilesystem: true
+              capabilities: {drop: ["ALL"]}
+            resources:
+              requests:
+                cpu: 5m
+                memory: 128M
+              limits:
+                memory: 256M
         pod:
           securityContext:
             runAsUser: 568
             runAsGroup: 568
             runAsNonRoot: true
-          topologySpreadConstraints:
-          - maxSkew: 1
-            topologyKey: kubernetes.io/hostname
-            whenUnsatisfiable: DoNotSchedule
-            labelSelector:
-              matchLabels:
-                app.kubernetes.io/name: *app
     service:
       main:
         ports:
@@ -97,7 +90,7 @@ spec:
       config:
         enabled: true
         type: configMap
-        name: cloudflared-configmap
+        name: cloudflared-configmap # overriden by kustomizeconfig
         globalMounts:
         - path: /etc/cloudflared/config/config.yaml
           subPath: config.yaml
