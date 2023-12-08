@@ -71,7 +71,7 @@ tasks:
   redeploy:
     desc: Runs an `ansible:reinstall` followed by a `kubernetes:deploy`
     cmds:
-    - task: ansible:reinstall
+    - task: ansible:redeploy
     - task: kubernetes:deploy
     - task: github:update-kubeconfig
 

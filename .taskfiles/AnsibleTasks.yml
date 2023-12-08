@@ -83,6 +83,13 @@ tasks:
     dir: "{{.ANSIBLE_DIR}}"
     cmd: ansible-playbook -i {{.ANSIBLE_INVENTORY_DIR}}/hosts.yaml {{.ANSIBLE_PLAYBOOK_DIR}}/cluster-kubeconfig.yaml
 
+  redeploy:
+    desc: Redeploy the cluster
+    dir: "{{.ANSIBLE_DIR}}"
+    cmds:
+    - task: nuke
+    - task: deploy
+
   deploy:
     desc: Runs all deployment tasks for Ansible
     dir: "{{.ANSIBLE_DIR}}"
