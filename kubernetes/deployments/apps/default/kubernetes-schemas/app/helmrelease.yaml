@@ -33,7 +33,7 @@ spec:
           main:
             image:
               repository: ghcr.io/kflix-tv/kubernetes-schemas
-              tag: 1.0.26
+              tag: 1.0.27
             securityContext:
               allowPrivilegeEscalation: false
               readOnlyRootFilesystem: true
