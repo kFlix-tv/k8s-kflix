@@ -79,4 +79,4 @@ tasks:
     desc: Completely deletes the server via terraform then runs redeploy
     cmds:
     - task: terraform:redeploy
-    - task: redeploy
+    - task: deploy
