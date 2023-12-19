@@ -40,8 +40,8 @@ jobs:
 
     - name: Switch to Nix devShell
       uses: nicknovitski/nix-develop@a2060d116a50b36dfab02280af558e73ab52427d # v1.1.0
-      # with:
-        # arguments: "${{ env.WORKFLOW_RESOURCE_DIR }}"
+      with:
+        arguments: "${{ env.WORKFLOW_RESOURCE_DIR }}"
 
     - name: Diff Resources
       # uses: allenporter/flux-local/action/diff@19bfc6920e8964a479363bc230e6c329120ead02 # 3.2.0
