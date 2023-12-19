@@ -29,26 +29,26 @@ jobs:
       with:
         token: "${{ secrets.GITHUB_TOKEN }}"
 
-    - name: Install OS Deps
-      shell: bash
-      run: sudo apt-get update && sudo apt-get install -y curl git xz-utils
+    # - name: Install OS Deps
+    #   shell: bash
+    #   run: sudo apt-get update && sudo apt-get install -y curl git xz-utils
 
-    - name: Install Nix
-      uses: cachix/install-nix-action@7ac1ec25491415c381d9b62f0657c7a028df52a7 # v24
-      with:
-        github_access_token: "${{ secrets.GITHUB_TOKEN }}"
+    # - name: Install Nix
+    #   uses: cachix/install-nix-action@7ac1ec25491415c381d9b62f0657c7a028df52a7 # v24
+    #   with:
+    #     github_access_token: "${{ secrets.GITHUB_TOKEN }}"
 
-    - name: Switch to Nix devShell
-      uses: nicknovitski/nix-develop@a2060d116a50b36dfab02280af558e73ab52427d # v1.1.0
-      with:
-        arguments: "${{ env.WORKFLOW_RESOURCE_DIR }}"
+    # - name: Switch to Nix devShell
+    #   uses: nicknovitski/nix-develop@a2060d116a50b36dfab02280af558e73ab52427d # v1.1.0
+    #   with:
+    #     arguments: "${{ env.WORKFLOW_RESOURCE_DIR }}"
 
     - name: Diff Resources
       # uses: allenporter/flux-local/action/diff@19bfc6920e8964a479363bc230e6c329120ead02 # 3.2.0
       uses: allenporter/flux-local/action/diff@flux-build
       id: diff
       with:
-        sources: home-kubernetes
+        sources: k8s-kflix
         path: "${{ matrix.path }}"
         resource: "${{ matrix.resource }}"
 
