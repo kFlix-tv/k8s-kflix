@@ -1,34 +1,54 @@
-name: Flux Diff
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
+name: "Flux Diff"
 
 on:
   pull_request:
-    branches: [main]
-    paths: [kubernetes/**.yaml]
+    branches: ["main"]
+    paths: ["kubernetes/**.yaml"]
+
+env:
+  DEBCONF_NONINTERACTIVE_SEEN: "true"
+  DEBIAN_FRONTEND: noninteractive
+  APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE: DontWarn
+  WORKFLOW_RESOURCE_DIR: ./.github/workflows/resources
+
 jobs:
   flux-diff:
     name: Flux Diff
-    runs-on: arc-ubuntu-latest
+    runs-on: ubuntu-latest
     permissions:
-      pull-requests: write
       contents: read
+      pull-requests: write
     strategy:
       matrix:
-        path: [kubernetes]
-        resource: [helmrelease, kustomization]
+        path: ["kubernetes"]
+        resource: ["helmrelease", "kustomization"]
     steps:
-
-    - name: Login to GitHub Container Registry
-      uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d # v3.0.0
+    - name: Checkout
+      uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       with:
-        registry: ghcr.io
-        username: "${{ github.actor }}"
-        password: "${{ secrets.GITHUB_TOKEN }}"
+        token: "${{ secrets.GITHUB_TOKEN }}"
+
+    - name: Install OS Deps
+      shell: bash
+      run: sudo apt-get update && sudo apt-get install -y curl git xz-utils
+
+    - name: Install Nix
+      uses: cachix/install-nix-action@7ac1ec25491415c381d9b62f0657c7a028df52a7 # v24
+      with:
+        github_access_token: "${{ secrets.GITHUB_TOKEN }}"
+
+    - name: Switch to Nix devShell
+      uses: nicknovitski/nix-develop@a2060d116a50b36dfab02280af558e73ab52427d # v1.1.0
+      with:
+        arguments: "${{ env.WORKFLOW_RESOURCE_DIR }}"
 
     - name: Diff Resources
-      uses: allenporter/flux-local/action/diff@19bfc6920e8964a479363bc230e6c329120ead02 # 3.2.0
+      # uses: allenporter/flux-local/action/diff@19bfc6920e8964a479363bc230e6c329120ead02 # 3.2.0
+      uses: allenporter/flux-local/action/diff@flux-build
       id: diff
       with:
-        sources: k8s-kflix
+        sources: home-kubernetes
         path: "${{ matrix.path }}"
         resource: "${{ matrix.resource }}"
 
@@ -36,8 +56,8 @@ jobs:
       name: Add comment
       uses: mshick/add-pr-comment@7c0890544fb33b0bdd2e59467fbacb62e028a096 # v2.8.1
       with:
-        repo-token: ${{ secrets.GITHUB_TOKEN }}
-        message-id: ${{ github.event.pull_request.number }}/${{ matrix.path }}/${{matrix.resource }}
+        repo-token: "${{ secrets.GITHUB_TOKEN }}"
+        message-id: "${{ github.event.pull_request.number }}/${{ matrix.path }}/${{ matrix.resource }}"
         message-failure: Diff was not successful
         message: |
           ```diff
