@@ -36,7 +36,7 @@ spec:
       spec:
         containers:
         - name: runner
-          image: ghcr.io/kflix-tv/github-actions-runner:2.311.0
+          image: ghcr.io/actions-runner-controller/actions-runner-controller/actions-runner-dind:v2.311.0-ubuntu-20.04-8e48463
           imagePullPolicy: IfNotPresent
     controllerServiceAccount:
       name: actions-runner-controller-gha-rs-controller
