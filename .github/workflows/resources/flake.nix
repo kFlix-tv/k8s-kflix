@@ -15,6 +15,7 @@
                 fluxcd
                 kubeconform
                 kubectl
+                kubernetes-helm
                 kustomize
                 jo
                 yq
