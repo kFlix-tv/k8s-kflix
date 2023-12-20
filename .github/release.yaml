@@ -1,4 +1,14 @@
 changelog:
   exclude:
-    authors:
-    - renovate
+    labels:
+    - type/digest
+  categories:
+  - title: Breaking Changes 🛠
+    labels:
+    - type/major
+  - title: Exciting New Features 🎉
+    labels:
+    - type/minor
+  - title: Other Changes
+    labels:
+    - "*"
