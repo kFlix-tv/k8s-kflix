@@ -10,10 +10,10 @@
     ":dependencyDashboard",
     ":semanticCommits",
     "skipStatusChecks",
-    ":timezone(America/New_York)"
+    ":timezone(America/New_York)",
     "replacements:all",
     "workarounds:all",
-    "group:monorepos"
+    "group:monorepos",
     "github>kFlix-tv/k8s-kflix//.github/renovate/allowedVersions.json5",
     "github>kFlix-tv/k8s-kflix//.github/renovate/autoMerge.json5",
     "github>kFlix-tv/k8s-kflix//.github/renovate/commitMessage.json5",
@@ -23,7 +23,7 @@
     "github>kFlix-tv/k8s-kflix//.github/renovate/hostRules.json5",
     "github>kFlix-tv/k8s-kflix//.github/renovate/labels.json5",
     "github>kFlix-tv/k8s-kflix//.github/renovate/packageRules.json5",
-    "github>kFlix-tv/k8s-kflix//.github/renovate/semanticCommits.json5",
+    "github>kFlix-tv/k8s-kflix//.github/renovate/semanticCommits.json5"
   ],
   "platform": "github",
   "onboarding": false,
@@ -35,7 +35,7 @@
   "reviewersFromCodeOwners": true,
   "ignorePaths": [
     "**/.archive/**"
-    ],
+  ],
   "flux": {
     "fileMatch": [
       "(^|/)kubernetes/.+\\.ya?ml(\\.j2)?$"
