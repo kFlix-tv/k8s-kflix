@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://kubernetes-schemas.kflix.tv/minio.min.io/tenant_v2.json
+# yaml-language-server: $schema=https://k8s-schemas.pages.dev/minio.min.io/tenant_v2.json
 apiVersion: minio.min.io/v2
 kind: Tenant
 metadata:

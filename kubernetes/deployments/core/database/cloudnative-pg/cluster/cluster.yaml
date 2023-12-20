@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://kubernetes-schemas.kflix.tv/postgresql.cnpg.io/cluster_v1.json
+# yaml-language-server: $schema=https://k8s-schemas.pages.dev/postgresql.cnpg.io/cluster_v1.json
 apiVersion: postgresql.cnpg.io/v1
 kind: Cluster
 metadata:

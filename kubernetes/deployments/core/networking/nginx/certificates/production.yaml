@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://kubernetes-schemas.kflix.tv/cert-manager.io/certificate_v1.json
+# yaml-language-server: $schema=https://k8s-schemas.pages.dev/cert-manager.io/certificate_v1.json
 apiVersion: cert-manager.io/v1
 kind: Certificate
 metadata:
@@ -14,7 +14,7 @@ spec:
   - "${SECRET_DOMAIN}"
   - "*.${SECRET_DOMAIN}"
 # ---
-# # yaml-language-server: $schema=https://kubernetes-schemas.kflix.tv/cert-manager.io/certificate_v1.json
+# # yaml-language-server: $schema=https://k8s-schemas.pages.dev/cert-manager.io/certificate_v1.json
 # apiVersion: cert-manager.io/v1
 # kind: Certificate
 # metadata:

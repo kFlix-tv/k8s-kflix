@@ -1,4 +1,4 @@
-# yaml-language-server: $schema=https://kubernetes-schemas.kflix.tv/upgrade.cattle.io/plan_v1.json
+# yaml-language-server: $schema=https://k8s-schemas.pages.dev/upgrade.cattle.io/plan_v1.json
 apiVersion: upgrade.cattle.io/v1
 kind: Plan
 metadata:
