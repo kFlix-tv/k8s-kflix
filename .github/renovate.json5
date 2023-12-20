@@ -9,7 +9,7 @@
     ":disableRateLimiting",
     ":dependencyDashboard",
     ":semanticCommits",
-    "skipStatusChecks",
+    ":skipStatusChecks",
     ":timezone(America/New_York)",
     "replacements:all",
     "workarounds:all",
