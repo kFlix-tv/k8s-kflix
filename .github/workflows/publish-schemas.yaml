@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=https://json.schemastore.org/github-workflow.json
 name: "Publish Schemas"
 
 on:
@@ -8,150 +9,74 @@ on:
     branches: ["main"]
     paths: [".github/workflows/publish-schemas.yaml"]
 
+env:
+  DEBCONF_NONINTERACTIVE_SEEN: "true"
+  DEBIAN_FRONTEND: noninteractive
+  APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE: DontWarn
+  WORKFLOW_RESOURCE_DIR: ./.github/workflows/resources
+  SCHEMAS_DIR: /home/runner/crds
+
 jobs:
-  publish-manifests:
-    name: Publish Manifests
-    runs-on: ["arc-runner-set-kflix"]
+  publish-schemas:
+    name: Publish Schemas
+    runs-on: ["arc-runner-set-home-ops"]
     permissions:
       contents: read
       packages: write
     steps:
-    - name: Setup Flux
-      uses: fluxcd/flux2/action@5c5c15ea212b8f029a110f9975851d25c8272695 # v2.2.2
 
-    - name: Setup Kube Tools
-      uses: yokawasa/action-setup-kube-tools@af4ebb1af1efd30c5bd84a2e9773355ad6362a33 # v0.9.3
+    - name: Checkout
+      uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       with:
-        setup-tools: kubectl
+        token: "${{ secrets.GITHUB_TOKEN }}"
+
+    - name: Install OS Deps
+      shell: bash
+      run: sudo apt-get update && sudo apt-get install -y curl git xz-utils
+
+    - name: Install Nix
+      uses: cachix/install-nix-action@7ac1ec25491415c381d9b62f0657c7a028df52a7 # v24
+      with:
+        github_access_token: "${{ secrets.GITHUB_TOKEN }}"
+
+    - name: Switch to Nix devShell
+      uses: nicknovitski/nix-develop@a2060d116a50b36dfab02280af558e73ab52427d # v1.1.0
+      with:
+        arguments: "${{ env.WORKFLOW_RESOURCE_DIR }}"
+
+    - name: Setup Node
+      uses: actions/setup-node@b39b52d1213e96004bfcb1c61a8a6fa8ab84f3e8 # v4.0.1
+      with:
+        node-version: 18.x
 
     - name: Setup Python
       uses: actions/setup-python@0a5c61591373683505ea898e09a3ea4f39ef2b9c # v5.0.0
       with:
         python-version: 3.x
 
-    - name: Login to GitHub Container Registry
-      uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d # v3.0.0
-      with:
-        registry: ghcr.io
-        username: "${{ github.actor }}"
-        password: "${{ secrets.GITHUB_TOKEN }}"
-
-    - name: Setup crd-extractor
-      uses: robinraju/release-downloader@efa4cd07bd0195e6cc65e9e30c251b49ce4d3e51 # v1.8
-      with:
-        repository: datreeio/CRDs-catalog
-        latest: true
-        fileName: crd-extractor.zip
-
     - name: Write kubeconfig
       id: kubeconfig
-      uses: timheuer/base64-to-file@adaa40c0c581f276132199d4cf60afa07ce60eac # v1.2
+      uses: timheuer/base64-to-file@784a1a4a994315802b7d8e2084e116e783d157be # v1.2.4
       with:
-        encodedString: ${{ secrets.KUBECONFIG }}
+        encodedString: "${{ secrets.KUBECONFIG }}"
         fileName: kubeconfig
 
-    - name: Run crd-extractor
+    - name: Download and run crd-extractor
       env:
-        KUBECONFIG: ${{ steps.kubeconfig.outputs.filePath }}
+        KUBECONFIG: "${{ steps.kubeconfig.outputs.filePath }}"
       shell: bash
       run: |
-        unzip -j $GITHUB_WORKSPACE/crd-extractor.zip -d $GITHUB_WORKSPACE
+        mkdir -p ${{ env.SCHEMAS_DIR }}
+        curl -fsSL -o $GITHUB_WORKSPACE/crd-extractor.sh \
+            https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/Utilities/crd-extractor.sh
+        chmod +x $GITHUB_WORKSPACE/crd-extractor.sh
         bash $GITHUB_WORKSPACE/crd-extractor.sh
+        mv /home/runner/.datree/crdSchemas/* ${{ env.SCHEMAS_DIR }}
 
-    - name: Repo owner to lowercase
-      id: repo_owner
-      shell: bash
-      run: echo "repo-owner=$(echo ${GITHUB_REPOSITORY_OWNER} | tr '[:upper:]' '[:lower:]')" >> "${GITHUB_OUTPUT}"
-
-    - name: Generate tag
-      id: generate-tag
-      shell: bash
-      run: echo "tag=ghcr.io/${{ steps.repo_owner.outputs.repo-owner }}/manifests/kubernetes-schemas:$(git rev-parse --short HEAD)" >> "${GITHUB_OUTPUT}"
-
-    - name: Publish manifests
-      shell: bash
-      run: |
-        flux push artifact oci://${{ steps.generate-tag.outputs.tag }} \
-            --path="/home/runner/.datree/crdSchemas" \
-            --source="${{ github.repositoryUrl }}" \
-            --revision="${{ github.ref_name }}@sha1:$(git rev-parse HEAD)"
-
-    - name: Tag manifests
-      shell: bash
-      run: flux tag artifact oci://${{ steps.generate-tag.outputs.tag }} --tag main
-
-  publish-web:
-    name: Publish Web
-    runs-on: ["arc-runner-set-kflix"]
-    needs: ["publish-manifests"]
-    permissions:
-      contents: read
-      packages: write
-    steps:
-    - name: Setup Flux
-      uses: fluxcd/flux2/action@5c5c15ea212b8f029a110f9975851d25c8272695 # v2.2.2
-
-    - name: Setup QEMU
-      uses: docker/setup-qemu-action@68827325e0b33c7199eb31dd4e31fbe9023e06e3 # v3.0.0
-
-    - name: Setup Docker Buildx
-      id: buildx
-      uses: docker/setup-buildx-action@f95db51fddba0c2d1ec667646a06c2ce06100226 # v3.0.0
-
-    - name: Login to GitHub Container Registry
-      uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d # v3.0.0
+    - name: Deploy to Cloudflare Pages
+      uses: cloudflare/wrangler-action@5e8484995321734668f14981c316aa9188d76ed1 # v3.3.2
       with:
-        registry: ghcr.io
-        username: "${{ github.actor }}"
-        password: "${{ secrets.GITHUB_TOKEN }}"
-
-    - name: Repo owner to lowercase
-      id: repo_owner
-      shell: bash
-      run: echo "repo-owner=$(echo ${GITHUB_REPOSITORY_OWNER} | tr '[:upper:]' '[:lower:]')" >> "${GITHUB_OUTPUT}"
-
-    - name: Pull manifests
-      shell: bash
-      run: |
-        mkdir -p /home/runner/crdSchemas
-        flux pull artifact oci://ghcr.io/${{ steps.repo_owner.outputs.repo-owner }}/manifests/kubernetes-schemas:$(git rev-parse --short HEAD) --output /home/runner/crdSchemas
-
-    - name: Write nginx-unprivileged Dockerfile
-      shell: bash
-      run: |
-        cat <<EOF > /home/runner/crdSchemas/Dockerfile
-        FROM docker.io/nginxinc/nginx-unprivileged:latest
-        COPY --chown=nginx:nginx --chmod=755 . /usr/share/nginx/html
-        USER nginx
-        EOF
-
-    - name: Publish web container
-      uses: docker/build-push-action@4a13e500e55cf31b7a5d59a38ab2040ab0f42f56 # v5.1.0
-      with:
-        context: /home/runner/crdSchemas
-        platforms: linux/amd64,linux/arm64
-        file: /home/runner/crdSchemas/Dockerfile
-        push: true
-        tags: |
-          ghcr.io/${{ steps.repo_owner.outputs.repo-owner }}/kubernetes-schemas:latest
-          ghcr.io/${{ steps.repo_owner.outputs.repo-owner }}/kubernetes-schemas:${{ secrets.SCHEMAS_MAJOR_VERSION }}.${{ secrets.SCHEMAS_MINOR_VERSION }}.${{ secrets.SCHEMAS_PATCH_VERSION }}
-        cache-from: type=gha
-        cache-to: type=gha,mode=max
-        labels: |
-          org.opencontainers.image.source="${{ github.repositoryUrl }}"
-          org.opencontainers.image.authors="Kilian Tyler <kiliantyler@users.noreply.github.com>"
-
-    - name: Update Patch Version
-      id: NEW_PATCH_VERSION
-      shell: bash
-      run: |
-        echo "NEW_PATCH_VERSION=$((${{ secrets.SCHEMAS_PATCH_VERSION }}+1))" >> "${GITHUB_OUTPUT}"
-        echo "New Patch Version |$((${{ secrets.SCHEMAS_PATCH_VERSION }}+1))|"
-
-    - name: Update Minor version
-      uses: hmanzur/actions-set-secret@377391a32b6d43a053d7847dde34ac6179ac9f55 # v2.0.0
-      with:
-        name: 'SCHEMAS_PATCH_VERSION'
-        value: ${{ steps.NEW_PATCH_VERSION.outputs.NEW_PATCH_VERSION }}
-        repository: kFlix-tv/k8s-kflix
-        token: ${{ secrets.SECRET_PAT }}
+        apiToken: "${{ secrets.CLOUDFLARE_API_TOKEN }}"
+        accountId: "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}"
+        workingDirectory: "${{ env.SCHEMAS_DIR }}"
+        command: pages deploy --project-name=k8s-schemas --branch main .
