@@ -3,10 +3,10 @@ changelog:
     labels:
     - type/digest
   categories:
-  - title: Breaking Changes 🛠
+  - title: Major Updates
     labels:
     - type/major
-  - title: Exciting New Features 🎉
+  - title: Minor Updates
     labels:
     - type/minor
   - title: Other Changes
