@@ -33,7 +33,7 @@ spec:
         containers:
           main:
             image:
-              repository: mumiehub/rclone-mount
+              repository: docker.io/mumiehub/rclone-mount
               tag: v1.65.0
               pullPolicy: IfNotPresent
             env:
