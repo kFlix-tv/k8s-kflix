@@ -4,4 +4,4 @@ kind: Kustomization
 namespace: storage
 resources:
 - ./externalsecret.yaml
-# - ./helmrelease.yaml
+- ./helmrelease.yaml
