@@ -67,15 +67,15 @@ spec:
             runAsUser: 568
             runAsGroup: 568
             runAsNonRoot: false
-        service:
-          main:
-            enabled: false
-        persistance:
-          config:
-            enabled: true
-            type: secret
-            name: rclone-secret
-            globalMounts:
-            - name: config
-              mountPath: /config/rclone.conf
-              subPath: configData
+    service:
+      main:
+        enabled: false
+    persistance:
+      config:
+        enabled: true
+        type: secret
+        name: rclone-secret
+        globalMounts:
+        - name: config
+          mountPath: /config/rclone.conf
+          subPath: configData
