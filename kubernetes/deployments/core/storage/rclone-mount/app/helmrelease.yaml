@@ -76,5 +76,5 @@ spec:
         advancedMounts:
           main:
             init-config:
-            - path: /config/rclone.conf
+            - path: /tmp/secret/rclone.conf
               subPath: configData
