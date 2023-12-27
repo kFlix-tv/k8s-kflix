@@ -74,7 +74,7 @@ spec:
         type: secret
         name: rclone-secret
         advancedMounts:
-        main:
-          init-config:
-          - path: /config/rclone.conf
-            subPath: configData
+          main:
+            init-config:
+            - path: /config/rclone.conf
+              subPath: configData
