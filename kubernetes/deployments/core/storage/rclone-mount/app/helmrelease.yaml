@@ -40,7 +40,7 @@ spec:
               TZ: America/New_York # TODO: Move TZ to cluster-settings
               RemotePath: "encrypt:"
               MountCommands: >-
-                --allow-other --allow-non-empty --allow-root --dir-cache-time 24h --umask 002 --log-level INFO --log-file /config/logs/rclone.log
+                --allow-other --allow-non-empty --allow-root --dir-cache-time 24h --umask 002 --log-level INFO
             securityContext:
               privilaged: true
               readOnlyRootFilesystem: false
