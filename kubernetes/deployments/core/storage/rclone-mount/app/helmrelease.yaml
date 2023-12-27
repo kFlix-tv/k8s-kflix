@@ -52,20 +52,19 @@ spec:
               limits:
                 cpu: 300m
                 memory: 5Gi
-        pod:
-          securityContext:
-            runAsUser: 0
-            runAsGroup: 0
-            runAsNonRoot: false
+            pod:
+              securityContext:
+                runAsUser: 0
+                runAsGroup: 0
+                runAsNonRoot: false
     service:
       main:
         enabled: false
     persistance:
       config:
-        enabled: true
         type: secret
         name: rclone-secret
         globalMounts:
-        - name: config
-          mountPath: /config/.rclone.conf
+        - path: /config/.rclone.conf
           subPath: configData
+          readOnly: true
