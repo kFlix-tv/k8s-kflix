@@ -67,5 +67,5 @@ spec:
         name: rclone-secret
         globalMounts:
         - name: config
-          mountPath: /config/rclone.conf
+          mountPath: /config/.rclone.conf
           subPath: configData
