@@ -61,7 +61,7 @@ spec:
     service:
       main:
         enabled: false
-    persistance:
+    persistence:
       config:
         enabled: true
         type: secret
