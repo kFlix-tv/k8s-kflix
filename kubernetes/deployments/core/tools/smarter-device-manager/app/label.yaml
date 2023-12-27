@@ -1,0 +1,7 @@
+# yaml-language-server builtin
+apiVersion: v1
+kind: Node
+metadata:
+  labels:
+    smarter-device-manager: enabled
+  name: kflix
