@@ -30,6 +30,13 @@ spec:
         replicas: 1
         annotations:
           reloader.stakater.com/auto: "true"
+        initContainers:
+          init-config:
+            image:
+              repository: docker.io/mumiehub/rclone-mount
+              tag: v1.65.0
+            command: ["/bin/sh", "-c"]
+            args: ["cp /tmp/secret/* /config/"]
         containers:
           main:
             image:
@@ -66,6 +73,8 @@ spec:
         enabled: true
         type: secret
         name: rclone-secret
-        globalMounts:
-        - path: /config/rclone.conf
-          subPath: configData
+        advancedMounts:
+        main:
+          init-config:
+          - path: /config/rclone.conf
+            subPath: configData
