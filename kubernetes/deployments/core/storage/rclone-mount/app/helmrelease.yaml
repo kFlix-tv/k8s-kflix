@@ -62,6 +62,7 @@ spec:
         enabled: false
     persistance:
       config:
+        enabled: true
         type: secret
         name: rclone-secret
         globalMounts:
