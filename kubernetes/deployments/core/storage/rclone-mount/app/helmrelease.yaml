@@ -36,7 +36,7 @@ spec:
               repository: docker.io/mumiehub/rclone-mount
               tag: v1.65.0
             command: ["/bin/sh", "-c"]
-            args: ["cp /tmp/secret/* /config/"]
+            args: ["mkdir /config/ && cp /tmp/secret/* /config/"]
         containers:
           main:
             image:
