@@ -84,3 +84,11 @@ spec:
             init-config:
             - path: /tmp/secret/rclone.conf
               subPath: configData
+      mount-point:
+        enabled: true
+        type: hostPath
+        hostPath: /mnt
+        advancedMounts:
+          main:
+            main:
+            - path: /mnt
