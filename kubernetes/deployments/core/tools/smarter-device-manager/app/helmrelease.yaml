@@ -9,10 +9,10 @@ spec:
   chart:
     spec:
       chart: smarter-device-manager
-      version: 0.0.3
+      version: 0.5.2
       sourceRef:
         kind: HelmRepository
-        name: smarter-devices
+        name: gabe565
         namespace: flux-system
   maxHistory: 2
   install:
@@ -24,4 +24,8 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
-  # values:
+  values:
+    config: |
+      - devicematch: ^fuse$
+        nummaxdevices: 1
+    hostNetwork: true
