@@ -2,12 +2,14 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: startup-system-upgrade-controller
+  name: &app core-tools-system-upgrade-controller
   namespace: flux-system
 spec:
-  dependsOn:
-  - name: startup-flux-system-cluster-settings
-  path: ./kubernetes/deployments/startup/system-upgrade/system-upgrade-controller/app
+  targetNamespace: tools
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
+  path: ./kubernetes/core/tools/system-upgrade-controller/app
   prune: true
   sourceRef:
     kind: GitRepository
@@ -21,17 +23,21 @@ spec:
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: startup-system-upgrade-plans
+  name: &app core-tools-system-upgrade-controller-plans
   namespace: flux-system
 spec:
+  targetNamespace: tools
+  commonMetadata:
+    labels:
+      app.kubernetes.io/name: *app
   dependsOn:
-  - name: startup-system-upgrade-controller
-  path: ./kubernetes/deployments/startup/system-upgrade/system-upgrade-controller/plans
+  - name: core-tools-system-upgrade-controller
+  path: ./kubernetes/core/tools/system-upgrade-controller/plans
   prune: true
   sourceRef:
     kind: GitRepository
     name: k8s-kflix
-  wait: true
+  wait: false
   interval: 30m
   retryInterval: 1m
   timeout: 5m

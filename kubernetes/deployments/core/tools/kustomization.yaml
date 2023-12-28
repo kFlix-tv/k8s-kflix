@@ -4,3 +4,4 @@ kind: Kustomization
 resources:
 - ./namespace.yaml
 - ./smarter-device-manager/ks.yaml
+- ./system-upgrade-controller/ks.yaml
