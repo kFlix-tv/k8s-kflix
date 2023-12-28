@@ -50,11 +50,8 @@ spec:
               MountCommands: >-
                 --allow-other --allow-non-empty --dir-cache-time 24h --umask 002 --log-level DEBUG
             securityContext:
-              privilaged: true
+              privilaged: false
               readOnlyRootFilesystem: false
-              capabilities:
-                add:
-                - SYS_ADMIN
             resources:
               requests:
                 cpu: 100m
@@ -66,8 +63,8 @@ spec:
                 smarter-devices/fuse: 1
             pod:
               securityContext:
-                runAsUser: 0
-                runAsGroup: 0
+                runAsUser: 568
+                runAsGroup: 568
                 runAsNonRoot: false
     service:
       main:
