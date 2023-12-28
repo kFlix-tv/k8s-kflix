@@ -4,4 +4,7 @@ kind: Node
 metadata:
   labels:
     smarter-device-manager: enabled
+  annotations:
+    kustomize.toolkit.fluxcd.io/prune: disabled
+    kustomize.toolkit.fluxcd.io/ssa: merge
   name: kflix
