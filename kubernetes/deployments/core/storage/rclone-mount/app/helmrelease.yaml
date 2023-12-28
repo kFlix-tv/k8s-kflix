@@ -63,8 +63,8 @@ spec:
                 smarter-devices/fuse: 1
             pod:
               securityContext:
-                runAsUser: 568
-                runAsGroup: 568
+                runAsUser: 0
+                runAsGroup: 0
                 runAsNonRoot: false
     service:
       main:
