@@ -27,5 +27,5 @@ spec:
   values:
     config: |
       - devicematch: ^fuse$
-        nummaxdevices: 1
+        nummaxdevices: 20
     hostNetwork: true
