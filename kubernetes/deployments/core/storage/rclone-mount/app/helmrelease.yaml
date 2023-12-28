@@ -52,14 +52,18 @@ spec:
             securityContext:
               privilaged: true
               readOnlyRootFilesystem: false
-              capabilities: {add: ["SYS_ADMIN"]}
+              capabilities:
+                add:
+                - SYS_ADMIN
             resources:
               requests:
                 cpu: 100m
                 memory: 1Gi
+                smarter-devices/fuse: 1
               limits:
                 cpu: 300m
                 memory: 5Gi
+                smarter-devices/fuse: 1
             pod:
               securityContext:
                 runAsUser: 0
