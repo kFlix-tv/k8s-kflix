@@ -89,8 +89,7 @@ spec:
               subPath: configData
       mount-point:
         enabled: true
-        type: hostPath
-        hostPath: /mnt/mediaefs
+        existingClaim: rclone-pvc
         advancedMounts:
           main:
             main:
