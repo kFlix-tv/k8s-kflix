@@ -50,8 +50,11 @@ spec:
               MountCommands: >-
                 --allow-other --allow-non-empty --dir-cache-time 24h --umask 002 --log-level DEBUG
             securityContext:
-              privilaged: false
+              privilaged: true
               readOnlyRootFilesystem: false
+              capabilities:
+                add:
+                - SYS_ADMIN
             resources:
               requests:
                 cpu: 100m
