@@ -87,8 +87,8 @@ spec:
       mount-point:
         enabled: true
         type: hostPath
-        hostPath: /mnt
+        hostPath: /mnt/mediaefs
         advancedMounts:
           main:
             main:
-            - path: /mnt
+            - path: /mnt/mediaefs
