@@ -52,6 +52,7 @@ spec:
                 --allow-other --allow-non-empty --dir-cache-time 24h --umask 002 --log-level DEBUG
             securityContext:
               privileged: true
+              allowPrivilegeEscalation: true
               readOnlyRootFilesystem: false
               runAsUser: 555
               runAsGroup: 555
