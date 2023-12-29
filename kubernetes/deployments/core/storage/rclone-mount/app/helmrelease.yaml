@@ -47,6 +47,7 @@ spec:
               ConfigName: "rclone.conf"
               TZ: America/New_York # TODO: Move TZ to cluster-settings
               RemotePath: "encrypt:"
+              MountPoint: "/mnt/rclone"
               MountCommands: >-
                 --allow-other --allow-non-empty --dir-cache-time 24h --umask 002 --log-level DEBUG
             securityContext:
@@ -93,4 +94,4 @@ spec:
         advancedMounts:
           main:
             main:
-            - path: /mnt/mediaefs
+            - path: /mnt
