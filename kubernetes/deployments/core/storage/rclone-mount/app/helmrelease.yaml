@@ -43,6 +43,8 @@ spec:
               repository: docker.io/mumiehub/rclone-mount
               tag: v1.65.0
               pullPolicy: IfNotPresent
+            command: ["/bin/sh", "-c"]
+            args: ["sleep 10000"]
             env:
               ConfigName: "rclone.conf"
               TZ: America/New_York # TODO: Move TZ to cluster-settings
