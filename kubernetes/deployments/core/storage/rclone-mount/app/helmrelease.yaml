@@ -53,9 +53,10 @@ spec:
             securityContext:
               privileged: true
               readOnlyRootFilesystem: false
-              runAsUser: 0
-              runAsGroup: 0
-              fsGroup: 0
+              runAsUser: 555
+              runAsGroup: 555
+              fsGroup: 555
+              fsGroupChangePolicy: OnRootMismatch
               capabilities:
                 add:
                 - SYS_ADMIN
