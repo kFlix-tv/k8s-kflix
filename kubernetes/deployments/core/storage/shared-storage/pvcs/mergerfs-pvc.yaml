@@ -1,0 +1,13 @@
+# yaml-language-server builtin
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mergerfs-pvc
+  namespace: storage
+spec:
+  accessModes:
+  - ReadWriteMany
+  storageClassName: ceph-filesystem
+  resources:
+    requests:
+      storage: 10Gi

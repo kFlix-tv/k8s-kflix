@@ -8,6 +8,7 @@ spec:
   path: ./kubernetes/deployments/core/storage/mergerfs/app
   dependsOn:
   - name: core-storage-rclone-mount
+  - name: core-storage-shared-storage
   prune: true
   sourceRef:
     kind: GitRepository
