@@ -4,4 +4,4 @@ kind: Kustomization
 resources:
 - ./namespace.yaml
 - ./rclone-mount/ks.yaml
-# - ./mergerfs/ks.yaml
+- ./mergerfs/ks.yaml
