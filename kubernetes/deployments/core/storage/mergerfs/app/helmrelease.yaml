@@ -1,0 +1,82 @@
+# yaml-language-server: $schema=https://k8s-schemas.pages.dev/helm.toolkit.fluxcd.io/helmrelease_v2beta2.json
+apiVersion: helm.toolkit.fluxcd.io/v2beta2
+kind: HelmRelease
+metadata:
+  name: mergerfs
+  namespace: storage
+spec:
+  interval: 5m
+  chart:
+    spec:
+      chart: app-template
+      version: 2.4.0
+      sourceRef:
+        kind: HelmRepository
+        name: bjw-s
+        namespace: flux-system
+  maxHistory: 2
+  install:
+    remediation:
+      retries: 3
+  upgrade:
+    cleanupOnFail: true
+    remediation:
+      retries: 3
+  uninstall:
+    keepHistory: false
+  values:
+    controllers:
+      main:
+        replicas: 1
+        annotations:
+          reloader.stakater.com/auto: "true"
+        containers:
+          main:
+            image:
+              repository: ghcr.io/hotio/mergerfs
+              tag: release-2.37.1
+              pullPolicy: IfNotPresent
+              args: ["-o allow_other /mnt/rclone=RO:/mnt/local-cache /mnt/mergerfs"]
+            env:
+              TZ: America/New_York # TODO: Move TZ to cluster-settings
+            securityContext:
+              privileged: true
+              readOnlyRootFilesystem: false
+              fsGroupChangePolicy: OnRootMismatch
+              capabilities:
+                add:
+                - SYS_ADMIN
+            resources:
+              requests:
+                cpu: 100m
+                memory: 1Gi
+                smarter-devices/fuse: 1
+              limits:
+                cpu: 300m
+                memory: 5Gi
+                smarter-devices/fuse: 1
+    service:
+      main:
+        enabled: false
+    persistence:
+      rclone-mount:
+        enabled: true
+        existingClaim: rclone-pvc
+        advancedMounts:
+          main:
+            main:
+            - path: /mnt/rclone
+      local-cache:
+        enabled: true
+        existingClaim: local-cache-pvc
+        advancedMounts:
+          main:
+            main:
+            - path: /mnt/local-cache
+      mergerfs:
+        enabled: true
+        existingClaim: mergerfs-pvc
+        advancedMounts:
+          main:
+            main:
+            - path: /mnt/mergerfs
