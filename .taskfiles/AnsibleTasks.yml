@@ -88,7 +88,7 @@ tasks:
     dir: "{{.ANSIBLE_DIR}}"
     cmds:
     - task: nuke
-    - task: deploy
+    - task: install
 
   deploy:
     desc: Runs all deployment tasks for Ansible
