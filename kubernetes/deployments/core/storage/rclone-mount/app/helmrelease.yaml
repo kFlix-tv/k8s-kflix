@@ -66,6 +66,30 @@ spec:
                 cpu: 300m
                 memory: 5Gi
                 smarter-devices/fuse: 1
+          mergerfs:
+            image:
+              repository: ghcr.io/hotio/mergerfs
+              tag: release-2.37.1
+              pullPolicy: IfNotPresent
+            args: ["-o", "allow_other", "/mnt/rclone=RO:/mnt/local-cache", "/mnt/mergerfs"]
+            env:
+              TZ: America/New_York # TODO: Move TZ to cluster-settings
+            securityContext:
+              privileged: true
+              readOnlyRootFilesystem: false
+              fsGroupChangePolicy: OnRootMismatch
+              capabilities:
+                add:
+                - SYS_ADMIN
+            resources:
+              requests:
+                cpu: 100m
+                memory: 1Gi
+                smarter-devices/fuse: 1
+              limits:
+                cpu: 300m
+                memory: 5Gi
+                smarter-devices/fuse: 1
     service:
       main:
         enabled: false
@@ -87,7 +111,19 @@ spec:
       mount-point:
         enabled: true
         existingClaim: rclone-pvc
+        globalMounts:
+        - path: /mnt/rclone
+      local-cache:
+        enabled: true
+        existingClaim: local-cache-pvc
         advancedMounts:
           main:
-            main:
-            - path: /mnt/rclone
+            mergerfs:
+            - path: /mnt/local-cache
+      mergerfs:
+        enabled: true
+        existingClaim: mergerfs-pvc
+        advancedMounts:
+          main:
+            mergerfs:
+            - path: /mnt/mergerfs

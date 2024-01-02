@@ -5,4 +5,4 @@ resources:
 - ./namespace.yaml
 - ./shared-storage/ks.yaml
 - ./rclone-mount/ks.yaml
-- ./mergerfs/ks.yaml
+# - ./mergerfs/ks.yaml
