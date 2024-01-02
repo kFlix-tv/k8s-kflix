@@ -108,7 +108,7 @@ spec:
             init-config:
             - path: /tmp/secret/rclone.conf
               subPath: configData
-      mount-point:
+      rclone-mount:
         enabled: true
         existingClaim: rclone-pvc
         globalMounts:
@@ -116,14 +116,10 @@ spec:
       local-cache:
         enabled: true
         existingClaim: local-cache-pvc
-        advancedMounts:
-          main:
-            mergerfs:
-            - path: /mnt/local-cache
+        globalMounts:
+        - path: /mnt/local-cache
       mergerfs:
         enabled: true
         existingClaim: mergerfs-pvc
-        advancedMounts:
-          main:
-            mergerfs:
-            - path: /mnt/mergerfs
+        globalMounts:
+        - path: /mnt/mergerfs
