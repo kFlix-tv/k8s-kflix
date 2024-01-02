@@ -50,9 +50,11 @@ spec:
       osd_class_update_on_start = false
     cephClusterSpec:
       network:
-        provider: host
         connections:
+          compression:
+            enabled: true
           requireMsgr2: true
+      dataDirHostPath: /var/lib/rook
       mon:
         count: 3
         allowMultiplePerNode: true
