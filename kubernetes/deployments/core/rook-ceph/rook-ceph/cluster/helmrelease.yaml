@@ -10,12 +10,11 @@ spec:
   chart:
     spec:
       chart: rook-ceph-cluster
-      version: v1.12.10
+      version: v1.13.1
       sourceRef:
         kind: HelmRepository
         name: rook-ceph
         namespace: flux-system
-  maxHistory: 2
   install:
     remediation:
       retries: 3
@@ -46,8 +45,6 @@ spec:
       bdev_async_discard = true
       osd_class_update_on_start = false
     cephClusterSpec:
-      cephVersion:
-        image: quay.io/ceph/ceph:v18.2.1
       network:
         connections:
           compression:
@@ -69,7 +66,8 @@ spec:
       storage:
         useAllNodes: false
         useAllDevices: false
-        osdsPerDevice: "3"
+        config:
+          osdsPerDevice: "3"
         nodes:
         - name: "kflix"
           devices: # specific devices to use for storage can be specified for each node

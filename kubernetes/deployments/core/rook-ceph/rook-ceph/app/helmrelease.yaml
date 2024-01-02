@@ -10,12 +10,11 @@ spec:
   chart:
     spec:
       chart: rook-ceph
-      version: v1.12.10
+      version: v1.13.1
       sourceRef:
         kind: HelmRepository
         name: rook-ceph
         namespace: flux-system
-  maxHistory: 2
   install:
     remediation:
       retries: 3
@@ -27,9 +26,16 @@ spec:
     keepHistory: false
   values:
     csi:
-      csiAddons:
+      provisioner:
+        image: registry.k8s.io/sig-storage/csi-provisioner:v3.6.3
+      cephFSKernelMountOptions: ms_mode=prefer-crc
+      enableLiveness: true
+      serviceMonitor:
         enabled: true
-      # Set when encryption/compression is enabled
-      cephFSKernelMountOptions: ms_mode=secure
     monitoring:
       enabled: true
+    resources:
+      requests:
+        memory: 128Mi # unchangable
+        cpu: 100m # unchangable
+      limits: {}
