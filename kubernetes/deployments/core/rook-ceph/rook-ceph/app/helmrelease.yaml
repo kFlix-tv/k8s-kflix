@@ -27,16 +27,9 @@ spec:
     keepHistory: false
   values:
     csi:
-      provisioner:
-        image: registry.k8s.io/sig-storage/csi-provisioner:v3.6.3
-      cephFSKernelMountOptions: ms_mode=prefer-crc
-      enableLiveness: true
-      serviceMonitor:
+      csiAddons:
         enabled: true
+      # Set when encryption/compression is enabled
+      cephFSKernelMountOptions: ms_mode=secure
     monitoring:
       enabled: true
-    resources:
-      requests:
-        memory: 128Mi # unchangable
-        cpu: 100m # unchangable
-      limits: {}
