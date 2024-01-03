@@ -16,3 +16,11 @@ spec:
   interval: 30m
   retryInterval: 1m
   timeout: 5m
+  patches:
+  - patch: |
+      - op: add
+        path: /spec/template/spec/containers/0/volumeMounts/0/mountPropagation
+        value: Bidirectional
+    target:
+      kind: Deployment
+      name: rclone-mount
