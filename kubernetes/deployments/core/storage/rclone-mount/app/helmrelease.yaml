@@ -24,39 +24,7 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
-  # Helm postrenderer that adds mountPropagation: Bidirectional to the rclone-mount container
-  postRenderers:
-  - kustomize:
-      patchesStrategicMerge:
-      - apiVersion: apps/v1
-        kind: Deployment
-        metadata:
-          name: rclone-mount
-          namespace: storage
-        spec:
-          template:
-            spec:
-              containers:
-              - name: main
-                volumeMounts:
-                - name: config
-                  mountPropagation: Bidirectional
-                - name: local-cache
-                  mountPropagation: Bidirectional
-                - name: mergerfs
-                  mountPropagation: Bidirectional
-                - name: rclone-mount
-                  mountPropagation: Bidirectional
-              - name: mergerfs
-                volumeMounts:
-                - name: config
-                  mountPropagation: Bidirectional
-                - name: local-cache
-                  mountPropagation: Bidirectional
-                - name: mergerfs
-                  mountPropagation: Bidirectional
-                - name: rclone-mount
-                  mountPropagation: Bidirectional
+
 
 
   values:
