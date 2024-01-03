@@ -5,5 +5,3 @@ namespace: storage
 resources:
 - ./externalsecret.yaml
 - ./helmrelease.yaml
-patchesStrategicMerge:
-- ./patches/mount-propagation-patch.yaml

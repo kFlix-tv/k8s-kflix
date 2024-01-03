@@ -24,6 +24,11 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
+  # Helm postrenderer that adds mountPropagation: Bidirectional to the rclone-mount container
+  postRenderers:
+  - kustomize:
+      patchesStrategicMerge:
+      - ./patches/mount-propagation-patch.yaml
   values:
     controllers:
       main:
