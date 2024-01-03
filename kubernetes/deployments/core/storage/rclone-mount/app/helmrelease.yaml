@@ -28,7 +28,7 @@ spec:
   postRenderers:
   - kustomize:
       patchesStrategicMerge:
-      - mount-propagation-patch.yaml
+      - ./mount-propagation-patch.yaml
   values:
     controllers:
       main:
