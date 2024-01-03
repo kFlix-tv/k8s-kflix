@@ -110,22 +110,19 @@ spec:
               subPath: configData
       rclone-mount:
         enabled: true
-        type: hostPath
-        hostPath: /mnt/rclone
+        existingClaim: rclone-pvc
         mountPropagation: Bidirectional
         globalMounts:
         - path: /mnt/rclone
       local-cache:
         enabled: true
-        type: hostPath
-        hostPath: /mnt/local-cache
+        existingClaim: local-cache-pvc
         mountPropagation: Bidirectional
         globalMounts:
         - path: /mnt/local-cache
       mergerfs:
         enabled: true
-        type: hostPath
-        hostPath: /mnt/mergerfs
+        existingClaim: mergerfs-pvc
         mountPropagation: Bidirectional
         globalMounts:
         - path: /mnt/mergerfs
