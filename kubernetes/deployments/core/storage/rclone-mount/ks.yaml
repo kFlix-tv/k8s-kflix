@@ -6,8 +6,6 @@ metadata:
   namespace: flux-system
 spec:
   path: ./kubernetes/deployments/core/storage/rclone-mount/app
-  dependsOn:
-  - name: core-storage-shared-storage
   prune: true
   sourceRef:
     kind: GitRepository
