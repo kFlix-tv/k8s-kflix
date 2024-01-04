@@ -24,7 +24,18 @@ spec:
       retries: 3
   uninstall:
     keepHistory: false
-
+  # postRenderer to add "mountPropogation: Bidirectional" to all mounts in deployment
+  postRenderers:
+  - kustomize:
+      patches:
+      - patch: |-
+          - op: add
+            path: /spec/template/spec/containers/0/volumeMounts/0/mountPropagation
+            value: Bidirectional
+        target:
+          kind: Deployment
+          name: rclone-mount
+          version: apps/v1
 
 
   values:
