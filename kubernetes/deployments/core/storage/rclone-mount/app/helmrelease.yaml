@@ -27,15 +27,24 @@ spec:
   # postRenderer to add "mountPropogation: Bidirectional" to all mounts in deployment
   postRenderers:
   - kustomize:
-      patches:
-      - patch: |-
-          - op: add
-            path: /spec/template/spec/containers/0/volumeMounts/0/mountPropagation
-            value: Bidirectional
-        target:
-          kind: Deployment
+      patchesStrategicMerge:
+      - kind: Deployment
+        apiVersion: apps/v1
+        metadata:
           name: rclone-mount
-          version: apps/v1
+          namespace: storage
+        spec:
+          template:
+            spec:
+              containers:
+              - name: main
+                volumeMounts:
+                - name: rclone-mount
+                  mountPropagation: Bidirectional
+                - name: local-cache
+                  mountPropagation: Bidirectional
+                - name: mergerfs
+                  mountPropagation: Bidirectional
 
 
   values:
