@@ -111,15 +111,18 @@ spec:
       rclone-mount:
         enabled: true
         existingClaim: rclone-pvc
+        mountPropagation: Bidirectional
         globalMounts:
         - path: /mnt/rclone
       local-cache:
         enabled: true
         existingClaim: local-cache-pvc
+        mountPropagation: Bidirectional
         globalMounts:
         - path: /mnt/local-cache
       mergerfs:
         enabled: true
         existingClaim: mergerfs-pvc
+        mountPropagation: Bidirectional
         globalMounts:
         - path: /mnt/mergerfs
