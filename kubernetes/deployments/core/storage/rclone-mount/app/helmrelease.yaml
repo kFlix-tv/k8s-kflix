@@ -122,7 +122,8 @@ spec:
         - path: /mnt/local-cache
       mergerfs:
         enabled: true
-        existingClaim: mergerfs-pvc
+        type: hostPath
+        hostPath: /mnt/media
         mountPropagation: Bidirectional
         globalMounts:
         - path: /mnt/mergerfs
