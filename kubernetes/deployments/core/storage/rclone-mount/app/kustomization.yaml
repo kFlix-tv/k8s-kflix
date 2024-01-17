@@ -5,6 +5,5 @@ namespace: storage
 resources:
 - ./externalsecret.yaml
 - ./rclone-pvc.yaml
-- ./mergerfs-pvc.yaml
 - ./local-cache-pvc.yaml
 - ./helmrelease.yaml
