@@ -1,0 +1,13 @@
+# yaml-language-server builtin
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: sabnzbd-pvc
+  namespace: arrs
+spec:
+  accessModes:
+  - ReadWriteOnce
+  storageClassName: ceph-block
+  resources:
+    requests:
+      storage: 5Gi
