@@ -36,7 +36,7 @@ spec:
               TZ: America/New_York
               SABNZBD__PORT: &port 80
               SABNZBD__HOST_WHITELIST_ENTRIES: >-
-                sabnzbd, sabnzbd.default, sabnzbd.default.svc, sabnzbd.default.svc.cluster, sabnzbd.default.svc.cluster.local, sab.${SECRET_DOMAIN}, sabnzbd.${SECRET_DOMAIN}
+                sabnzbd, sabnzbd.arrs, sabnzbd.arrs.svc, sabnzbd.arrs.svc.cluster, sabnzbd.arrs.svc.cluster.local, sab.${SECRET_DOMAIN}, sabnzbd.${SECRET_DOMAIN}
             envFrom:
             - secretRef:
                 name: sabnzbd-secret
