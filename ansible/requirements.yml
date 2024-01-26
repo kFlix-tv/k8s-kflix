@@ -12,7 +12,7 @@ collections:
 - name: onepassword.connect
   version: 2.2.4
 - name: devsec.hardening
-  version: 9.0.0
+  version: 9.0.1
 - name: manala.roles
   version: 3.7.0
 roles:
