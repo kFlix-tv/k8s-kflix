@@ -4,129 +4,110 @@
     {
       "matchDatasources": ["docker"],
       "matchUpdateTypes": ["major"],
-      "commitMessagePrefix": "feat(container)!: ",
-      "assignees": ["kiliantyler"]
+      "commitMessagePrefix": "feat(container)!: "
     },
     {
       "matchDatasources": ["docker"],
       "matchUpdateTypes": ["minor"],
       "semanticCommitType": "feat",
-      "semanticCommitScope": "container",
-      "assignees": ["kiliantyler"]
+      "semanticCommitScope": "container"
     },
     {
       "matchDatasources": ["docker"],
       "matchUpdateTypes": ["patch"],
       "semanticCommitType": "fix",
-      "semanticCommitScope": "container",
-      "assignees": ["kiliantyler"]
+      "semanticCommitScope": "container"
     },
     {
       "matchDatasources": ["docker"],
       "matchUpdateTypes": ["digest"],
       "semanticCommitType": "chore",
-      "semanticCommitScope": "container",
-      "assignees": ["kiliantyler"]
+      "semanticCommitScope": "container"
     },
     {
       "matchDatasources": ["helm"],
       "matchUpdateTypes": ["major"],
-      "commitMessagePrefix": "feat(helm)!: ",
-      "assignees": ["kiliantyler"]
+      "commitMessagePrefix": "feat(helm)!: "
     },
     {
       "matchDatasources": ["helm"],
       "matchUpdateTypes": ["minor"],
       "semanticCommitType": "feat",
-      "semanticCommitScope": "helm",
-      "assignees": ["kiliantyler"]
+      "semanticCommitScope": "helm"
     },
     {
       "matchDatasources": ["helm"],
       "matchUpdateTypes": ["patch"],
       "semanticCommitType": "fix",
-      "semanticCommitScope": "helm",
-      "assignees": ["kiliantyler"]
+      "semanticCommitScope": "helm"
     },
     {
       "matchDatasources": ["galaxy", "galaxy-collection"],
       "matchUpdateTypes": ["major"],
-      "commitMessagePrefix": "feat(ansible)!: ",
-      "assignees": ["kiliantyler"]
+      "commitMessagePrefix": "feat(ansible)!: "
     },
     {
       "matchDatasources": ["galaxy", "galaxy-collection"],
       "matchUpdateTypes": ["minor"],
       "semanticCommitType": "feat",
-      "semanticCommitScope": "ansible",
-      "assignees": ["kiliantyler"]
+      "semanticCommitScope": "ansible"
     },
     {
       "matchDatasources": ["galaxy", "galaxy-collection"],
       "matchUpdateTypes": ["patch"],
       "semanticCommitType": "fix",
-      "semanticCommitScope": "ansible",
-      "assignees": ["kiliantyler"]
+      "semanticCommitScope": "ansible"
     },
     {
       "matchDatasources": ["terraform-provider"],
       "matchUpdateTypes": ["major"],
-      "commitMessagePrefix": "feat(terraform)!: ",
-      "assignees": ["kiliantyler"]
+      "commitMessagePrefix": "feat(terraform)!: "
     },
     {
       "matchDatasources": ["terraform-provider"],
       "matchUpdateTypes": ["minor"],
       "semanticCommitType": "feat",
-      "semanticCommitScope": "terraform",
-      "assignees": ["kiliantyler"]
+      "semanticCommitScope": "terraform"
     },
     {
       "matchDatasources": ["terraform-provider"],
       "matchUpdateTypes": ["patch"],
       "semanticCommitType": "fix",
-      "semanticCommitScope": "terraform",
-      "assignees": ["kiliantyler"]
+      "semanticCommitScope": "terraform"
     },
     {
       "matchDatasources": ["github-releases", "github-tags"],
       "matchUpdateTypes": ["major"],
-      "commitMessagePrefix": "feat(github-release)!: ",
-      "assignees": ["kiliantyler"]
+      "commitMessagePrefix": "feat(github-release)!: "
     },
     {
       "matchDatasources": ["github-releases", "github-tags"],
       "matchUpdateTypes": ["minor"],
       "semanticCommitType": "feat",
-      "semanticCommitScope": "github-release",
-      "assignees": ["kiliantyler"]
+      "semanticCommitScope": "github-release"
     },
     {
       "matchDatasources": ["github-releases", "github-tags"],
       "matchUpdateTypes": ["patch"],
       "semanticCommitType": "fix",
-      "semanticCommitScope": "github-release",
-      "assignees": ["kiliantyler"]
+      "semanticCommitScope": "github-release"
     },
     {
       "matchManagers": ["github-actions"],
       "matchUpdateTypes": ["major"],
-      "commitMessagePrefix": "feat(github-action)!: ",
-      "assignees": ["kiliantyler"]
+      "commitMessagePrefix": "feat(github-action)!: "
     },
     {
       "matchManagers": ["github-actions"],
       "matchUpdateTypes": ["minor"],
       "semanticCommitType": "feat",
-      "semanticCommitScope": "github-action",
-      "assignees": ["kiliantyler"]
+      "semanticCommitScope": "github-action"
     },
     {
       "matchManagers": ["github-actions"],
       "matchUpdateTypes": ["patch"],
       "semanticCommitType": "fix",
-      "semanticCommitScope": "github-action",
-      "assignees": ["kiliantyler"]
+      "semanticCommitScope": "github-action"
     }
   ]
 }
