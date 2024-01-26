@@ -9,13 +9,6 @@ on:
     branches: ["main"]
     paths: [".github/workflows/publish-schemas.yaml"]
 
-env:
-  DEBCONF_NONINTERACTIVE_SEEN: "true"
-  DEBIAN_FRONTEND: noninteractive
-  APT_KEY_DONT_WARN_ON_DANGEROUS_USAGE: DontWarn
-  WORKFLOW_RESOURCE_DIR: ./.github/workflows/resources
-  SCHEMAS_DIR: /home/runner/crds
-
 jobs:
   publish-schemas:
     name: Publish Schemas
@@ -24,39 +17,31 @@ jobs:
       contents: read
       packages: write
     steps:
-
     - name: Checkout
       uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4.1.1
       with:
         token: "${{ secrets.GITHUB_TOKEN }}"
 
-    - name: Install OS Deps
+    - name: Setup Homebrew
+      uses: Homebrew/actions/setup-homebrew@master
+
+    - name: Setup Workflow Tools
       shell: bash
-      run: sudo apt-get update && sudo apt-get install -y curl git xz-utils
-
-    - name: Install Nix
-      uses: cachix/install-nix-action@7ac1ec25491415c381d9b62f0657c7a028df52a7 # v24
-      with:
-        github_access_token: "${{ secrets.GITHUB_TOKEN }}"
-
-    - name: Switch to Nix devShell
-      uses: nicknovitski/nix-develop@a2060d116a50b36dfab02280af558e73ab52427d # v1.1.0
-      with:
-        arguments: "${{ env.WORKFLOW_RESOURCE_DIR }}"
-
-    - name: Setup Node
-      uses: actions/setup-node@b39b52d1213e96004bfcb1c61a8a6fa8ab84f3e8 # v4.0.1
-      with:
-        node-version: 18.x
+      run: brew install kubectl
 
     - name: Setup Python
-      uses: actions/setup-python@0a5c61591373683505ea898e09a3ea4f39ef2b9c # v5.0.0
+      uses: actions/setup-python@v5
       with:
         python-version: 3.x
 
+    - name: Setup Node
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18.x
+
     - name: Write kubeconfig
       id: kubeconfig
-      uses: timheuer/base64-to-file@784a1a4a994315802b7d8e2084e116e783d157be # v1.2.4
+      uses: timheuer/base64-to-file@v1
       with:
         encodedString: "${{ secrets.KUBECONFIG }}"
         fileName: kubeconfig
@@ -66,17 +51,15 @@ jobs:
         KUBECONFIG: "${{ steps.kubeconfig.outputs.filePath }}"
       shell: bash
       run: |
-        mkdir -p ${{ env.SCHEMAS_DIR }}
         curl -fsSL -o $GITHUB_WORKSPACE/crd-extractor.sh \
             https://raw.githubusercontent.com/datreeio/CRDs-catalog/main/Utilities/crd-extractor.sh
         chmod +x $GITHUB_WORKSPACE/crd-extractor.sh
         bash $GITHUB_WORKSPACE/crd-extractor.sh
-        mv /home/runner/.datree/crdSchemas/* ${{ env.SCHEMAS_DIR }}
 
     - name: Deploy to Cloudflare Pages
       uses: cloudflare/wrangler-action@7c01cc48d88a1f83b4716e0557c168854a9dcdb8 # v3.4.1
       with:
         apiToken: "${{ secrets.CLOUDFLARE_API_TOKEN }}"
         accountId: "${{ secrets.CLOUDFLARE_ACCOUNT_ID }}"
-        workingDirectory: "${{ env.SCHEMAS_DIR }}"
+        workingDirectory: /home/runner/.datree/crdSchemas
         command: pages deploy --project-name=k8s-schemas --branch main .
