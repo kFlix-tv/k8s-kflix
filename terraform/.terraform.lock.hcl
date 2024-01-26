@@ -5,20 +5,7 @@ provider "registry.terraform.io/cloudflare/cloudflare" {
   version     = "4.23.0"
   constraints = "~> 4.0"
   hashes = [
-    "h1:3AYoWW/CwDPrT8AvvZ2Z+au8GZB1Zwd/MuzOzIZXoqQ=",
-    "h1:4qoEH7MSBSbLAYs0SN9XfRr40fhvEx39Q89lSBcPiKI=",
     "h1:Kn7JXfcIA+vYHZhXtWUxNJ7wJ62ICet3a93gyYez9/U=",
-    "h1:StgZc0MBcyvZj8ZS9viD+RO3EFYPzqDNS+j//THtr24=",
-    "h1:YhXRxnfdFfGkey6AfgLyWYZgcN4QeqO8ndM1smuyts8=",
-    "h1:d01z18ca38AKgZEFy2Yj4Vi6ocihJXG3W+2AXHuao5w=",
-    "h1:kKjUlIA5LYkrZrYnacHAF/w3whGWBiDP5TF2c40dP7Y=",
-    "h1:kipnK5UbHy5i26AoVAuXUS1I+5ncYcjyIBKUdYCNyeY=",
-    "h1:m42hhp7aQEJowwAzwOgwkW3tjvJk3gDNdQ27z5CXb7U=",
-    "h1:mtJudxlA5Mn3UNEuH/84RTGixdBxrBJiI+Rf4gJUCmg=",
-    "h1:mwME7g0VS3glSXFJi1xAmhnluStIJ/yxmORP2grrkb0=",
-    "h1:rEiYUFjChjfrRNf3tIAtJf4wlo2RokV5v61q1hLgQo0=",
-    "h1:tOY15qW720IhkchkR1vlhc3K6Dmbt+qNKLsGRjeSNr8=",
-    "h1:uaa+wA2dkyNHUZiHA8OBWr9Az8hXVDBZ8CprVAtW27o=",
     "zh:034aae9f29e51b008eb5ff62bcfea4078d92d74fd8eb6e0f1833395002bf483d",
     "zh:0e4f72b52647791e34894c231c7d17b55c701fb4ff9d8aeb8355031378b20910",
     "zh:248ecf3820a65870a8a811a90488a77a8fcc49ee6e3099734328912250c4145a",
@@ -38,22 +25,22 @@ provider "registry.terraform.io/cloudflare/cloudflare" {
 }
 
 provider "registry.terraform.io/ovh/ovh" {
-  version     = "0.35.0"
-  constraints = "~> 0.35.0"
+  version     = "0.36.1"
+  constraints = "~> 0.36.1"
   hashes = [
-    "h1:TGamZXyLWhL/9koA1Fw6RO0bKFwb3LvHjXcWp38Gi3c=",
-    "zh:01c0e9abe788c8316ee576d7e5b24c98fabc4b0b921740167aeebd4a6de577c3",
-    "zh:29cca641e09a13ffdb032acb9ae32ea821d5cc8efbc2940f4804182d47073260",
-    "zh:6a9cf9c6655281789e13b40e64cc4014495bdc79d0b6fc5b9413eb6a189feb9b",
-    "zh:6cad7d94595d0de20cb517872273893aceeb8fdfdaa7f2723b8709e2a07e084e",
-    "zh:7dcf7b239f13603e447946134b5cd41dfb8b9a595b2766bb61afe9b5649276ce",
-    "zh:7f771fc78d5e232dab4c5dd1db5074bc5c3c56e26fae56476fd2ccee20bf48ad",
-    "zh:92e9b44cf0f94df22dc94d83ec4f6ed4986ac487e47798dfabb3f199e6e3ba34",
-    "zh:96728065466f8d299b14ba27e73dfb615574d6334a6dc2bdabd549dfc251662a",
-    "zh:bcc1c23ac09fdf5908d8f33d6156294e893dc81243084172245c7dbd0ecfb7dd",
-    "zh:bf4989935bef5d68b0c92836fd63b0148e2f90aba50ade398c5f1599c2d2d220",
-    "zh:ca33d246e75e93987249f81776b7b9ed39564d135130d6ea93857cb4aae234c5",
-    "zh:e4ee839c0c78fd94485da18c8b9ecb972e70f737210b217b8bf4b30352b61739",
-    "zh:f48727f0a0c582a89a34c2422b356368e41fa8847990d370ce9ac02cf7c93b63",
+    "h1:8kk6P6T0I7qlQyxosvWh73pG5t0KhI1yzNn1gLoUzck=",
+    "zh:01636ca3d7514d8cc32984f8ce2279d7083acf4afd32c7e7ca6367a53e7c2485",
+    "zh:112056366ac269cf897ded8588952bd3d1a143d75ea27239c4c206df21afea16",
+    "zh:24142c8e5751d308136b98aa837e8eeaa37ea646bee954619699c5858bb77083",
+    "zh:283d37e51b5bba7bf8ea84d42394f4911cb6d99e6fb705c16d41401ae8f6cd5e",
+    "zh:54d37f4da815f06926a2ad928a06945bef8087cbc4ba86376f8ffb9ed7faf9b3",
+    "zh:57f8d1ee26fbe84ac840196e8ae8b30880053e78dc5beaa684ab8dae8331fc43",
+    "zh:5f453abf80b33b5773121be643fd77fea8e974a42a120d60034080894c8a525b",
+    "zh:6b5451322de2b78e2158626a4df7f9fbef6188673c9627a2343ca3ba8bafff93",
+    "zh:7530eb0f87f9ee2d385525a14e868d3076e15629c3aad687d9bd0a892a42c310",
+    "zh:b97ecccb8587115d21af8a68fb90e801afa114cd7119fce461eac4b95eeb2b1d",
+    "zh:c1f9bbcebe5b9e07678604c12b1e1f5b51d563dbedf48d7e6b979bafbb2affc5",
+    "zh:c348e23e60b4b37dcd0de2d34af74741cb3fe1d40385d599526c3c0dd7e3ebde",
+    "zh:fc9a2aa711af236ef1ea514ee390e719732e09a4ed81405d826430f53a1d9306",
   ]
 }
