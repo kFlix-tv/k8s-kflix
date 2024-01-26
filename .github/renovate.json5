@@ -32,7 +32,6 @@
   "suppressNotifications": ["prIgnoreNotification"],
   "rebaseWhen": "conflicted",
   "assigneesFromCodeOwners": true,
-  "reviewersFromCodeOwners": true,
   "ignorePaths": [
     "**/.archive/**"
   ],
