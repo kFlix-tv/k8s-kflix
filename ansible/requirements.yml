@@ -18,7 +18,7 @@ collections:
 roles:
 - name: xanmanning.k3s
   src: https://github.com/PyratLabs/ansible-role-k3s.git
-  version: v3.4.3
+  version: v3.4.4
 # - name: budimanjojo.duo_ssh
 # - name: andbanman.duo_unix
 # - name: kflixtv.duo_unix
