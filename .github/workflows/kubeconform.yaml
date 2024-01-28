@@ -8,6 +8,7 @@ on:
 
 env:
   KUBERNETES_DIR: ./kubernetes
+  WORKFLOW_RESOURCE_DIR: ./.github/workflows/resources
 
 jobs:
   kubeconform:
@@ -28,4 +29,4 @@ jobs:
 
     - name: Run kubeconform
       shell: bash
-      run: ./.github/scripts/kubeconform.sh ${{ env.KUBERNETES_DIR }}
+      run: ${{ env.WORKFLOW_RESOURCE_DIR }}/kubeconform.sh ${{ env.KUBERNETES_DIR }}
