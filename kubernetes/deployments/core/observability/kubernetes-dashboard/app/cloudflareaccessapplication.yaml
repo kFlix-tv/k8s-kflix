@@ -2,11 +2,11 @@
 apiVersion: cloudflare.zelic.io/v1alpha1
 kind: CloudflareAccessApplication
 metadata:
-  name: weave-gitops
+  name: kubernetes-dashboard
   namespace: observability
 spec:
-  name: weave-gitops
-  domain: "gitops.${SECRET_DOMAIN}"
+  name: Kubernetes Dashboard
+  domain: "kubernetes.${SECRET_DOMAIN}"
   autoRedirectToIdentity: true
   policies:
   - name: Allow admin

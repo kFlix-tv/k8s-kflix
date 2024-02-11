@@ -40,7 +40,7 @@ spec:
       namespaceSelector:
         matchNames:
         - default
-        - monitoring
+        - observability
         - flux-system
         - longhorn-system
         - kube-system

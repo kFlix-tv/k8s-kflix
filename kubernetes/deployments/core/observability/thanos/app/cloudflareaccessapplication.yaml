@@ -2,11 +2,11 @@
 apiVersion: cloudflare.zelic.io/v1alpha1
 kind: CloudflareAccessApplication
 metadata:
-  name: weave-gitops
+  name: thanos
   namespace: observability
 spec:
-  name: weave-gitops
-  domain: "gitops.${SECRET_DOMAIN}"
+  name: Thanos
+  domain: "thanos-query-frontend.${SECRET_DOMAIN}"
   autoRedirectToIdentity: true
   policies:
   - name: Allow admin

@@ -2,11 +2,11 @@
 apiVersion: cloudflare.zelic.io/v1alpha1
 kind: CloudflareAccessApplication
 metadata:
-  name: weave-gitops
+  name: grafana
   namespace: observability
 spec:
-  name: weave-gitops
-  domain: "gitops.${SECRET_DOMAIN}"
+  name: Grafana
+  domain: "grafana.${SECRET_DOMAIN}"
   autoRedirectToIdentity: true
   policies:
   - name: Allow admin

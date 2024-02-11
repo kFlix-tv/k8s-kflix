@@ -1,0 +1,22 @@
+# yaml-language-server builtin
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-gatus-ep
+  namespace: observability
+  labels:
+    gatus.io/enabled: "true"
+data:
+  config.yaml: |
+    endpoints:
+      - name: Prometheus
+        group: Guarded
+        url: https://prometheus.kflix.tv/-/healthy
+        interval: 1m
+        ui:
+          hide-hostname: true
+          hide-url: true
+        client:
+          dns-resolver: tcp://1.1.1.1:53
+        conditions:
+          - "[STATUS] == 200"
