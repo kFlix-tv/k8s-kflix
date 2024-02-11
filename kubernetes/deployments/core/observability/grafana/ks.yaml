@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-  - name: core-networking-nginx-external
+  - name: core-network-nginx-external
   path: ./kubernetes/deployments/core/observability/grafana/app
   prune: true
   sourceRef:

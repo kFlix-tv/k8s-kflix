@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-  - name: core-networking-nginx-external
+  - name: core-network-nginx-external
   - name: core-rook-ceph-cluster
   path: ./kubernetes/deployments/core/observability/kube-prometheus-stack/app
   prune: true

@@ -2,12 +2,12 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: core-observability-kubernetes-dashboard
+  name: core-network-external-dns
   namespace: flux-system
 spec:
   dependsOn:
-  - name: core-network-nginx-external
-  path: ./kubernetes/deployments/core/observability/kubernetes-dashboard/app
+  - name: core-kube-system-coredns
+  path: ./kubernetes/deployments/core/network/external-dns/app
   prune: true
   sourceRef:
     kind: GitRepository

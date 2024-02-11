@@ -6,7 +6,7 @@ metadata:
   namespace: flux-system
 spec:
   dependsOn:
-  - name: core-networking-external-dns
+  - name: core-network-external-dns
   path: ./kubernetes/deployments/core/kube-system/metrics-server/app
   prune: true
   sourceRef:

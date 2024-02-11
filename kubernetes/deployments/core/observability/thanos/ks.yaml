@@ -7,7 +7,7 @@ metadata:
 spec:
   path: ./kubernetes/deployments/core/observability/thanos/app
   dependsOn:
-  - name: core-networking-nginx-external
+  - name: core-network-nginx-external
   prune: true
   sourceRef:
     kind: GitRepository

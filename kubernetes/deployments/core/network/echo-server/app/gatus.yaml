@@ -1,0 +1,19 @@
+# yaml-language-server builtin
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: echo-server-gatus-ep
+  namespace: network
+  labels:
+    gatus.io/enabled: "true"
+data:
+  config.yaml: |
+    endpoints:
+      - name: echo-server
+        group: Frontend
+        url: https://echo-server.kflix.tv
+        interval: 1m
+        client:
+          dns-resolver: tcp://1.1.1.1:53
+        conditions:
+          - "[STATUS] == 200"
