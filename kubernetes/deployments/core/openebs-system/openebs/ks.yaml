@@ -2,13 +2,13 @@
 apiVersion: kustomize.toolkit.fluxcd.io/v1
 kind: Kustomization
 metadata:
-  name: &app openebs
+  name: core-openebs-system-openebs
   namespace: flux-system
 spec:
   targetNamespace: openebs-system
   commonMetadata:
     labels:
-      app.kubernetes.io/name: *app
+      app.kubernetes.io/name: openebs
   path: ./kubernetes/deployments/core/openebs-system/openebs/app
   prune: true
   sourceRef:
