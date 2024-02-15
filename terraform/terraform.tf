@@ -9,7 +9,7 @@ terraform {
   required_providers {
     ovh = {
       source  = "ovh/ovh"
-      version = "~> 0.36.1"
+      version = "~> 0.37.0"
     }
     cloudflare = {
       source  = "cloudflare/cloudflare"
