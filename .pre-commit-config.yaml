@@ -54,7 +54,7 @@ repos:
 #     files: ^ansible/
 #     exclude_types: [markdown, shell]
 - repo: https://github.com/adrienverge/yamllint.git
-  rev: v1.34.0
+  rev: v1.35.1
   hooks:
   - id: yamllint
     args: [-c=.yamllint]
