@@ -32,8 +32,8 @@ spec:
           init-db:
             order: 1
             image:
-              repository: ghcr.io/onedr0p/postgres-init
-              tag: 16
+              repository: ghcr.io/kflix-tv/postgres-init
+              tag: 16.2@sha256:1c1255ae9874eb7698c154c5b7fc90d3814cc3d71df55fedebfdbea4d8c5ed96
               pullPolicy: IfNotPresent
             envFrom: &envFrom
             - secretRef:
