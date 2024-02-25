@@ -38,7 +38,7 @@
     {
         "matchDatasources": ["github-releases", "github-tags"],
         "semanticCommitScope": "github-release"
-    }
+    },
     {
       "matchDatasources": ["galaxy", "galaxy-collection"],
       "semanticCommitScope": "ansible"
