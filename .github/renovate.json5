@@ -8,7 +8,6 @@
     ":automergeBranch",
     ":disableRateLimiting",
     ":dependencyDashboard",
-    ":semanticCommits",
     ":skipStatusChecks",
     ":timezone(America/New_York)",
     "replacements:all",
