@@ -9,8 +9,15 @@ on:
         required: false
       logLevel:
         description: Log Level
-        default: debug
+        default: warn
         required: false
+        type: choice
+        options:
+        - debug
+        - info
+        - warn
+        - error
+        - fatal
       version:
         description: Renovate version
         default: latest
