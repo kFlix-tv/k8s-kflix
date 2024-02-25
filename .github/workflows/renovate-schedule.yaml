@@ -21,6 +21,7 @@ on:
     branches: ["main"]
     paths:
     - .github/renovate.json5
+    - .github/renovate/*
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.event.number || github.ref }}
@@ -68,3 +69,5 @@ jobs:
         configurationFile: "${{ env.RENOVATE_ONBOARDING_CONFIG_FILE_NAME }}"
         token: "${{ steps.app-token.outputs.token }}"
         renovate-version: "${{ github.event.inputs.version || env.WORKFLOW_RENOVATE_VERSION }}"
+      env:
+        GITHUB_COM_TOKEN: "${{ steps.app-token.outputs.token }}"
