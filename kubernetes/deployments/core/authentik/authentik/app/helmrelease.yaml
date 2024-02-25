@@ -27,7 +27,7 @@ spec:
   values:
     initContainers:
       01-init-db:
-        image: ghcr.io/kflix-tv/postgres-init:16.2@sha256:1c1255ae9874eb7698c154c5b7fc90d3814cc3d71df55fedebfdbea4d8c5ed96
+        image: ghcr.io/kflix-tv/postgres-init:16.2@sha256:a0362cce769f35777e3792a9fa74180965f7f1d9b4bc8035552853f6d3e076c7
         imagePullPolicy: IfNotPresent
         envFrom: &envFrom
         - secretRef:
