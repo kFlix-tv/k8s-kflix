@@ -24,9 +24,6 @@
     "github>kFlix-tv/k8s-kflix//.github/renovate/packageRules.json5",
     "github>kFlix-tv/k8s-kflix//.github/renovate/semanticCommits.json5"
   ],
-  "platform": "github",
-  "onboarding": false,
-  "requireConfig": "optional",
   "dependencyDashboardTitle": "Renovate Dashboard 🤖",
   "suppressNotifications": ["prIgnoreNotification"],
   "rebaseWhen": "conflicted",
