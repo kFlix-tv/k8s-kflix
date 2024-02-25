@@ -20,7 +20,6 @@
     "github>kFlix-tv/k8s-kflix//.github/renovate/customManagers.json5",
     "github>kFlix-tv/k8s-kflix//.github/renovate/grafanaDashboards.json5",
     "github>kFlix-tv/k8s-kflix//.github/renovate/groups.json5",
-    "github>kFlix-tv/k8s-kflix//.github/renovate/hostRules.json5",
     "github>kFlix-tv/k8s-kflix//.github/renovate/labels.json5",
     "github>kFlix-tv/k8s-kflix//.github/renovate/packageRules.json5",
     "github>kFlix-tv/k8s-kflix//.github/renovate/semanticCommits.json5"
