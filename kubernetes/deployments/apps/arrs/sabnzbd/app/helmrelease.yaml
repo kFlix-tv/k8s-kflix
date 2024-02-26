@@ -11,7 +11,7 @@ spec:
       version: 2.6.0
       sourceRef:
         kind: HelmRepository
-        name: bjw-s
+        name: kflix-tv
         namespace: flux-system
   install:
     remediation:
@@ -36,7 +36,7 @@ spec:
               TZ: America/New_York
               SABNZBD__PORT: &port 80
               SABNZBD__HOST_WHITELIST_ENTRIES: >-
-                sabnzbd, sabnzbd.arrs, sabnzbd.arrs.svc, sabnzbd.arrs.svc.cluster, sabnzbd.arrs.svc.cluster.local, sab.${SECRET_DOMAIN}, sabnzbd.${SECRET_DOMAIN}
+                sabnzbd, sabnzbd.arrs, sabnzbd.arrs.svc, sabnzbd.arrs.svc.cluster, sabnzbd.arrs.svc.cluster.local, sabnzbd.${SECRET_DOMAIN}
             envFrom:
             - secretRef:
                 name: sabnzbd-secret
@@ -84,7 +84,7 @@ spec:
         annotations:
           external-dns.alpha.kubernetes.io/target: external.${SECRET_DOMAIN}
         hosts:
-        - host: &host sab.${SECRET_DOMAIN}
+        - host: &host sabnzbd.${SECRET_DOMAIN}
           paths:
           - path: /
             service:
