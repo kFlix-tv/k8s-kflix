@@ -4,6 +4,7 @@ kind: ServiceAccount
 metadata:
   namespace: "clustersecret"
   name: clustersecret-account
+# yamllint disable-line rule:document-start
 ---
 # yaml-language-server builtin
 apiVersion: rbac.authorization.k8s.io/v1
@@ -41,6 +42,7 @@ rules:
 - apiGroups: [""]
   resources: [secrets]
   verbs: [watch, list, get, patch, update, create, delete]
+# yamllint disable-line rule:document-start
 ---
 # yaml-language-server builtin
 apiVersion: rbac.authorization.k8s.io/v1
@@ -73,6 +75,7 @@ rules:
 - apiGroups: [clustersecret.io]
   resources: [clustersecrets]
   verbs: [get, patch]
+# yamllint disable-line rule:document-start
 ---
 # yaml-language-server builtin
 apiVersion: rbac.authorization.k8s.io/v1
@@ -87,6 +90,7 @@ subjects:
 - kind: ServiceAccount
   name: clustersecret-account
   namespace: "clustersecret"
+# yamllint disable-line rule:document-start
 ---
 # yaml-language-server builtin
 apiVersion: rbac.authorization.k8s.io/v1

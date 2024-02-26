@@ -18,6 +18,7 @@ spec:
       selector:
         dnsZones:
         - "${SECRET_DOMAIN}"
+# yamllint disable-line rule:document-start
 ---
 # yaml-language-server: $schema=https://k8s-schemas.pages.dev/cert-manager.io/clusterissuer_v1.json
 apiVersion: cert-manager.io/v1

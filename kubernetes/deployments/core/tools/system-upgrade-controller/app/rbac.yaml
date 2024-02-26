@@ -5,6 +5,7 @@ metadata:
   name: system-upgrade
 secrets:
 - name: system-upgrade
+# yamllint disable-line rule:document-start
 ---
 apiVersion: v1
 kind: Secret
@@ -13,6 +14,7 @@ metadata:
   name: system-upgrade
   annotations:
     kubernetes.io/service-account.name: system-upgrade
+# yamllint disable-line rule:document-start
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRoleBinding
