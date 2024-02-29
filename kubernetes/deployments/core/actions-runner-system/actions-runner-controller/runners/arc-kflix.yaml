@@ -36,7 +36,7 @@ spec:
       spec:
         containers:
         - name: runner
-          image: ghcr.io/kflix-tv/actions-runner:2.313.0@sha256:609bc18a20123b1fc1d9dc2018828428666ad0a5caa9db45fee4ba8eacafb62f
+          image: ghcr.io/kflix-tv/actions-runner:2.314.1@sha256:b3adefa23fa7d0cfd55ba20496f6f09d188370dc8dd71b6cf0109cf3b51b755c
           command: ["/home/runner/run.sh"]
           imagePullPolicy: IfNotPresent
         imagePullSecrets:
