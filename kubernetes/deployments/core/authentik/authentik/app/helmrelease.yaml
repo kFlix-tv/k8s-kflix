@@ -34,7 +34,7 @@ spec:
         - secretRef:
             name: authentik-secret
             # TODO: GeoIP container
-    replicas: 2
+      replicas: 2
     authentik:
       error_reporting:
         enabled: false
