@@ -25,8 +25,9 @@ spec:
   uninstall:
     keepHistory: false
   values:
-    initContainers:
-      01-init-db:
+    server:
+      initContainers:
+      - name: init-postgres
         image: ghcr.io/kflix-tv/postgres-init:16.2@sha256:a0362cce769f35777e3792a9fa74180965f7f1d9b4bc8035552853f6d3e076c7
         imagePullPolicy: IfNotPresent
         envFrom:
