@@ -13,17 +13,12 @@
     - name: Locale | Set timezone
       community.general.timezone:
         name: "{{ timezone | default('Etc/UTC') }}"
-
   - name: Packages
     block:
     - name: Packages | Install
       ansible.builtin.apt:
-        name: apt-transport-https,ca-certificates,curl,
-          gnupg,hdparm,htop,iperf3,iptables,iputils-ping,lm-sensors,net-tools,nfs-common,nvme-cli,open-iscsi,parted,psmisc,python3,
-          python3-kubernetes,python3-yaml,python3-apt,smartmontools,socat,software-properties-common,
-          unzip,util-linux
+        name: apt-transport-https,ca-certificates,curl, gnupg,hdparm,htop,iperf3,iptables,iputils-ping,lm-sensors,net-tools,nfs-common,nvme-cli,open-iscsi,parted,psmisc,python3, python3-kubernetes,python3-yaml,python3-apt,smartmontools,socat,software-properties-common, unzip,util-linux
         install_recommends: false
-
   - name: User Configuration
     block:
     - name: User Configuration | Silence login
@@ -47,7 +42,6 @@
       ansible.builtin.user:
         name: "{{ ansible_user }}"
         shell: /bin/zsh
-
   - name: Network Configuration
     notify: Reboot
     block:
@@ -76,7 +70,6 @@
         dest: /etc/systemd/networkd.conf
         regexp: ManageForeignRoutes
         line: ManageForeignRoutes=no
-
   - name: System Configuration
     notify: Reboot
     block:
@@ -95,19 +88,15 @@
       community.general.modprobe:
         name: "{{ item }}"
         state: present
-      loop: ["br_netfilter", "ceph", "ip_vs",
-             "ip_vs_rr", "nbd",
-             "overlay", "rbd"]
-             # TODO: Add "tcp_bbr" when it's available in the kernel
+      loop: ["br_netfilter", "ceph", "ip_vs", "ip_vs_rr", "nbd", "overlay", "rbd"]
+      # TODO: Add "tcp_bbr" when it's available in the kernel
     - name: System Configuration | Kernel modules (2)
       ansible.builtin.copy:
         dest: "/etc/modules-load.d/{{ item }}.conf"
         mode: "0644"
         content: "{{ item }}"
-      loop: ["br_netfilter", "ceph", "ip_vs",
-             "ip_vs_rr", "nbd",
-             "overlay", "rbd"]
-             # TODO: Add "tcp_bbr" when it's available in the kernel
+      loop: ["br_netfilter", "ceph", "ip_vs", "ip_vs_rr", "nbd", "overlay", "rbd"]
+      # TODO: Add "tcp_bbr" when it's available in the kernel
     - name: System Configuration | Sysctl
       ansible.posix.sysctl:
         name: "{{ item.key }}"
@@ -120,7 +109,6 @@
           fs.inotify.max_queued_events: 65536
           fs.inotify.max_user_watches: 524288
           fs.inotify.max_user_instances: 8192
-
   handlers:
   - name: Reboot
     ansible.builtin.reboot:

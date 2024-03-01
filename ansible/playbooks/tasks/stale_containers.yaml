@@ -9,7 +9,6 @@
       owner: root
       group: root
       mode: "0644"
-
   - name: Stale containers | Create systemd timer
     ansible.builtin.copy:
       src: files/stale-containers.timer
@@ -17,7 +16,6 @@
       owner: root
       group: root
       mode: "0644"
-
   - name: Stale containers | Start the systemd timer
     ansible.builtin.systemd:
       name: stale-containers.timer
@@ -25,7 +23,6 @@
       daemon_reload: true
       masked: false
       state: started
-
 - name: Disable Stale containers
   when: stale_containers_state == "disabled"
   block:

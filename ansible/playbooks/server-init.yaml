@@ -11,7 +11,6 @@
   tasks:
   - name: Kubeconfig
     ansible.builtin.include_tasks: tasks/wipe-disks.yaml
-
   - name: DevSec OS Hardening
     ansible.builtin.include_role:
       name: devsec.hardening.os_hardening
@@ -29,6 +28,7 @@
   - name: ZSH Install
     ansible.builtin.include_role:
       name: manala.roles.zsh
+
 # - name: Oh My ZSH Install
 #   ansible.builtin.include_role:
 #     name: manala.roles.

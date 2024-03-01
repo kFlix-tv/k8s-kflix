@@ -8,19 +8,16 @@
       use_regex: true
       patterns: ["^custom-.*"]
     register: custom_manifest
-
   - name: Cruft | Delete custom mantifests
     ansible.builtin.file:
       path: "{{ item.path }}"
       state: absent
     loop: "{{ custom_manifest.files }}"
-
   - name: Cruft | Get list of custom addons
     kubernetes.core.k8s_info:
       kubeconfig: /etc/rancher/k3s/k3s.yaml
       kind: Addon
     register: addons_list
-
   - name: Cruft | Delete addons
     kubernetes.core.k8s:
       kubeconfig: /etc/rancher/k3s/k3s.yaml
