@@ -35,28 +35,30 @@ spec:
             name: authentik-secret
             # TODO: GeoIP container
       replicas: 2
+      ingress:
+        enabled: true
+        ingressClassName: external
+        annotations:
+          external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
+          nginx.ingress.kubernetes.io/ssl-redirect: "true"
+        hosts:
+        - host: &host authentik.${SECRET_DOMAIN}
+          paths:
+          - path: "/"
+            pathType: Prefix
+        tls:
+        - hosts:
+          - *host
+      metrics:
+        enabled: true
+        serviceMonitor:
+          enabled: true
+    prometheus:
+      rules:
+        enabled: true
     authentik:
       error_reporting:
         enabled: false
-    ingress:
-      enabled: true
-      ingressClassName: external
-      annotations:
-        external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
-        nginx.ingress.kubernetes.io/ssl-redirect: "true"
-      hosts:
-      - host: &host authentik.${SECRET_DOMAIN}
-        paths:
-        - path: "/"
-          pathType: Prefix
-      tls:
-      - hosts:
-        - *host
-    prometheus:
-      serviceMonitor:
-        enabled: true
-      rules:
-        create: true
     geoip:
       enabled: false # TODO: Enable GeoIP
 
