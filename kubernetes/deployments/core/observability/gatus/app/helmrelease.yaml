@@ -33,7 +33,7 @@ spec:
             order: 1
             image:
               repository: ghcr.io/kflix-tv/postgres-init
-              tag: 16.2@sha256:a0362cce769f35777e3792a9fa74180965f7f1d9b4bc8035552853f6d3e076c7
+              tag: 16.2@sha256:88b89274582d79ccb82a9739174da6b8401ff7deaced118f34c1553a0f58825b
               pullPolicy: IfNotPresent
             envFrom: &envFrom
             - secretRef:
