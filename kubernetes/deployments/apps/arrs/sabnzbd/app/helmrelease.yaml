@@ -31,7 +31,7 @@ spec:
           main:
             image:
               repository: ghcr.io/kflix-tv/sabnzbd
-              tag: 4.2.2@sha256:1e7c74e2824732ef963e7485fe3a8e79c99526227d00e7a59fde2be7e3b5c5f8
+              tag: 4.2.2@sha256:cba60beaa61ef9ee268f081d80c0df32ea974d711f7708dd5d808e6246acd2d0
             env:
               TZ: America/New_York
               SABNZBD__PORT: &port 80
