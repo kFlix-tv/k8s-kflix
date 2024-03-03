@@ -42,7 +42,7 @@ spec:
           external-dns.alpha.kubernetes.io/target: "external.${SECRET_DOMAIN}"
           nginx.ingress.kubernetes.io/ssl-redirect: "true"
         hosts:
-        - &host authentik.${SECRET_DOMAIN}
+        - &host sso.${SECRET_DOMAIN}
         tls:
         - hosts:
           - *host
