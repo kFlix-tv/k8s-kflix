@@ -27,6 +27,7 @@ resources:
 - ./minio.yaml
 - ./onepassword.yaml
 - ./openebs.yaml
+- ./openproject.yaml
 - ./piraeus.yaml
 - ./prometheus-community.yaml
 - ./rook-ceph.yaml
