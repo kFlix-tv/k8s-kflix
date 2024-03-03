@@ -28,7 +28,7 @@ spec:
     server:
       initContainers:
       - name: init-postgres
-        image: ghcr.io/kflix-tv/postgres-init:16.2@sha256:1e5745cd764f258ba0b2d0dba7cfd9ac2bda4c45fdce4e224a638e564e65ff1a
+        image: ghcr.io/kflix-tv/postgres-init:16.2@sha256:a536df58c57991e2fdcfaa5786dc195965b1652ccb7b371aae22bf774e28e840
         imagePullPolicy: IfNotPresent
         envFrom:
         - secretRef:
