@@ -32,33 +32,24 @@ repos:
 #     args: [--exclude, "**/*.patch.yaml"]
 #     files: .yaml$
 
-# TODO: Checkov is too serious for now
-# - repo: https://github.com/bridgecrewio/checkov.git
-#   rev: 2.4.59
-#   hooks:
-#   - id: checkov
-#     args: [-d .]
 - repo: https://github.com/compilerla/conventional-pre-commit
   rev: v3.1.0
   hooks:
   - id: conventional-pre-commit
     stages: [commit-msg]
     args: []
-# TODO: Still broken
-# - repo: https://github.com/ansible/ansible-lint.git
-#   rev: v6.20.3
-#   hooks:
-#   - id: ansible-lint
-#     always_run: false
-#     files: ^ansible/
-#     exclude_types: [markdown, shell]
+
 - repo: https://github.com/adrienverge/yamllint.git
   rev: v1.35.1
   hooks:
   - id: yamllint
     args: [-c=.yamllint.yaml]
 
-# - repo: https://github.com/stackrox/kube-linter
-#   rev: v0.6.5
-#   hooks:
-#   - id: kube-linter
+- repo: https://github.com/python-jsonschema/check-jsonschema
+  rev: 0.28.0
+  hooks:
+  - id: check-metaschema
+    files: docs/.*schema\.json$
+  - id: check-jsonschema
+    files: ^yamlfmt\.yaml$
+    args: ["--schemafile", "docs/yamlfmt-schema.json"]
