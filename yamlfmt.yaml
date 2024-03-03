@@ -1,3 +1,4 @@
+# yaml-language-server: $schema=./docs/yamlfmt-schema.json
 formatter:
   type: basic
   indent: 2
