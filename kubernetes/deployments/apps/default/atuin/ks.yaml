@@ -1,0 +1,19 @@
+# yaml-language-server: $schema=https://k8s-schemas.pages.dev/kustomize.toolkit.fluxcd.io/kustomization_v1.json
+apiVersion: kustomize.toolkit.fluxcd.io/v1
+kind: Kustomization
+metadata:
+  name: apps-default-atuin
+  namespace: flux-system
+spec:
+  path: ./kubernetes/deployments/apps/default/atuin/app
+  prune: true
+  sourceRef:
+    kind: GitRepository
+    name: k8s-kflix
+  wait: false
+  interval: 30m
+  retryInterval: 1m
+  timeout: 5m
+  postBuild:
+    substitute:
+      NAMESPACE: "default"
